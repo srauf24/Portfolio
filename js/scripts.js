@@ -8,7 +8,6 @@
 //
 import posthog from 'posthog-js';
 
-
 window.addEventListener('DOMContentLoaded', event => {
 
     // Activate Bootstrap scrollspy on the main nav element
@@ -33,10 +32,10 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+        posthog.init('phc_XNsaYYbePdiuOrRwEETGxAirNM5rUgdnMlLhHAlgjG1', {
+            api_host: 'https://us.i.posthog.com/',
+            person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
+        })
 });
 // Initialize PostHog
 
-    posthog.init('phc_XNsaYYbePdiuOrRwEETGxAirNM5rUgdnMlLhHAlgjG1', {
-        api_host: 'https://us.i.posthog.com/',
-        person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
-    })
