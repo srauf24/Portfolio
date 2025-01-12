@@ -5,7 +5,9 @@
 */
 //
 // Scripts
-// 
+//
+import posthog from 'posthog-js';
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -32,3 +34,9 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+// Initialize PostHog
+
+    posthog.init('phc_XNsaYYbePdiuOrRwEETGxAirNM5rUgdnMlLhHAlgjG1', {
+        api_host: 'https://us.i.posthog.com/',
+        person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
+    })
