@@ -28,6 +28,14 @@
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+    <!-- PostHog Analytics -->
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('phc_XNsaYYbePdiuOrRwEETGxAirNM5rUgdnMlLhHAlgjG1', {
+            api_host:'https://us.i.posthog.com',
+            person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
+        })
+    </script>
 </head>
 
 <body id="page-top">
@@ -93,13 +101,19 @@
                     714-603-6427 ·
                     <a href="mailto:sameerauf1@gmail.com">sameerauf1@gmail.com</a> ·
                     <a href="https://www.linkedin.com/in/samee-rauf" target="_blank">LinkedIn</a> ·
+<<<<<<< HEAD
                     <a href="https://github.com/sameerauf1" target="_blank">GitHub</a>
                     
+=======
+                    <a href="https://github.com/sameerauf1" target="_blank">GitHub</a> ·
+                    <a href="https://tinyurl.com/rauf-samee-resume" target="_blank">Resume</a>
+
+>>>>>>> e0115f0f6469523ad17b67d6e8af4c6d912c2b40
                 </div>
                 <p class="lead mb-5">
-                    I’m an <strong>AI</strong> and <strong>Software Engineer</strong> 🤖 💻 with a strong background in
-                    <strong>data ingestion</strong>, <strong>analysis</strong>, <strong>automation</strong>, and
-                    <strong>security research</strong>. I love building robust solutions that
+                    Bringing AI solutions to life 🤖🚀<br>
+                    I’m an <strong>AI</strong> and <strong>Software Engineer</strong>
+                    I love building robust solutions that
                     <strong>enhance efficiency</strong> and <strong>streamline workflows</strong>.
                 </p>
                 <div class="social-icons">
@@ -403,7 +417,7 @@
                         <h3 class="mb-0">Out-of-Context Quotes</h3>
                         <div class="subheading mb-3">
                             <a
-                                href="https://github.com/YourUsername/your-quotes-library-repo"
+                                href="https://github.com/srauf24/inventory"
                                 target="_blank"
                             >
                                 GitHub Repo
@@ -470,6 +484,74 @@
                         <span class="text-primary">2023</span>
                     </div>
                 </div>
+                <!-- Website Screenshot Gallery -->
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                  <div>
+                    <h3 class="mb-0">Website Screenshot Gallery</h3>
+                    <div class="subheading mb-3">
+                      <a
+                        href="https://github.com/srauf24/Website-Gallery"
+                        target="_blank"
+                      >
+                        GitHub Repo
+                      </a>
+                      &nbsp;|&nbsp;
+                      <a
+                        href="https://website-gallery-one.vercel.app"
+                        target="_blank"
+                      >
+                        Live Demo
+                      </a>
+                    </div>
+                    <p>
+                      A <strong>React</strong> application that allows users to capture and store screenshots of any website using
+                      the <strong>Apiflash</strong> API. Users can specify screenshot format (JPEG/PNG/WebP), dimensions, and block ads
+                      or cookie banners for a cleaner image. The app displays generated images in a built-in gallery, providing quick
+                      access and reference.
+                    </p>
+                    <p>
+                      <em>Key Features:</em>
+                      <ul>
+                        <li>
+                          Customizable screenshot settings (format, width, height, no_ads, no_cookie_banners).
+                        </li>
+                        <li>
+                          On-demand API call to Apiflash for real-time capture of any public URL.
+                        </li>
+                        <li>
+                          Automatic URL protocol handling (<em>https://</em> prefix if missing).
+                        </li>
+                        <li>
+                          Screenshot gallery to display previously captured images, stored in state.
+                        </li>
+                      </ul>
+                    </p>
+                    <p>
+                      <em><strong>Technologies:</strong></em>
+                      <ul>
+                        <li>
+                          <strong>React (Create React App)</strong> for a component-based front end.
+                        </li>
+                        <li>
+                          <strong>Apiflash</strong> API for on-demand website screenshot capture.
+                        </li>
+                        <li>
+                          <strong>CSS3</strong> for a modern, responsive UI with gradients and hover effects.
+                        </li>
+                        <li>
+                          <strong>JavaScript</strong> for handling events, form input, and state management.
+                        </li>
+                        <li>
+                          <strong>Vercel</strong> for fast deployment and hosting.
+                        </li>
+                      </ul>
+                    </p>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <span class="text-primary">2023</span>
+                  </div>
+                </div>
+
 
                 <!-- NBA Statistics -->
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
