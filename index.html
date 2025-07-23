@@ -1,3 +1,6 @@
+Of course. Here is the complete, single-file code for your website with all sections expanded and all the latest enhancements included.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,18 +140,7 @@
             padding: 0 2rem;
         }
         
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        
         .hero-content {
-            position: relative;
-            z-index: 2;
             max-width: 800px;
         }
 
@@ -156,6 +148,11 @@
             font-size: 4rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
+            color: transparent;
+            background-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--light-text) 20%, var(--secondary-text) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            transition: background-image 0.1s ease;
         }
 
         #hero .title {
@@ -479,10 +476,9 @@
     </nav>
 
     <section id="hero">
-        <div id="particles-js"></div>
-        <div class="hero-content fade-in">
-            <h1>SAMEE RAUF</h1>
-            <p class="title">AI & Software Engineer</p>
+        <div class="hero-content">
+            <h1 data-scramble-text="SAMEE RAUF">SAMEE RAUF</h1>
+            <p class="title" data-scramble-text="AI & Software Engineer">AI & Software Engineer</p>
             <p class="tagline">Building intelligent, data-driven solutions for impactful outcomes.</p>
         </div>
     </section>
@@ -651,66 +647,93 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // JavaScript for fade-in animations on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+    document.addEventListener("DOMContentLoaded", function() {
+        // --- Text Scramble Effect ---
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise(resolve => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="scramble-char">${char}</span>`;
+                    } else {
+                        output += from;
                     }
-                });
-            }, {
-                threshold: 0.1
-            });
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            }
+        }
 
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => observer.observe(el));
-            
-            // Initialize Particles.js
-            particlesJS('particles-js', {
-              particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: '#FF8C00' },
-                shape: {
-                  type: 'circle',
-                },
-                opacity: {
-                  value: 0.4,
-                  random: true,
-                  anim: { enable: false }
-                },
-                size: {
-                  value: 3,
-                  random: true,
-                  anim: { enable: false }
-                },
-                line_linked: {
-                  enable: false,
-                },
-                move: {
-                  enable: true,
-                  speed: 1,
-                  direction: 'none',
-                  random: true,
-                  straight: false,
-                  out_mode: 'out',
-                  bounce: false
-                }
-              },
-              interactivity: {
-                detect_on: 'canvas',
-                events: {
-                  onhover: { enable: false },
-                  onclick: { enable: false },
-                  resize: true
-                }
-              },
-              retina_detect: true
-            });
+        const scrambleElements = document.querySelectorAll('[data-scramble-text]');
+        scrambleElements.forEach(el => {
+            const fx = new TextScramble(el);
+            const originalText = el.dataset.scrambleText;
+            setTimeout(() => {
+                fx.setText(originalText);
+            }, 500);
         });
+
+        // --- Mouse-Reactive Glow Effect ---
+        const heroH1 = document.querySelector('#hero h1');
+        heroH1.addEventListener('mousemove', (e) => {
+            const rect = heroH1.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            heroH1.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+            heroH1.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+        });
+        
+        // --- Scroll Fade-in ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+    });
     </script>
 </body>
 </html>
