@@ -1,6 +1,3 @@
-Of course. Here is the complete, single-file code for your website with all sections expanded and all the latest enhancements included.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +37,6 @@ Of course. Here is the complete, single-file code for your website with all sect
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.6;
-            background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #111111 40%);
         }
 
         .container {
@@ -130,7 +126,7 @@ Of course. Here is the complete, single-file code for your website with all sect
             color: var(--primary-orange);
         }
 
-        /* Hero Section */
+        /* Hero Section with 3D Canvas */
         #hero {
             height: 100vh;
             display: flex;
@@ -138,9 +134,21 @@ Of course. Here is the complete, single-file code for your website with all sect
             justify-content: center;
             text-align: center;
             padding: 0 2rem;
+            background-color: #000; /* Darker background for 3D effect */
+        }
+        
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
         .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
         }
 
@@ -148,11 +156,6 @@ Of course. Here is the complete, single-file code for your website with all sect
             font-size: 4rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
-            color: transparent;
-            background-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--light-text) 20%, var(--secondary-text) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            transition: background-image 0.1s ease;
         }
 
         #hero .title {
@@ -168,297 +171,58 @@ Of course. Here is the complete, single-file code for your website with all sect
             margin: 0 auto;
         }
         
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+        /* Other Sections (Unchanged) */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .skill-category, .education-card, .project-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+        .skill-category:hover, .education-card:hover, .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 25px rgba(255, 140, 0, 0.2); border-color: rgba(255, 140, 0, 0.5); }
+        .skill-category h3 { color: var(--primary-orange); margin-bottom: 1rem; font-size: 1.25rem; }
+        .skill-category h3 .fas { margin-right: 0.75rem; color: var(--primary-orange); opacity: 0.7; }
+        .skill-category ul { list-style: none; }
+        .skill-category ul li { margin-bottom: 0.5rem; color: var(--secondary-text); }
+
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 3px; background: linear-gradient(to bottom, var(--primary-orange), var(--dark-bg)); box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
+        .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
+        .timeline-item::after { content: '\f10c'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; width: 25px; height: 25px; right: -12px; color: var(--primary-orange); font-size: 1.2rem; text-align: center; top: 22px; z-index: 1; background: var(--dark-bg); border-radius: 50%; }
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+        .timeline-item.left::before { content: " "; height: 0; position: absolute; top: 28px; width: 0; z-index: 1; right: 30px; border: medium solid var(--border-color); border-width: 10px 0 10px 10px; border-color: transparent transparent transparent var(--border-color); }
+        .timeline-item.right::before { content: " "; height: 0; position: absolute; top: 28px; width: 0; z-index: 1; left: 30px; border: medium solid var(--border-color); border-width: 10px 10px 10px 0; border-color: transparent var(--border-color) transparent transparent; }
+        .timeline-item.right::after { left: -12px; }
+        .timeline-content { padding: 20px 30px; background-color: var(--card-bg); border: 1px solid var(--border-color); position: relative; border-radius: 8px; }
+        .timeline-content h3 { font-size: 1.25rem; margin-bottom: 0.25rem; color: var(--light-text); }
+        .timeline-content .company { color: var(--primary-orange); font-weight: 500; }
+        .timeline-content .date { font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 0.75rem; }
+        .timeline-content p { font-size: 0.95rem; color: var(--secondary-text); }
         
-        .skill-category, .education-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card { display: flex; flex-direction: column; }
+        .project-card h3 { margin-bottom: 0.5rem; }
+        .project-card p { color: var(--secondary-text); flex-grow: 1; margin-bottom: 1rem; }
+        .project-card .project-tech { margin-bottom: 1.5rem; }
+        .project-card .project-tech span { display: inline-block; background: #252525; color: var(--secondary-text); font-size: 0.8rem; padding: 0.25rem 0.75rem; border-radius: 12px; margin: 0.25rem; }
+        .project-card .project-links a { color: var(--primary-orange); text-decoration: none; margin-right: 1.5rem; font-weight: 500; }
+        .project-card .project-links .fab, .project-card .project-links .fas { margin-right: 0.5rem; }
         
-        .skill-category h3 {
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
+        #education { background-color: var(--card-bg); border-top: 1px solid var(--border-color); }
+        .education-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 700px; margin: 0 auto; }
+        .education-card { background: #111; }
+        .education-card h3 { font-size: 1.5rem; }
+        .education-card p { color: var(--secondary-text); }
+        .education-card .gpa { color: var(--primary-orange); font-weight: 700; }
+
+        #contact { text-align: center; }
+        #contact .container { max-width: 600px; }
+        #contact p { font-size: 1.1rem; color: var(--secondary-text); margin-bottom: 2rem; }
+        .contact-links a { color: var(--light-text); text-decoration: none; font-size: 1.2rem; padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; margin: 0.5rem; display: inline-block; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        .contact-links a:hover { background-color: var(--primary-orange); border-color: var(--primary-orange); color: var(--dark-bg); }
         
-        .skill-category h3 .fas {
-            margin-right: 0.75rem;
-            color: var(--primary-orange);
-            opacity: 0.7;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category ul li {
-            margin-bottom: 0.5rem;
-            color: var(--secondary-text);
-        }
-
-        /* Experience Section (Timeline) */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary-orange), var(--dark-bg));
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1.5px;
-        }
+        footer { text-align: center; padding: 2rem 0; color: var(--secondary-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); }
         
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-        }
-
-        .timeline-item::after {
-            content: '\f10c';
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -12px;
-            color: var(--primary-orange);
-            font-size: 1.2rem;
-            text-align: center;
-            top: 22px;
-            z-index: 1;
-            background: var(--dark-bg);
-            border-radius: 50%;
-        }
-
-        .timeline-item.left {
-            left: 0;
-        }
-
-        .timeline-item.right {
-            left: 50%;
-        }
-
-        .timeline-item.left::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 28px;
-            width: 0;
-            z-index: 1;
-            right: 30px;
-            border: medium solid var(--border-color);
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent var(--border-color);
-        }
-        
-        .timeline-item.right::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 28px;
-            width: 0;
-            z-index: 1;
-            left: 30px;
-            border: medium solid var(--border-color);
-            border-width: 10px 10px 10px 0;
-            border-color: transparent var(--border-color) transparent transparent;
-        }
-        
-        .timeline-item.right::after {
-            left: -12px;
-        }
-
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            position: relative;
-            border-radius: 8px;
-        }
-
-        .timeline-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
-            color: var(--light-text);
-        }
-
-        .timeline-content .company {
-            color: var(--primary-orange);
-            font-weight: 500;
-        }
-
-        .timeline-content .date {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-            margin-bottom: 0.75rem;
-        }
-
-        .timeline-content p {
-            font-size: 0.95rem;
-            color: var(--secondary-text);
-        }
-        
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-        
-        .project-card:hover, .skill-category:hover, .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 25px rgba(255, 140, 0, 0.2);
-            border-color: rgba(255, 140, 0, 0.5);
-        }
-
-        .project-card h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card p {
-            color: var(--secondary-text);
-            flex-grow: 1;
-            margin-bottom: 1rem;
-        }
-        
-        .project-tech {
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-tech span {
-            display: inline-block;
-            background: #252525;
-            color: var(--secondary-text);
-            font-size: 0.8rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            margin: 0.25rem;
-        }
-
-        .project-links a {
-            color: var(--primary-orange);
-            text-decoration: none;
-            margin-right: 1.5rem;
-            font-weight: 500;
-        }
-
-        .project-links .fab, .project-links .fas {
-            margin-right: 0.5rem;
-        }
-        
-        /* Education Section */
-        #education {
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-        }
-        .education-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .education-card {
-            background: #111;
-        }
-
-        .education-card h3 {
-            font-size: 1.5rem;
-        }
-        
-        .education-card p {
-            color: var(--secondary-text);
-        }
-
-        .education-card .gpa {
-            color: var(--primary-orange);
-            font-weight: 700;
-        }
-
-        /* Contact Section */
-        #contact {
-            text-align: center;
-        }
-        
-        #contact .container {
-            max-width: 600px;
-        }
-
-        #contact p {
-            font-size: 1.1rem;
-            color: var(--secondary-text);
-            margin-bottom: 2rem;
-        }
-        
-        .contact-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin: 0.5rem;
-            display: inline-block;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .contact-links a:hover {
-            background-color: var(--primary-orange);
-            border-color: var(--primary-orange);
-            color: var(--dark-bg);
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: var(--secondary-text);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        /* Responsive Design */
         @media (max-width: 768px) {
-            h2 { font-size: 2rem; }
-            #hero h1 { font-size: 3rem; }
-            #hero p { font-size: 1.2rem; }
-            .main-nav ul { display: none; } /* Simplified nav for mobile */
-
-            /* Center the timeline */
-            .timeline::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-            .timeline-item.left::before, .timeline-item.right::before { left: 60px; border: medium solid var(--border-color); border-width: 10px 10px 10px 0; border-color: transparent var(--border-color) transparent transparent; }
-            .timeline-item.left::after, .timeline-item.right::after { left: 19px; }
-            .timeline-item.right { left: 0%; }
+            h2 { font-size: 2rem; } #hero h1 { font-size: 3rem; } #hero p { font-size: 1.2rem; } .main-nav ul { display: none; }
+            .timeline::after { left: 31px; } .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; } .timeline-item.left::before, .timeline-item.right::before { left: 60px; border-width: 10px 10px 10px 0; border-color: transparent var(--border-color) transparent transparent; } .timeline-item.left::after, .timeline-item.right::after { left: 19px; } .timeline-item.right { left: 0%; }
         }
-
     </style>
 </head>
 <body>
@@ -476,14 +240,15 @@ Of course. Here is the complete, single-file code for your website with all sect
     </nav>
 
     <section id="hero">
+        <div id="hero-canvas"></div>
         <div class="hero-content">
-            <h1 data-scramble-text="SAMEE RAUF">SAMEE RAUF</h1>
-            <p class="title" data-scramble-text="AI & Software Engineer">AI & Software Engineer</p>
-            <p class="tagline">Building intelligent, data-driven solutions for impactful outcomes.</p>
+            <h1 class="fade-in">SAMEE RAUF</h1>
+            <p class="title fade-in">AI & Software Engineer</p>
+            <p class="tagline fade-in">Building intelligent, data-driven solutions for impactful outcomes.</p>
         </div>
     </section>
 
-    <main>
+    <<main>
         <section id="skills">
             <div class="container">
                 <h2 class="fade-in">My Approach & Toolkit</h2>
@@ -634,8 +399,8 @@ Of course. Here is the complete, single-file code for your website with all sect
                 <p>I'm excited about opportunities to collaborate on impactful projects and contribute to innovative teams. If you have a question, a project idea, or just want to connect, please don't hesitate to reach out.</p>
                 <div class="contact-links">
                     <a href="mailto:sameerauf1@gmail.com">Email Me</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank">LinkedIn</a>                                                                                                                                                                          
+                   <a href="https://github.com/srauf24" target="_blank">GitHub</a>
                 </div>
             </div>
         </section>
@@ -647,82 +412,10 @@ Of course. Here is the complete, single-file code for your website with all sect
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // --- Text Scramble Effect ---
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                this.chars = '!<>-_\\/[]{}—=+*^?#________';
-                this.update = this.update.bind(this);
-            }
-            setText(newText) {
-                const oldText = this.el.innerText;
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise(resolve => this.resolve = resolve);
-                this.queue = [];
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to = newText[i] || '';
-                    const start = Math.floor(Math.random() * 40);
-                    const end = start + Math.floor(Math.random() * 40);
-                    this.queue.push({ from, to, start, end });
-                }
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
-            update() {
-                let output = '';
-                let complete = 0;
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    if (this.frame >= end) {
-                        complete++;
-                        output += to;
-                    } else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.28) {
-                            char = this.randomChar();
-                            this.queue[i].char = char;
-                        }
-                        output += `<span class="scramble-char">${char}</span>`;
-                    } else {
-                        output += from;
-                    }
-                }
-                this.el.innerHTML = output;
-                if (complete === this.queue.length) {
-                    this.resolve();
-                } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
-                }
-            }
-            randomChar() {
-                return this.chars[Math.floor(Math.random() * this.chars.length)];
-            }
-        }
-
-        const scrambleElements = document.querySelectorAll('[data-scramble-text]');
-        scrambleElements.forEach(el => {
-            const fx = new TextScramble(el);
-            const originalText = el.dataset.scrambleText;
-            setTimeout(() => {
-                fx.setText(originalText);
-            }, 500);
-        });
-
-        // --- Mouse-Reactive Glow Effect ---
-        const heroH1 = document.querySelector('#hero h1');
-        heroH1.addEventListener('mousemove', (e) => {
-            const rect = heroH1.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            heroH1.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
-            heroH1.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-        });
-        
         // --- Scroll Fade-in ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -733,6 +426,100 @@ Of course. Here is the complete, single-file code for your website with all sect
         }, { threshold: 0.1 });
         const fadeElements = document.querySelectorAll('.fade-in');
         fadeElements.forEach(el => observer.observe(el));
+
+        // --- Three.js Neural Network Animation ---
+        const container = document.getElementById('hero-canvas');
+        if (container) {
+            let scene, camera, renderer, nodes, lines;
+            let mouseX = 0, mouseY = 0;
+            let windowHalfX = window.innerWidth / 2;
+            let windowHalfY = window.innerHeight / 2;
+
+            const NODE_COUNT = 300;
+            const PLEXUS_RADIUS = 300;
+
+            init();
+            animate();
+
+            function init() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+                camera.position.z = 600;
+
+                // Nodes
+                const nodeGeometry = new THREE.SphereGeometry(4, 8, 8);
+                const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xff8c00, transparent: true, opacity: 0.8 });
+                nodes = new THREE.Group();
+                for (let i = 0; i < NODE_COUNT; i++) {
+                    const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+                    const [x, y, z] = [
+                        Math.random() * 2 - 1,
+                        Math.random() * 2 - 1,
+                        Math.random() * 2 - 1
+                    ];
+                    const d = 1 / Math.sqrt(x*x + y*y + z*z);
+                    node.position.set(x*d*PLEXUS_RADIUS, y*d*PLEXUS_RADIUS, z*d*PLEXUS_RADIUS);
+                    nodes.add(node);
+                }
+                scene.add(nodes);
+
+                // Lines
+                const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 });
+                const lineGeometry = new THREE.BufferGeometry();
+                const positions = [];
+                for (let i = 0; i < NODE_COUNT; i++) {
+                    for (let j = i + 1; j < NODE_COUNT; j++) {
+                        const start = nodes.children[i].position;
+                        const end = nodes.children[j].position;
+                        if (start.distanceTo(end) < PLEXUS_RADIUS / 2.5) {
+                            positions.push(start.x, start.y, start.z);
+                            positions.push(end.x, end.y, end.z);
+                        }
+                    }
+                }
+                lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+                lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+                scene.add(lines);
+
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                container.appendChild(renderer.domElement);
+
+                document.addEventListener('mousemove', onDocumentMouseMove, false);
+                window.addEventListener('resize', onWindowResize, false);
+            }
+
+            function onWindowResize() {
+                windowHalfX = window.innerWidth / 2;
+                windowHalfY = window.innerHeight / 2;
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+
+            function onDocumentMouseMove(event) {
+                mouseX = (event.clientX - windowHalfX) * 0.2;
+                mouseY = (event.clientY - windowHalfY) * 0.2;
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                render();
+            }
+
+            function render() {
+                camera.position.x += (mouseX - camera.position.x) * 0.05;
+                camera.position.y += (-mouseY - camera.position.y) * 0.05;
+                camera.lookAt(scene.position);
+                
+                const time = Date.now() * 0.0001;
+                nodes.rotation.y = time;
+                lines.rotation.y = time;
+
+                renderer.render(scene, camera);
+            }
+        }
     });
     </script>
 </body>
