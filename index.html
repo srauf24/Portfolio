@@ -51,7 +51,7 @@
             position: relative;
         }
         
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-weight: 700;
         }
 
@@ -134,7 +134,7 @@
             justify-content: center;
             text-align: center;
             padding: 0 2rem;
-            background-color: #000; /* Darker background for 3D effect */
+            background-color: #000;
         }
         
         #hero-canvas {
@@ -171,57 +171,264 @@
             margin: 0 auto;
         }
         
-        /* Other Sections (Unchanged) */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .skill-category, .education-card, .project-card { background: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-        .skill-category:hover, .education-card:hover, .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 25px rgba(255, 140, 0, 0.2); border-color: rgba(255, 140, 0, 0.5); }
-        .skill-category h3 { color: var(--primary-orange); margin-bottom: 1rem; font-size: 1.25rem; }
-        .skill-category h3 .fas { margin-right: 0.75rem; color: var(--primary-orange); opacity: 0.7; }
-        .skill-category ul { list-style: none; }
-        .skill-category ul li { margin-bottom: 0.5rem; color: var(--secondary-text); }
+        /* Connected Portfolio Section Styles */
+        #connections {
+            padding-bottom: 8rem; 
+        }
+        .connections-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .connections-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-text);
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .node {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+        .node.project-node {
+            cursor: pointer;
+        }
+        .node h4 {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 0.25rem;
+        }
+        .node p {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+        }
+        .node.dimmed {
+            opacity: 0.4;
+            transform: scale(0.98);
+        }
+        .node.highlighted {
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+        }
 
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 3px; background: linear-gradient(to bottom, var(--primary-orange), var(--dark-bg)); box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
-        .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
-        .timeline-item::after { content: '\f10c'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; width: 25px; height: 25px; right: -12px; color: var(--primary-orange); font-size: 1.2rem; text-align: center; top: 22px; z-index: 1; background: var(--dark-bg); border-radius: 50%; }
-        .timeline-item.left { left: 0; }
-        .timeline-item.right { left: 50%; }
-        .timeline-item.left::before { content: " "; height: 0; position: absolute; top: 28px; width: 0; z-index: 1; right: 30px; border: medium solid var(--border-color); border-width: 10px 0 10px 10px; border-color: transparent transparent transparent var(--border-color); }
-        .timeline-item.right::before { content: " "; height: 0; position: absolute; top: 28px; width: 0; z-index: 1; left: 30px; border: medium solid var(--border-color); border-width: 10px 10px 10px 0; border-color: transparent var(--border-color) transparent transparent; }
-        .timeline-item.right::after { left: -12px; }
-        .timeline-content { padding: 20px 30px; background-color: var(--card-bg); border: 1px solid var(--border-color); position: relative; border-radius: 8px; }
-        .timeline-content h3 { font-size: 1.25rem; margin-bottom: 0.25rem; color: var(--light-text); }
-        .timeline-content .company { color: var(--primary-orange); font-weight: 500; }
-        .timeline-content .date { font-size: 0.9rem; color: var(--secondary-text); margin-bottom: 0.75rem; }
-        .timeline-content p { font-size: 0.95rem; color: var(--secondary-text); }
+        /* Details Pane Styles */
+        #details-pane {
+            position: sticky;
+            top: 120px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        #details-pane .placeholder {
+            text-align: center;
+            color: var(--secondary-text);
+        }
+        #details-pane .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            background-color: #000;
+        }
+        #details-pane h3 {
+            font-size: 1.75rem;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+        #details-pane .project-description {
+            color: var(--secondary-text);
+            margin-bottom: 1.5rem;
+        }
+        #details-pane .project-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+         #details-pane .project-links a:hover {
+             color: var(--primary-orange);
+         }
+        #details-pane .project-links i {
+            margin-right: 0.5rem;
+        }
+
+        /* Experience Timeline Styles */
+        .timeline { 
+            position: relative; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        .timeline::after { 
+            content: ''; 
+            position: absolute; 
+            width: 3px; 
+            background: linear-gradient(to bottom, var(--primary-orange), var(--dark-bg)); 
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); 
+            top: 0; 
+            bottom: 0; 
+            left: 50%; 
+            margin-left: -1.5px; 
+        }
+        .timeline-item { 
+            padding: 10px 40px; 
+            position: relative; 
+            width: 50%; 
+        }
+        .timeline-item::after { 
+            content: '\f10c'; 
+            font-family: "Font Awesome 6 Free"; 
+            font-weight: 900; 
+            position: absolute; 
+            width: 25px; 
+            height: 25px; 
+            right: -12px; 
+            color: var(--primary-orange); 
+            font-size: 1.2rem; 
+            text-align: center; 
+            top: 22px; 
+            z-index: 1; 
+            background: var(--dark-bg); 
+            border-radius: 50%; 
+        }
+        .timeline-item.left { 
+            left: 0; 
+        }
+        .timeline-item.right { 
+            left: 50%; 
+        }
+        .timeline-item.left::before { 
+            content: " "; 
+            height: 0; 
+            position: absolute; 
+            top: 28px; 
+            width: 0; 
+            z-index: 1; 
+            right: 30px; 
+            border: medium solid var(--border-color); 
+            border-width: 10px 0 10px 10px; 
+            border-color: transparent transparent transparent var(--border-color); 
+        }
+        .timeline-item.right::before { 
+            content: " "; 
+            height: 0; 
+            position: absolute; 
+            top: 28px; 
+            width: 0; 
+            z-index: 1; 
+            left: 30px; 
+            border: medium solid var(--border-color); 
+            border-width: 10px 10px 10px 0; 
+            border-color: transparent var(--border-color) transparent transparent; 
+        }
+        .timeline-item.right::after { 
+            left: -12px; 
+        }
+        .timeline-content { 
+            padding: 20px 30px; 
+            background-color: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            position: relative; 
+            border-radius: 8px; 
+        }
+        .timeline-content h3 { 
+            font-size: 1.25rem; 
+            margin-bottom: 0.25rem; 
+            color: var(--light-text); 
+        }
+        .timeline-content .company { 
+            color: var(--primary-orange); 
+            font-weight: 500; 
+        }
+        .timeline-content .date { 
+            font-size: 0.9rem; 
+            color: var(--secondary-text); 
+            margin-bottom: 0.75rem; 
+        }
+        .timeline-content p { 
+            font-size: 0.95rem; 
+            color: var(--secondary-text); 
+        }
         
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .project-card { display: flex; flex-direction: column; }
-        .project-card h3 { margin-bottom: 0.5rem; }
-        .project-card p { color: var(--secondary-text); flex-grow: 1; margin-bottom: 1rem; }
-        .project-card .project-tech { margin-bottom: 1.5rem; }
-        .project-card .project-tech span { display: inline-block; background: #252525; color: var(--secondary-text); font-size: 0.8rem; padding: 0.25rem 0.75rem; border-radius: 12px; margin: 0.25rem; }
-        .project-card .project-links a { color: var(--primary-orange); text-decoration: none; margin-right: 1.5rem; font-weight: 500; }
-        .project-card .project-links .fab, .project-card .project-links .fas { margin-right: 0.5rem; }
-        
+        /* RESTORED: Skills Section */
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+        }
+        .skill-category { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 2rem; 
+            border-radius: 8px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+        }
+        .skill-category:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 25px rgba(255, 140, 0, 0.2); 
+            border-color: rgba(255, 140, 0, 0.5); 
+        }
+        .skill-category h3 { 
+            color: var(--primary-orange); 
+            margin-bottom: 1rem; 
+            font-size: 1.25rem; 
+        }
+        .skill-category h3 .fas { 
+            margin-right: 0.75rem; 
+            color: var(--primary-orange); 
+            opacity: 0.7; 
+        }
+        .skill-category ul { 
+            list-style: none; 
+        }
+        .skill-category ul li { 
+            margin-bottom: 0.5rem; 
+            color: var(--secondary-text); 
+        }
+
+        /* Education Section */
         #education { background-color: var(--card-bg); border-top: 1px solid var(--border-color); }
         .education-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 700px; margin: 0 auto; }
-        .education-card { background: #111; }
+        .education-card { background: #111; border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; }
         .education-card h3 { font-size: 1.5rem; }
         .education-card p { color: var(--secondary-text); }
         .education-card .gpa { color: var(--primary-orange); font-weight: 700; }
 
+        /* Contact Section */
         #contact { text-align: center; }
         #contact .container { max-width: 600px; }
         #contact p { font-size: 1.1rem; color: var(--secondary-text); margin-bottom: 2rem; }
         .contact-links a { color: var(--light-text); text-decoration: none; font-size: 1.2rem; padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; margin: 0.5rem; display: inline-block; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
         .contact-links a:hover { background-color: var(--primary-orange); border-color: var(--primary-orange); color: var(--dark-bg); }
         
+        /* Footer */
         footer { text-align: center; padding: 2rem 0; color: var(--secondary-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); }
         
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .connections-grid {
+                grid-template-columns: 1fr;
+            }
+            #details-pane {
+                position: relative;
+                top: 0;
+                margin-top: 2rem;
+            }
+        }
         @media (max-width: 768px) {
             h2 { font-size: 2rem; } #hero h1 { font-size: 3rem; } #hero p { font-size: 1.2rem; } .main-nav ul { display: none; }
-            .timeline::after { left: 31px; } .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; } .timeline-item.left::before, .timeline-item.right::before { left: 60px; border-width: 10px 10px 10px 0; border-color: transparent var(--border-color) transparent transparent; } .timeline-item.left::after, .timeline-item.right::after { left: 19px; } .timeline-item.right { left: 0%; }
+            .timeline::after { left: 31px; } 
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; } 
+            .timeline-item.left::before, .timeline-item.right::before { left: 60px; border: medium solid var(--border-color); border-width: 10px 10px 10px 0; border-color: transparent var(--border-color) transparent transparent; } 
+            .timeline-item.left::after, .timeline-item.right::after { left: 19px; } 
+            .timeline-item.right { left: 0%; }
         }
     </style>
 </head>
@@ -232,8 +439,9 @@
             <a href="#hero" class="logo">SAMEE<span>.</span>RAUF</a>
             <ul>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#connections">Portfolio</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -248,11 +456,11 @@
         </div>
     </section>
 
-    <<main>
+    <main>
         <section id="skills">
             <div class="container">
-                <h2 class="fade-in">My Approach & Toolkit</h2>
-                <p class="section-intro fade-in">I believe in using the right tool for the job. My skillset is a curated collection of technologies that allow me to build comprehensive, end-to-end solutions, from intelligent backend systems to responsive user interfaces.</p>
+                <h2 class="fade-in">Tools & Technologies</h2>
+                <p class="section-intro fade-in">I believe in using the right tool for the job. My skillset is a curated collection of technologies that allow me to build comprehensive, end-to-end solutions.</p>
                 <div class="skills-grid">
                     <div class="skill-category fade-in">
                         <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
@@ -286,6 +494,61 @@
             </div>
         </section>
 
+        <section id="connections">
+            <div class="container">
+                <h2 class="fade-in">Connected Portfolio</h2>
+                <p class="section-intro fade-in">Click on a project to see its details and the core technologies used.</p>
+                <div class="connections-grid">
+                    <div class="connections-column fade-in">
+                        <h3><i class="fas fa-lightbulb"></i> Projects</h3>
+                        <div id="proj-nba" class="node project-node">
+                            <h4>NBA Statistics Platform</h4>
+                        </div>
+                        <div id="proj-forum" class="node project-node">
+                            <h4>Book Forum</h4>
+                        </div>
+                        <div id="proj-config-mgmt" class="node project-node">
+                            <h4>System Configuration Management</h4>
+                        </div>
+                    </div>
+
+                    <div class="connections-column fade-in">
+                        <h3><i class="fas fa-code"></i> Core Technologies</h3>
+                        <div id="skill-react" class="node">
+                            <h4>React.js</h4>
+                        </div>
+                        <div id="skill-express" class="node">
+                            <h4>Express.js</h4>
+                        </div>
+                        <div id="skill-sql" class="node">
+                            <h4>MySQL</h4>
+                        </div>
+                        <div id="skill-firebase" class="node">
+                            <h4>Firebase</h4>
+                        </div>
+                        <div id="skill-llm" class="node">
+                            <h4>Large Language Models</h4>
+                        </div>
+                        <div id="skill-python" class="node">
+                            <h4>Python</h4>
+                        </div>
+                        <div id="skill-chef" class="node">
+                            <h4>Progress Chef</h4>
+                        </div>
+                    </div>
+
+                    <div class="connections-column fade-in">
+                        <h3><i class="fas fa-info-circle"></i> Project Details</h3>
+                        <div id="details-pane">
+                            <div class="placeholder">
+                                <p>Click a project to see the details here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="experience">
             <div class="container">
                 <h2 class="fade-in">My Professional Journey</h2>
@@ -295,7 +558,7 @@
                             <h3>AI & Software Engineer</h3>
                             <p class="company">PMG, Dallas, TX</p>
                             <p class="date">June 2024 – Present</p>
-                            <p>Led development of a predictive forecasting tool using LangChain and regression to optimize multi-million dollar media budgets for QSR clients, delivering clear, actionable insights.</p>
+                            <p>Led development of a predictive forecasting tool using LangChain and regression to optimize multi-million dollar media budgets for QSR clients.</p>
                         </div>
                     </div>
                      <div class="timeline-item right fade-in">
@@ -303,91 +566,40 @@
                             <h3>Security Researcher</h3>
                             <p class="company">CSUF (The Walt Disney Project)</p>
                             <p class="date">August 2023 – May 2024</p>
-                            <p>Engineered an innovative automation system using an LLM to generate secure system configurations, resulting in a significant 35% reduction in management time and improved security posture.</p>
+                            <p>Engineered an innovative automation system using an LLM to generate secure system configurations, resulting in a significant 35% reduction in management time.</p>
                         </div>
                     </div>
                     <div class="timeline-item left fade-in">
                         <div class="timeline-content">
                             <h3>Research Assistant</h3>
-                            <p class="company">California State University Fullerton</p>
+                            <p class="company">CSUF</p>
                             <p class="date">May 2023 – July 2023</p>
-                            <p>Developed an end-to-end ML pipeline in Python to predict student retention, processing a large dataset and achieving a highly accurate Random Forest model (>90%).</p>
+                            <p>Developed an end-to-end ML pipeline in Python to predict student retention, achieving >90% classification accuracy.</p>
                         </div>
                     </div>
-                    <div class="timeline-item right fade-in">
+                     <div class="timeline-item right fade-in">
                         <div class="timeline-content">
                             <h3>Software Developer</h3>
-                            <p class="company">CSUF (Los Angeles County Project)</p>
+                            <p class="company">CSUF (LA County Project)</p>
                             <p class="date">July 2022 – February 2023</p>
-                            <p>Architected and deployed a full-stack parking permit management system for LA County, serving over 1,000 users with a modern web stack focused on efficiency and user experience.</p>
+                            <p>Architected a full-stack parking permit management system serving over 1,000 users with React, Node.js, and SQLite.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="projects">
-            <div class="container">
-                <h2 class="fade-in">Personal Creations & Explorations</h2>
-                <p class="section-intro fade-in">Beyond professional work, I enjoy exploring new technologies and building projects that reflect my passion for problem-solving and innovation.</p>
-                <div class="projects-grid">
-                    <div class="project-card fade-in">
-                        <h3>NBA Statistics</h3>
-                        <p>Driven by an interest in data analysis, I built this full-stack platform to process and visualize NBA game data, providing insights into team performance and game trends.</p>
-                        <div class="project-tech">
-                            <span>React.js</span>
-                            <span>Express.js</span>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
-                        </div>
-                    </div>
-                     <div class="project-card fade-in">
-                        <h3>Book Forum</h3>
-                        <p>To experiment with real-time web applications, I developed this forum using Firebase, enabling instant communication and discussion among users.</p>
-                        <div class="project-tech">
-                            <span>React.js</span>
-                            <span>Firebase</span>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
-                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
-                    </div>
-                     <div class="project-card fade-in">
-                        <h3>Website Screenshot Gallery</h3>
-                        <p>As a practical tool for web development, I created this React app to quickly capture and organize website screenshots using the Apiflash API.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Apiflash API</span>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
-                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        
         <section id="education">
             <div class="container">
-                <h2 class="fade-in">My Foundation</h2>
+                <h2 class="fade-in">Education</h2>
                 <div class="education-grid">
                     <div class="education-card fade-in">
                         <h3>California State University Fullerton</h3>
-                        <p>Bachelor of Science, Computer Science</p>
-                        <p>Graduation: May 2024</p>
-                        <p>GPA: <span class="gpa">4.0/4.0</span></p>
+                        <p>Bachelor of Science, Computer Science (GPA: 4.0)</p>
                     </div>
                     <div class="education-card fade-in">
                         <h3>Cypress College</h3>
-                        <p>Associate of Science, Biology</p>
-                        <p>Graduation: May 2022</p>
-                        <p>GPA: <span class="gpa">3.7/4.0</span></p>
+                        <p>Associate of Science, Biology (GPA: 3.7)</p>
                     </div>
                 </div>
             </div>
@@ -396,11 +608,11 @@
         <section id="contact">
             <div class="container fade-in">
                 <h2>Let's Connect</h2>
-                <p>I'm excited about opportunities to collaborate on impactful projects and contribute to innovative teams. If you have a question, a project idea, or just want to connect, please don't hesitate to reach out.</p>
+                <p>I'm excited about opportunities to collaborate on impactful projects. If you have a question or an idea, please don't hesitate to reach out.</p>
                 <div class="contact-links">
                     <a href="mailto:sameerauf1@gmail.com">Email Me</a>
                     <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank">LinkedIn</a>                                                                                                                                                                          
-                   <a href="https://github.com/srauf24" target="_blank">GitHub</a>
+                    <a href="https://github.com/srauf24" target="_blank">GitHub</a>   
                 </div>
             </div>
         </section>
@@ -413,6 +625,8 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/leader-line-new@1.1.9/leader-line.min.js"></script>
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -428,97 +642,118 @@
         fadeElements.forEach(el => observer.observe(el));
 
         // --- Three.js Neural Network Animation ---
-        const container = document.getElementById('hero-canvas');
-        if (container) {
-            let scene, camera, renderer, nodes, lines;
-            let mouseX = 0, mouseY = 0;
-            let windowHalfX = window.innerWidth / 2;
-            let windowHalfY = window.innerHeight / 2;
-
-            const NODE_COUNT = 300;
-            const PLEXUS_RADIUS = 300;
-
-            init();
-            animate();
-
-            function init() {
-                scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-                camera.position.z = 600;
-
-                // Nodes
-                const nodeGeometry = new THREE.SphereGeometry(4, 8, 8);
-                const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xff8c00, transparent: true, opacity: 0.8 });
+        const heroCanvas = document.getElementById('hero-canvas');
+        if (heroCanvas) {
+            let scene, camera, renderer, nodes, lines; let mouseX = 0, mouseY = 0; let windowHalfX = window.innerWidth/2, windowHalfY = window.innerHeight/2;
+            const NODE_COUNT = 300, PLEXUS_RADIUS = 300;
+            init3D(); animate3D();
+            function init3D() {
+                scene = new THREE.Scene(); camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000); camera.position.z = 600;
+                const nodeGeometry = new THREE.SphereGeometry(4, 8, 8); const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xff8c00, transparent: true, opacity: 0.8 });
                 nodes = new THREE.Group();
-                for (let i = 0; i < NODE_COUNT; i++) {
+                for (let i=0; i < NODE_COUNT; i++) {
                     const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
-                    const [x, y, z] = [
-                        Math.random() * 2 - 1,
-                        Math.random() * 2 - 1,
-                        Math.random() * 2 - 1
-                    ];
+                    const [x, y, z] = [Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1];
                     const d = 1 / Math.sqrt(x*x + y*y + z*z);
                     node.position.set(x*d*PLEXUS_RADIUS, y*d*PLEXUS_RADIUS, z*d*PLEXUS_RADIUS);
                     nodes.add(node);
                 }
                 scene.add(nodes);
+                const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 }); const lineGeometry = new THREE.BufferGeometry(); const positions = [];
+                for (let i=0; i < NODE_COUNT; i++) { for (let j=i+1; j < NODE_COUNT; j++) {
+                    const start = nodes.children[i].position; const end = nodes.children[j].position;
+                    if (start.distanceTo(end) < PLEXUS_RADIUS / 2.5) { positions.push(start.x, start.y, start.z); positions.push(end.x, end.y, end.z); }
+                }}
+                lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3)); lines = new THREE.LineSegments(lineGeometry, lineMaterial); scene.add(lines);
+                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); renderer.setPixelRatio(window.devicePixelRatio); renderer.setSize(window.innerWidth, window.innerHeight); heroCanvas.appendChild(renderer.domElement);
+                document.addEventListener('mousemove', e => { mouseX = (e.clientX - windowHalfX) * 0.2; mouseY = (e.clientY - windowHalfY) * 0.2; });
+                window.addEventListener('resize', () => { windowHalfX = window.innerWidth/2; windowHalfY = window.innerHeight/2; camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+            }
+            function animate3D() { requestAnimationFrame(animate3D); render3D(); }
+            function render3D() { camera.position.x += (mouseX - camera.position.x) * 0.05; camera.position.y += (-mouseY - camera.position.y) * 0.05; camera.lookAt(scene.position); const time = Date.now() * 0.0001; nodes.rotation.y = time; lines.rotation.y = time; renderer.render(scene, camera); }
+        }
 
-                // Lines
-                const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 });
-                const lineGeometry = new THREE.BufferGeometry();
-                const positions = [];
-                for (let i = 0; i < NODE_COUNT; i++) {
-                    for (let j = i + 1; j < NODE_COUNT; j++) {
-                        const start = nodes.children[i].position;
-                        const end = nodes.children[j].position;
-                        if (start.distanceTo(end) < PLEXUS_RADIUS / 2.5) {
-                            positions.push(start.x, start.y, start.z);
-                            positions.push(end.x, end.y, end.z);
-                        }
-                    }
+        // --- Connected Portfolio Logic with Details Pane ---
+        const portfolioData = {
+            'proj-nba': {
+                title: 'NBA Statistics Platform',
+                image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop',
+                description: 'Developed an intuitive NBA statistics application using React.js, Express.js and MySQL enhancing the user experience in accessing detailed game information on specific dates. Implemented purposeful backend endpoints to efficiently monitor and manage diverse frontend requests, showcasing efficient data queries for seamless data retrieval.',
+                links: { github: 'https://github.com/jpope6/nba-database', demo: null },
+                skills: ['skill-react', 'skill-sql', 'skill-express']
+            },
+            'proj-forum': {
+                title: 'Book Forum',
+                image: 'https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80&w=800&auto=format&fit=crop',
+                description: 'Engineered a full-stack book club platform using React and Firebase, featuring real-time CRUD operations, secure user authentication, and AI-powered book recommendations via the Gemini API.',
+                links: { github: '#', demo: '#' },
+                skills: ['skill-react', 'skill-firebase', 'skill-llm']
+            },
+            'proj-config-mgmt': {
+                title: 'System Configuration Management',
+                image: 'https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?q=80&w=800&auto=format&fit=crop',
+                description: 'Developed an automated system using the Snoozy Large Language Model within the GPT-4ALL ecosystem to rapidly generate and deploy reliable, audited system configurations, enhancing efficiency and security in system management. Built a user-friendly GUI for the front end to interact with the large language model as well as the system configuration tool, Progress Chef, enabling seamless communication and configuration request management. Achieved a 35% reduction in system configuration management time cost & presented findings to Disney stakeholders',
+                links: { github: '#', demo: null },
+                skills: ['skill-python', 'skill-llm', 'skill-chef']
+            }
+        };
+
+        let activeLines = [];
+        const allNodes = document.querySelectorAll('.node');
+        const projectNodes = document.querySelectorAll('.project-node');
+        const detailsPane = document.getElementById('details-pane');
+
+        function updatePortfolioView(projectId) {
+            activeLines.forEach(line => line.remove());
+            activeLines = [];
+            allNodes.forEach(node => {
+                node.classList.remove('highlighted', 'dimmed');
+            });
+
+            const projectData = portfolioData[projectId];
+            if (!projectData) return;
+
+            const startNode = document.getElementById(projectId);
+            
+            allNodes.forEach(node => node.classList.add('dimmed'));
+            startNode.classList.remove('dimmed');
+            startNode.classList.add('highlighted');
+            
+            projectData.skills.forEach(endId => {
+                const endNode = document.getElementById(endId);
+                if (endNode) {
+                    endNode.classList.remove('dimmed');
+                    endNode.classList.add('highlighted');
+                    const line = new LeaderLine(startNode, endNode, {
+                        color: 'rgba(255, 140, 0, 0.8)', size: 3, path: 'fluid',
+                        endPlug: 'behind', startSocket: 'right', endSocket: 'left',
+                        dash: { animation: true }
+                    });
+                    activeLines.push(line);
                 }
-                lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-                lines = new THREE.LineSegments(lineGeometry, lineMaterial);
-                scene.add(lines);
+            });
 
-                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                container.appendChild(renderer.domElement);
-
-                document.addEventListener('mousemove', onDocumentMouseMove, false);
-                window.addEventListener('resize', onWindowResize, false);
+            let linksHTML = `<a href="${projectData.links.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`;
+            if (projectData.links.demo) {
+                linksHTML += `<a href="${projectData.links.demo}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
             }
 
-            function onWindowResize() {
-                windowHalfX = window.innerWidth / 2;
-                windowHalfY = window.innerHeight / 2;
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
+            detailsPane.innerHTML = `
+                <img src="${projectData.image}" alt="${projectData.title}" class="project-image">
+                <h3>${projectData.title}</h3>
+                <p class="project-description">${projectData.description}</p>
+                <div class="project-links">${linksHTML}</div>
+            `;
+        }
+        
+        projectNodes.forEach(projNode => {
+            projNode.addEventListener('click', () => {
+                updatePortfolioView(projNode.id);
+            });
+        });
 
-            function onDocumentMouseMove(event) {
-                mouseX = (event.clientX - windowHalfX) * 0.2;
-                mouseY = (event.clientY - windowHalfY) * 0.2;
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                render();
-            }
-
-            function render() {
-                camera.position.x += (mouseX - camera.position.x) * 0.05;
-                camera.position.y += (-mouseY - camera.position.y) * 0.05;
-                camera.lookAt(scene.position);
-                
-                const time = Date.now() * 0.0001;
-                nodes.rotation.y = time;
-                lines.rotation.y = time;
-
-                renderer.render(scene, camera);
-            }
+        if (projectNodes.length > 0) {
+            updatePortfolioView(projectNodes[0].id);
         }
     });
     </script>
