@@ -176,7 +176,7 @@
             margin: 0 auto;
         }
         
-        /* NEW: Hero Links */
+        /* Hero Links */
         .hero-links {
             margin-top: 2.5rem;
             display: flex;
@@ -270,6 +270,9 @@
         #details-pane .project-description {
             color: var(--secondary-text);
             margin-bottom: 1.5rem;
+        }
+        #details-pane .project-description ul {
+            padding-left: 1.2rem;
         }
         #details-pane .project-links a {
             color: var(--light-text);
@@ -395,7 +398,7 @@
             border-radius: 8px; 
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
         }
-        .skill-category:hover, .education-card:hover { 
+        .skill-category:hover, .education-card:hover, .post-card:hover { 
             transform: translateY(-5px); 
             box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 25px rgba(255, 140, 0, 0.2); 
             border-color: rgba(255, 140, 0, 0.5); 
@@ -411,15 +414,56 @@
             opacity: 0.7; 
         }
         .skill-category ul { 
-            list-style: none; 
+            list-style: none;
+            padding-left: 0;
         }
         .skill-category ul li { 
             margin-bottom: 0.5rem; 
             color: var(--secondary-text); 
         }
 
+        /* NEW: Featured Posts Section */
+        #posts {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        .post-card {
+            background: #111;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--light-text);
+            display: flex;
+            flex-direction: column;
+        }
+        .post-card h3 {
+            color: var(--primary-orange);
+            margin-bottom: 0.5rem;
+        }
+        .post-card p {
+            color: var(--secondary-text);
+            flex-grow: 1;
+        }
+        .post-card .post-link {
+            margin-top: 1.5rem;
+            font-weight: 500;
+            color: var(--light-text);
+        }
+        .post-card .post-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .post-card:hover .post-link i {
+            transform: translateX(5px);
+        }
+
         /* Education Section */
-        #education { background-color: var(--card-bg); border-top: 1px solid var(--border-color); }
         .education-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 700px; margin: 0 auto; }
         .education-card { background: #111; border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; }
         .education-card h3 { font-size: 1.5rem; }
@@ -466,6 +510,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#connections">Portfolio</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#posts">Posts</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -476,7 +521,7 @@
         <div class="hero-content">
             <h1 class="fade-in">SAMEE RAUF</h1>
             <p class="title fade-in">AI & Software Engineer</p>
-            <p class="tagline fade-in">Building intelligent, data-driven solutions for impactful outcomes.</p>
+            <p class="tagline fade-in">Innovating at the intersection of AI and software engineering to build scalable, intelligent solutions.</p>
             
             <div class="hero-links fade-in">
                 <a href="https://tinyurl.com/rauf-samee-resume" target="_blank" title="View Resume"><i class="fas fa-file-alt"></i></a>
@@ -524,7 +569,7 @@
         <section id="connections">
             <div class="container">
                 <h2 class="fade-in">Connected Portfolio</h2>
-                <p class="section-intro fade-in">Click on a project to see its details and the core technologies used.</p>
+                <p class="section-intro fade-in">Explore a selection of projects demonstrating expertise in AI, full-stack development, and scalable solutions. Click on any project to view detailed insights and associated technologies.</p>
                 <div class="connections-grid">
                     <div class="connections-column fade-in">
                         <h3><i class="fas fa-lightbulb"></i> Projects</h3>
@@ -585,7 +630,7 @@
                             <h3>AI & Software Engineer</h3>
                             <p class="company">PMG, Dallas, TX</p>
                             <p class="date">June 2024 – Present</p>
-                            <p>Led development of a predictive forecasting tool using LangChain and regression to optimize multi-million dollar media budgets for QSR clients.</p>
+                            <p>Led the development of a predictive forecasting tool utilizing LangChain and regression, optimizing multi-million dollar media budgets for QSR clients and delivering actionable insights.</p>
                         </div>
                     </div>
                      <div class="timeline-item right fade-in">
@@ -593,7 +638,7 @@
                             <h3>Security Researcher</h3>
                             <p class="company">CSUF (The Walt Disney Project)</p>
                             <p class="date">August 2023 – May 2024</p>
-                            <p>Engineered an innovative automation system using an LLM to generate secure system configurations, resulting in a significant 35% reduction in management time.</p>
+                            <p>Engineered an innovative AI-driven automation system using an LLM within the GPT-4ALL ecosystem to generate and deploy reliable, audited system configurations, enhancing efficiency and security in system management. Built a user-friendly GUI for seamless interaction with the LLM and Progress Chef, achieving a 35% reduction in management time and presenting findings to Disney stakeholders.</p>
                         </div>
                     </div>
                     <div class="timeline-item left fade-in">
@@ -601,7 +646,7 @@
                             <h3>Research Assistant</h3>
                             <p class="company">CSUF</p>
                             <p class="date">May 2023 – July 2023</p>
-                            <p>Developed an end-to-end ML pipeline in Python to predict student retention, achieving >90% classification accuracy.</p>
+                            <p>Trained a machine learning model using Python and SciKit-learn to classify student retention based on socioeconomic, macroeconomic, and academic factors, achieving 90% classification accuracy. Presented research at the National Conference on Undergraduate Research.</p>
                         </div>
                     </div>
                      <div class="timeline-item right fade-in">
@@ -609,9 +654,31 @@
                             <h3>Software Developer</h3>
                             <p class="company">CSUF (LA County Project)</p>
                             <p class="date">July 2022 – February 2023</p>
-                            <p>Architected a full-stack parking permit management system serving over 1,000 users with React, Node.js, and SQLite.</p>
+                            <p>Architected and deployed a full-stack parking permit management system for LA County using React.js, Express.js, and SQLite, serving over 1,000 users and streamlining the parking permit process.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="posts">
+            <div class="container">
+                <h2 class="fade-in">Featured Posts</h2>
+                <div class="posts-grid">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7185653098718101504/" target="_blank" class="post-card fade-in">
+                        <div>
+                            <h3><i class="fab fa-linkedin"></i> Student Success Classification Research</h3>
+                            <p>Presented data science research on Student Success Classification in Higher Education at the National Conference on Undergraduate Research, engaging with over 4,000 undergraduates.</p>
+                        </div>
+                        <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7193378428006404096/" target="_blank" class="post-card fade-in">
+                        <div>
+                            <h3><i class="fab fa-linkedin"></i> Automating System Configuration Management with LLMs</h3>
+                            <p>Engineered an automation system using an LLM that reduced system configuration management time by 35%...</p>
+                        </div>
+                        <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -626,7 +693,7 @@
                     </div>
                     <div class="education-card fade-in">
                         <h3>Cypress College</h3>
-                        <p>Associate of Science, Biology (GPA: 3.7)</p>
+                        <p>Associate of Science, Biology (GPA: 3.7/4.0)</p>
                     </div>
                 </div>
             </div>
@@ -645,7 +712,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Samee Rauf. Built with passion and code.</p>
+            <p>&copy; 2025 Samee Rauf.</p>
         </div>
     </footer>
 
@@ -717,7 +784,7 @@
             'proj-config-mgmt': {
                 title: 'System Configuration Management',
                 image: 'https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?q=80&w=800&auto=format&fit=crop',
-                description: '<ul><li>Developed an automated system using a Snoozy LLM to generate and deploy system configurations.</li><li>Built a user-friendly GUI to interact with the LLM and Progress Chef.</li><li>Achieved a 35% reduction in system configuration management time.</li></ul>',
+                description: '<ul><li>Presented research on AI-Driven Virtual Machine Provisioning at The Walt Disney Company.</li><li>Engineered an automation system using an LLM that reduced system configuration management time by 35%.</li><li>Collaborated with Disney mentors on the imagineering process to enhance cloud security.</li></ul>',
                 links: { github: '#', demo: null },
                 skills: ['skill-python', 'skill-llm', 'skill-chef']
             }
@@ -766,7 +833,7 @@
             detailsPane.innerHTML = `
                 <img src="${projectData.image}" alt="${projectData.title}" class="project-image">
                 <h3>${projectData.title}</h3>
-                <p class="project-description">${projectData.description}</p>
+                <div class="project-description">${projectData.description}</div>
                 <div class="project-links">${linksHTML}</div>
             `;
         }
