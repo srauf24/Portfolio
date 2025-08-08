@@ -796,9 +796,9 @@
             },
             'proj-config-mgmt': {
                 title: 'System Configuration Management',
-                image: 'https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?q=80&w=800&auto=format&fit=crop',
+                image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
                 description: '<ul><li>Presented research on AI-Driven Virtual Machine Provisioning at The Walt Disney Company.</li><li>Engineered an automation system using an LLM that reduced system configuration management time by 35%.</li><li>Collaborated with Disney mentors on the imagineering process to enhance cloud security.</li></ul>',
-                links: { github: '#', demo: null },
+                links: { featured: 'https://www.linkedin.com/in/samee-rauf/overlay/1715037731827/single-media-viewer/?profileId=ACoAACfK2hkBl8Q_mYfQ8J1Z5t5ShwosTVef0UY', demo: null },
                 skills: ['skill-python', 'skill-llm', 'skill-chef']
             }
         };
@@ -838,7 +838,13 @@
                 }
             });
 
-            let linksHTML = `<a href="${projectData.links.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`;
+            let linksHTML = '';
+            if (projectData.links.github) {
+                linksHTML += `<a href="${projectData.links.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`;
+            }
+            if (projectData.links.featured) {
+                linksHTML += `<a href="${projectData.links.featured}" target="_blank"><i class="fab fa-linkedin"></i> Featured</a>`;
+            }
             if (projectData.links.demo) {
                 linksHTML += `<a href="${projectData.links.demo}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
             }
