@@ -1,3 +1,4 @@
+[File content truncated: showing lines 1-2000 of 2056 total lines. Use offset/limit parameters to view more.]
 [File content truncated: showing lines 1-2000 of 10973 total lines. Use offset/limit parameters to view more.]
 @charset "UTF-8";
 /*!
@@ -1998,7 +1999,6 @@ progress {
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  font-weight: 400;
 }
 
 /* Fun Fact Section */
@@ -2042,6 +2042,15 @@ progress {
     color: #b3b3b3;
     font-size: 1.1rem;
     line-height: 1.7;
+}
+
+.fun-fact-link {
+    color: var(--primary-orange);
+    text-decoration: none;
+}
+
+.fun-fact-link:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
