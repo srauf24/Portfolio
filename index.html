@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samee Rauf | AI & Software Engineer</title>
     
-    <meta name="description" content="The portfolio of Samee Rauf, an AI and Software Engineer specializing in building scalable, intelligent solutions.">
-    <meta property="og:title" content="Samee Rauf | AI & Software Engineer" />
-    <meta property="og:description" content="The portfolio of Samee Rauf, an AI and Software Engineer specializing in building scalable, intelligent solutions." />
-    <meta property="og:image" content="https://sameerauf.dev/assets/img/profile.jpg" />
-    <meta property="og:url" content="https://sameerauf.dev" />
-    <meta property="og:type" content="website" />
-
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
@@ -507,10 +500,6 @@
             .timeline-item.right { left: 0%; }
         }
     </style>
-    <script>
-      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p=t.createElement("script"),p.type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-      posthog.init('phc_XNsaYYbePdiuOrRwEETGxAirNM5rUgdnMlLhHAlgjG1', { api_host: 'https://us.i.posthog.com' });
-    </script>
 </head>
 <body>
 
@@ -518,9 +507,10 @@
         <div class="container">
             <a href="#hero" class="logo">SAMEE<span>.</span>RAUF</a>
             <ul>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#connections">Portfolio</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#principles">Engineering Principles</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#connections">Portfolio</a></li>
                 <li><a href="#posts">Posts</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -532,8 +522,8 @@
         <div class="hero-content">
             <h1 class="fade-in">SAMEE RAUF</h1>
             <p class="title fade-in">AI & Software Engineer</p>
-            <p class="tagline fade-in">Innovating at the intersection of AI and software engineering to build scalable, intelligent solutions.</p>
-            
+            <p class="tagline fade-in">Building reliable, observable AI systems and automation that scale from prototype to production.</p>
+
             <div class="hero-links fade-in">
                 <a href="https://tinyurl.com/rauf-samee-resume" target="_blank" title="View Resume"><i class="fas fa-file-alt"></i></a>
                 <a href="https://github.com/srauf24" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
@@ -554,6 +544,7 @@
                             <li>Generative AI: LangChain, GPT-4, Gemini API, RAG Systems</li>
                             <li>Machine Learning: Python, Scikit-Learn, Predictive Analytics</li>
                             <li>Data Processing: Qdrant, Vector Embeddings</li>
+                            <li>Forecasting & Causality: regression modeling, feature engineering, experiment design</li>
                         </ul>
                     </div>
                     <div class="skill-category fade-in">
@@ -563,6 +554,7 @@
                             <li>Backend: Node.js, Express.js</li>
                             <li>Frontend: React.js, HTML5, CSS3</li>
                             <li>Databases: MySQL, Firebase, SQLite</li>
+                            <li>Product Practices: UX iteration, stakeholder feedback loops, onboarding & docs</li>
                         </ul>
                     </div>
                     <div class="skill-category fade-in">
@@ -570,11 +562,45 @@
                         <ul>
                             <li>Cloud: AWS (S3, Lambda), AWS Certified Cloud Practitioner</li>
                             <li>Infrastructure & CI/CD: Progress Chef, Git, GitHub</li>
-                            <li>Observability: Datadog</li>
+                            <li>Observability: Datadog dashboards, SLIs/SLOs, structured logging, alerting</li>
+                            <li>Delivery: alpha/beta programs, canary rollouts, feature flags</li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="principles">
+          <div class="container">
+            <h2 class="fade-in">Engineering Principles</h2>
+            <p class="section-intro fade-in">Beyond shipping code, I drive outcomes through sound architecture, observability, and tight feedback loops with users.</p>
+            <div class="skills-grid">
+              <div class="skill-category fade-in">
+                <h3><i class="fas fa-diagram-project"></i> Architecture & Quality</h3>
+                <ul>
+                  <li>Design reviews focused on scalability, maintainability, and clear ownership boundaries.</li>
+                  <li>Fail-fast validation, deterministic transforms, and robust retry/backoff on external APIs.</li>
+                  <li>Test coverage with pytest and CI checks.</li>
+                </ul>
+              </div>
+              <div class="skill-category fade-in">
+                <h3><i class="fas fa-chart-line"></i> Observability & Reliability</h3>
+                <ul>
+                  <li>Datadog dashboards tracking SLIs (runtime, memory, API success rates, event counts).</li>
+                  <li>Structured logs with error taxonomies; proactive alerts to prevent silent failures.</li>
+                  <li>Cost-aware designs replacing legacy pipelines and reducing operational toil.</li>
+                </ul>
+              </div>
+              <div class="skill-category fade-in">
+                <h3><i class="fas fa-users-gear"></i> Product & Delivery</h3>
+                <ul>
+                  <li>Alpha/beta releases to validate usability and de-risk launches.</li>
+                  <li>Scrum practices (planning, demos, retros) with measurable iteration goals.</li>
+                  <li>Onboarding guides, runbooks, and short Looms to accelerate adoption.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="experience">
@@ -587,9 +613,11 @@
                             <p class="company">PMG, Dallas, TX</p>
                             <p class="date">June 2024 – Present</p>
                             <ul>
-                                <li>Architected a predictive forecasting tool that integrates weather APIs, historical sales data, and LangChain to optimize multi-million dollar media budgets, delivering highly accurate financial insights to major QSR clients.</li>
-                                <li>Engineered a scalable data ingestion system to replace a high-cost legacy platform, significantly reducing tech debt, improving data pipeline reliability, and achieving full system observability via comprehensive Datadog dashboards.</li>
-                                <li>Drove engineering efficiency and improved internal team productivity by redesigning and refactoring multiple internal applications, focusing on enhancing the user experience (UX) and consolidating complex processes into intuitive, single-click workflows.</li>
+                                <li>Co-created a budget optimization platform combining weather APIs, historical sales data, and regression modeling with LangChain automation—protecting ROI during adverse conditions and improving campaign performance by ~5%.</li>
+                                <li>Engineered an ad-creation automation system integrating with advertising APIs to generate bulk-upload sheets, saving 3–5 hours per campaign build per team member and enabling rapid scaling of launches.</li>
+                                <li>Designed and deployed a domain-negation service that programmatically screens unsafe/low-value sites and publishes exclusions via API across 10+ accounts, reducing waste and brand risk.</li>
+                                <li>Replaced a high-cost legacy pipeline with a scalable, API-driven offline-conversions architecture, cutting monthly costs, reducing technical debt, and achieving full observability with Datadog dashboards.</li>
+                                <li>Drove engineering efficiency by refactoring internal applications into intuitive, single-click workflows; simplified onboarding and eliminated a silent failure, raising install success by ~80 percentage points.</li>
                             </ul>
                         </div>
                     </div>
@@ -599,7 +627,7 @@
                             <p class="company">CSUF (The Walt Disney Project)</p>
                             <p class="date">August 2023 – May 2024</p>
                             <ul>
-                                <li>Engineered an innovative AI-driven automation system using an LLM within the GPT-4ALL ecosystem to generate and deploy reliable, audited system configurations, enhancing achieving a 35% reduction in management time.</li>
+                                <li>Engineered an AI-driven automation system using an LLM within the GPT-4ALL ecosystem to generate and deploy reliable, audited system configurations, achieving a 35% reduction in management time.</li>
                                 <li>Presented findings to Disney stakeholders.</li>
                             </ul>
                         </div>
@@ -610,7 +638,7 @@
                             <p class="company">CSUF</p>
                             <p class="date">May 2023 – July 2023</p>
                             <ul>
-                                <li>Trained a Random Forest Tree model using Python and SciKit-learn to classify student retention based on socioeconomic, macroeconomic, and academic factors, achieving 90% classification accuracy.</li>
+                                <li>Trained a Random Forest model using Python and scikit-learn to classify student retention based on socioeconomic, macroeconomic, and academic factors, achieving 90% classification accuracy.</li>
                                 <li>Presented research at the National Conference on Undergraduate Research.</li>
                             </ul>
                         </div>
@@ -646,6 +674,7 @@
                         <div id="proj-config-mgmt" class="node project-node">
                             <h4>System Configuration Management</h4>
                         </div>
+
                     </div>
 
                     <div class="connections-column fade-in">
@@ -706,7 +735,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="education">
             <div class="container">
                 <h2 class="fade-in">Education</h2>
@@ -718,21 +747,6 @@
                     <div class="education-card fade-in">
                         <h3>Cypress College</h3>
                         <p>Associate of Science, Biology (GPA: 3.7/4.0)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="fun-fact">
-            <div class="container">
-                <h2 class="fade-in">Fun Fact</h2>
-                <div class="fun-fact-grid">
-                    <div class="fun-fact-img fade-in">
-                        <img src="assets/img/samee-basketball.jpeg" alt="Samee Rauf spinning a basketball">
-                    </div>
-                    <div class="fun-fact-text fade-in">
-                        <h3>That's Me!</h3>
-                        <p>On a fourth-grade field trip, I met Nate “Big Easy” Lofton from the Harlem Globetrotters. That encounter sparked a passion for basketball that I’ve carried with me ever since.</p>
                     </div>
                 </div>
             </div>
@@ -822,10 +836,17 @@
             },
             'proj-config-mgmt': {
                 title: 'System Configuration Management',
-                image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                image: 'https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?q=80&w=800&auto=format&fit=crop',
                 description: '<ul><li>Presented research on AI-Driven Virtual Machine Provisioning at The Walt Disney Company.</li><li>Engineered an automation system using an LLM that reduced system configuration management time by 35%.</li><li>Collaborated with Disney mentors on the imagineering process to enhance cloud security.</li></ul>',
-                links: { featured: 'https://www.linkedin.com/in/samee-rauf/overlay/1715037731827/single-media-viewer/?profileId=ACoAACfK2hkBl8Q_mYfQ8J1Z5t5ShwosTVef0UY', demo: null },
+                links: { github: '#', demo: null },
                 skills: ['skill-python', 'skill-llm', 'skill-chef']
+            },
+            'proj-ads-automation': {
+                title: 'Ad Creation Automation',
+                image: 'https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=800&auto=format&fit=crop',
+                description: '<ul><li>Bulk ad creation via advertising APIs with schema validation and pre-flight checks.</li><li>Generates upload-ready sheets; saves 3–5 hours per campaign build per team member.</li><li>Designed for scale and reliability with clear error surfaces.</li></ul>',
+                links: { github: '#', demo: null },
+                skills: ['skill-python', 'skill-llm']
             }
         };
 
@@ -845,11 +866,11 @@
             if (!projectData) return;
 
             const startNode = document.getElementById(projectId);
-            
+
             allNodes.forEach(node => node.classList.add('dimmed'));
             startNode.classList.remove('dimmed');
             startNode.classList.add('highlighted');
-            
+
             projectData.skills.forEach(endId => {
                 const endNode = document.getElementById(endId);
                 if (endNode) {
@@ -865,11 +886,8 @@
             });
 
             let linksHTML = '';
-            if (projectData.links.github) {
+            if (projectData.links.github && projectData.links.github !== '#') {
                 linksHTML += `<a href="${projectData.links.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`;
-            }
-            if (projectData.links.featured) {
-                linksHTML += `<a href="${projectData.links.featured}" target="_blank"><i class="fab fa-linkedin"></i> Featured</a>`;
             }
             if (projectData.links.demo) {
                 linksHTML += `<a href="${projectData.links.demo}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
@@ -879,7 +897,7 @@
                 <img src="${projectData.image}" alt="${projectData.title}" class="project-image">
                 <h3>${projectData.title}</h3>
                 <div class="project-description">${projectData.description}</div>
-                <div class="project-links">${linksHTML}</div>
+                <div class="project-links">${linksHTML || '<span style="color:#b3b3b3;">Links coming soon</span>'}</div>
             `;
         }
         
