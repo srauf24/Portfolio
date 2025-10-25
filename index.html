@@ -188,7 +188,7 @@
           <div class="card col">
             <h3>Certifications</h3>
             <ul>
-              <li><b>AWS Certified Cloud Practitioner</b></li>
+              <li>AWS Certified Cloud Practitioner</li>
             </ul>
           </div>
         </div>
@@ -301,46 +301,67 @@
               </div>
               
               
-          <div class="card proj">
-            <div class="top">
-              <h3>Book Club</h3>
-              <div class="links"><a href="https://github.com/srauf24/forum" target="_blank" rel="noopener">GitHub →</a></div>
-            </div>
-            <p class="meta">Jan 2025 — Feb 2025</p>
-            <ul class="bullets">
-              <li>Real-time SPA: posts/comments, likes, reading lists, AI book recommendations.</li>
-              <li>Shipped with auth, Firestore data, and storage for media.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">React</span><span class="pill">Vite</span><span class="pill">Tailwind</span>
-              <span class="pill">Firebase</span><span class="pill">Gemini</span>
-            </div>
-          </div>
-
-          <div class="card proj">
-            <div class="top">
-              <h3>NBA Statistics Platform</h3>
-              <div class="links"><a href="https://github.com/jpope6/nba-database" target="_blank" rel="noopener">GitHub →</a></div>
-            </div>
-            <ul class="bullets">
-              <li>React + Express + MySQL app for exploring team & game stats with efficient endpoints.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">React</span><span class="pill">Express</span><span class="pill">MySQL</span>
-            </div>
-          </div>
-
-          <div class="card proj">
-            <div class="top">
-              <h3>System Configuration Management</h3>
-            </div>
-            <ul class="bullets">
-              <li>AI-driven VM provisioning research using an LLM to produce audited configs; ~35% time reduction.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">Python</span><span class="pill">LLM</span><span class="pill">Automation</span>
-            </div>
-          </div>
+          <!-- BOOK CLUB -->
+<!-- BOOK CLUB -->
+<div class="card proj">
+    <div class="top">
+      <h3>Book Club</h3>
+      <div class="links">
+        <a href="https://bookclub-khaki.vercel.app/" target="_blank" rel="noopener">Live Demo →</a>
+        <a href="https://github.com/srauf24/forum" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+    <p class="meta">Jan 2025 — Feb 2025</p>
+    <ul class="bullets">
+      <li>A real-time community app for readers to post reviews, comment in threads, keep reading lists, and get AI-powered book recommendations.</li>
+      <li>Shipped a responsive SPA with <b>React</b>, <b>Vite</b>, and <b>Tailwind</b>; implemented optimistic UI for snappy create/edit/delete flows.</li>
+      <li>Built on <b>Firebase Auth/Firestore/Storage</b> with secure rules and batched writes for consistency; integrated <b>Gemini</b> for recommendations.</li>
+      <li>Added search & pagination, media uploads, and guarded routes for a smooth, mobile-first user experience.</li>
+    </ul>
+    <div class="stack">
+      <span class="pill">React</span><span class="pill">Vite</span><span class="pill">Tailwind</span>
+      <span class="pill">Firebase</span><span class="pill">Gemini</span><span class="pill">SPA</span>
+    </div>
+  </div>
+  
+  <!-- NBA STATISTICS PLATFORM -->
+  <div class="card proj">
+    <div class="top">
+      <h3>NBA Statistics Platform</h3>
+      <div class="links">
+        <a href="https://github.com/jpope6/nba-database" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+    <ul class="bullets">
+      <li>A web app to explore NBA team and game stats with fast filtering, sortable tables, and drill-down views.</li>
+      <li>Designed a normalized <b>MySQL</b> schema and implemented parameterized queries with indexes & pagination for quick lookups.</li>
+      <li>Exposed clean REST endpoints via <b>Express</b>, then built a <b>React</b> UI that caches recent queries and renders large datasets efficiently.</li>
+      <li>Added error-handling and input validation across the stack to prevent edge-case crashes and bad requests.</li>
+    </ul>
+    <div class="stack">
+      <span class="pill">React</span><span class="pill">Express</span><span class="pill">MySQL</span>
+      <span class="pill">REST</span><span class="pill">Pagination</span><span class="pill">Indexing</span>
+    </div>
+  </div>
+  
+  <!-- SYSTEM CONFIGURATION MANAGEMENT -->
+  <div class="card proj">
+    <div class="top">
+      <h3>System Configuration Management</h3>
+    </div>
+    <p class="meta">Research project — Aug 2023 — May 2024</p>
+    <ul class="bullets">
+      <li>An AI-driven system to generate, audit, and deploy server configurations—speeding up secure VM provisioning.</li>
+      <li>Developed an automation pipeline with the <b>Snoozy</b> LLM (GPT-4ALL ecosystem) to produce reliable, explainable configs; achieved <b>~35%</b> time reduction and presented to Disney stakeholders.</li>
+      <li>Integrated with <b>Progress Chef</b> for idempotent applies; added dry-run diffs, approval gates, and structured audit logs.</li>
+      <li>Isolated model prompts & policies for repeatability; designed rollback paths and failure taxonomies to harden operations.</li>
+    </ul>
+    <div class="stack">
+      <span class="pill">Python</span><span class="pill">LLM</span><span class="pill">Progress Chef</span>
+      <span class="pill">Automation</span><span class="pill">Audit Logs</span><span class="pill">Infra</span>
+    </div>
+  </div>
+  
         </div>
       </div>
     </section>
