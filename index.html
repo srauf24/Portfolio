@@ -14,6 +14,10 @@
       --bg:#0f1115; --card:#151822; --muted:#9aa4b2; --text:#f2f4f8; --accent:#ff8c00; --stroke:#232838;
       --pill:#1e2533; --pill-text:#cbd5e1; --link:#e5e7eb;
     }
+    /* Optional: nicer expand/collapse for the architecture block */
+.card details summary { cursor: pointer; color: var(--muted); font-weight: 600; }
+.card details[open] summary { color: var(--text); }
+.card .links a + a { margin-left: 10px; }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
@@ -267,24 +271,36 @@
         <p class="kicker">Clear scope, measurable outcomes, and the stack used.</p>
 
         <div class="grid">
-          <div class="card proj">
-            <div class="top">
-              <h3>Garden Journal</h3>
-              <div class="links"><a href="https://github.com/srauf24/garden_journal" target="_blank" rel="noopener">GitHub →</a></div>
-            </div>
-            <p class="meta">Oct 2025 — Current</p>
-            <ul class="bullets">
-              <li>Web-first app to log plants; enrich growth data with live weather (Open-Meteo).</li>
-              <li>Production API with <b>10+</b> documented <b>OpenAPI</b> endpoints, SQL migrations & triggers for data integrity.</li>
-              <li>Deployed on <b>Svella</b> with object storage and <b>New Relic</b> monitoring; <b>99.9% uptime</b> and <b><150ms</b> API responses.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">Go</span><span class="pill">React</span><span class="pill">PostgreSQL</span>
-              <span class="pill">Clerk</span><span class="pill">Open-Meteo API</span>
-              <span class="pill">OpenAPI</span><span class="pill">Svella</span><span class="pill">New Relic</span>
-            </div>
-          </div>
-
+            <div class="card proj">
+                <div class="top">
+                  <h3>Garden Journal</h3>
+                  <div class="links">
+                    <a href="https://github.com/srauf24/garden_journal" target="_blank" rel="noopener">GitHub →</a>
+                  </div>
+                </div>
+              
+                <p class="meta">Oct 2025 — Current</p>
+              
+                <ul class="bullets">
+                  <li> A web-first garden log to track plants, observations, and photos—automatically enriching each entry with location-based weather to reveal growth patterns over time.</li>
+                  <li>Developed a web-first app built with <b>Go</b>, <b>React.js</b>, <b>PostgreSQL</b>, and <b>Clerk</b> authentication, integrating the <b>Open-Meteo API</b> and <b>New Relic</b> monitoring to log plants and enrich growth data with live weather insights.</li>
+                  <li>Engineered a scalable, production-ready API layer with <b>10+ documented</b> endpoints using <b>OpenAPI</b>, implementing <b>SQL migrations</b> and <b>database triggers</b> to ensure <b>100% data integrity</b>.</li>
+                  <li>Managed the complete application lifecycle on <b>Svella</b>, leveraging its object storage for user media and maintaining <b>99.9% uptime</b> and <b>&lt;150ms</b> API responses by monitoring key SLIs in New Relic.</li>
+                </ul>
+              
+                <div class="stack">
+                  <span class="pill">Go</span>
+                  <span class="pill">React</span>
+                  <span class="pill">PostgreSQL</span>
+                  <span class="pill">Clerk</span>
+                  <span class="pill">Open-Meteo</span>
+                  <span class="pill">OpenAPI</span>
+                  <span class="pill">Svella</span>
+                  <span class="pill">New Relic</span>
+                </div>
+              </div>
+              
+              
           <div class="card proj">
             <div class="top">
               <h3>Book Club</h3>
