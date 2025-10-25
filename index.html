@@ -2,488 +2,363 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Samee Rauf | AI & Software Engineer</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"/>
 
   <style>
-    :root {
-      --dark-bg:#111111; --primary-orange:#FF8C00; --light-text:#EAEAEA;
-      --secondary-text:#b3b3b3; --card-bg:#1A1A1A; --border-color:#2A2A2A;
+    :root{
+      --bg:#0f1115; --card:#151822; --muted:#9aa4b2; --text:#f2f4f8; --accent:#ff8c00; --stroke:#232838;
+      --pill:#1e2533; --pill-text:#cbd5e1; --link:#e5e7eb;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;background:var(--dark-bg);color:var(--light-text);line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-    .container{max-width:1100px;margin:0 auto;padding:0 2rem}
-    section{padding:6rem 0;overflow:hidden;position:relative}
-    h1,h2,h3,h4{font-weight:700;line-height:1.3;color:var(--light-text);text-wrap:balance}
-    h2{font-size:2.5rem;text-align:center;margin-bottom:1.5rem}
-    .section-intro{text-align:center;max-width:65ch;margin:0 auto 3rem;color:var(--secondary-text);font-size:1.1rem;line-height:1.7}
-    .fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease-out,transform .6s ease-out}
-    .fade-in.visible{opacity:1;transform:translateY(0)}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+    a{color:var(--link);text-decoration:none}
+    a:hover{color:var(--accent)}
+    .container{max-width:1000px;margin:0 auto;padding:0 20px}
+    header.nav{position:sticky;top:0;z-index:10;background:rgba(15,17,21,.7);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--stroke)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .brand span{color:var(--accent)}
+    .nav-links{display:flex;gap:16px}
+    .nav-links a{font-size:.95rem;color:var(--muted)}
+    .nav-links a:hover{color:var(--accent)}
 
-    .main-nav{position:fixed;top:0;left:0;width:100%;padding:1rem 0;z-index:1000;background:rgba(17,17,17,.8);backdrop-filter:blur(10px)}
-    .main-nav .container{display:flex;justify-content:space-between;align-items:center}
-    .main-nav .logo{font-weight:800;font-size:1.5rem;color:var(--light-text);text-decoration:none}
-    .main-nav .logo span{color:var(--primary-orange)}
-    .main-nav ul{display:flex;list-style:none}
-    .main-nav ul li a{color:var(--secondary-text);text-decoration:none;padding:.5rem 1rem;transition:color .3s ease}
-    .main-nav ul li a:hover{color:var(--primary-orange)}
+    /* Hero */
+    .hero{padding:56px 0 24px;border-bottom:1px solid var(--stroke);background:
+      radial-gradient(1200px 500px at 50% -50%,rgba(255,140,0,.08),transparent 60%)}
+    .hero h1{font-size:2.4rem;letter-spacing:.2px}
+    .sub{color:var(--muted);margin-top:6px}
+    .quick{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+    .pill{background:var(--pill);color:var(--pill-text);padding:6px 10px;border-radius:999px;font-size:.85rem;border:1px solid var(--stroke)}
+    .cta{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px}
+    .cta a{padding:8px 12px;border:1px solid var(--stroke);border-radius:8px;font-weight:500}
+    .cta a.primary{background:var(--accent);color:#111;font-weight:700;border:none}
 
-    #hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 2rem;background:#000}
-    #hero-canvas{position:absolute;inset:0;z-index:1}
-    .hero-content{position:relative;z-index:2;max-width:800px}
-    #hero h1{font-size:4rem;font-weight:800;margin-bottom:.5rem}
-    #hero .title{font-size:1.5rem;color:var(--secondary-text);margin-bottom:1rem}
-    #hero .tagline{font-size:1.2rem;color:var(--light-text);max-width:600px;margin:0 auto}
-    .hero-links{margin-top:2.5rem;display:flex;justify-content:center;gap:1.5rem}
-    .hero-links a{color:var(--secondary-text);text-decoration:none;font-size:1.8rem;transition:color .3s ease,transform .3s ease}
-    .hero-links a:hover{color:var(--primary-orange);transform:scale(1.1)}
+    /* Sections */
+    section{padding:44px 0}
+    h2{font-size:1.6rem;margin-bottom:18px}
+    .kicker{color:var(--muted);margin-bottom:18px}
 
-    #connections{padding-bottom:8rem}
-    .connections-grid{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:2.5rem;align-items:start}
-    .connections-column h3{margin-bottom:1.5rem;color:var(--secondary-text);text-align:center;font-size:1.2rem}
-    .node{background:var(--card-bg);border:1px solid var(--border-color);padding:1rem 1.5rem;border-radius:8px;margin-bottom:1.5rem;transition:all .4s ease}
-    .node.project-node{cursor:pointer}
-    .node h4{font-size:1.1rem;color:var(--light-text);margin-bottom:.25rem}
-    .node p{font-size:.9rem;color:var(--secondary-text)}
-    .node.dimmed{opacity:.4;transform:scale(.98)}
-    .node.highlighted{border-color:var(--primary-orange);box-shadow:0 0 15px rgba(255,140,0,.3)}
+    /* Cards / lists */
+    .grid{display:grid;gap:16px}
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:18px}
+    .card h3{font-size:1.15rem;margin-bottom:6px}
+    .meta{color:var(--muted);font-size:.95rem;margin-bottom:10px}
+    .bullets{margin:6px 0 0 0}
+    .bullets li{margin:6px 0 0 18px;color:var(--text)}
+    .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .stack .pill{font-size:.8rem;padding:5px 8px}
 
-    #details-pane{position:sticky;top:120px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:8px;padding:2rem}
-    #details-pane .placeholder{text-align:center;color:var(--secondary-text)}
-    #details-pane .project-image{width:100%;height:200px;object-fit:cover;border-radius:6px;margin-bottom:1.5rem;background:#000}
-    #details-pane h3{font-size:1.75rem;color:var(--primary-orange);margin-bottom:1rem}
-    #details-pane .project-description{color:var(--secondary-text);margin-bottom:1.5rem}
-    #details-pane .project-description ul{padding-left:1.2rem}
-    #details-pane .project-links a{color:var(--light-text);text-decoration:none;margin-right:1.5rem;font-weight:500;transition:color .3s ease}
-    #details-pane .project-links a:hover{color:var(--primary-orange)}
-    #details-pane .project-links i{margin-right:.5rem}
+    /* Experience rows */
+    .xp{display:grid;grid-template-columns:220px 1fr;gap:18px}
+    .xp .where{color:var(--muted);font-size:.95rem}
+    .xp h3{margin:0}
+    .xp + .xp{margin-top:18px}
+    .xp .bullets li b{font-weight:700;color:var(--text)}
 
-    .timeline{position:relative;max-width:800px;margin:0 auto}
-    .timeline::after{content:'';position:absolute;width:3px;background:linear-gradient(to bottom,var(--primary-orange),var(--dark-bg));box-shadow:0 0 10px rgba(255,140,0,.5);top:0;bottom:0;left:50%;margin-left:-1.5px}
-    .timeline-item{padding:10px 40px;position:relative;width:50%}
-    .timeline-item::after{content:'\f10c';font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;width:25px;height:25px;right:-12px;color:var(--primary-orange);font-size:1.2rem;text-align:center;top:22px;z-index:1;background:var(--dark-bg);border-radius:50%}
-    .timeline-item.left{left:0}.timeline-item.right{left:50%}
-    .timeline-item.left::before{content:" ";height:0;position:absolute;top:28px;width:0;z-index:1;right:30px;border:medium solid var(--border-color);border-width:10px 0 10px 10px;border-color:transparent transparent transparent var(--border-color)}
-    .timeline-item.right::before{content:" ";height:0;position:absolute;top:28px;width:0;z-index:1;left:30px;border:medium solid var(--border-color);border-width:10px 10px 10px 0;border-color:transparent var(--border-color) transparent transparent}
-    .timeline-item.right::after{left:-12px}
-    .timeline-content{padding:20px 30px;background:var(--card-bg);border:1px solid var(--border-color);position:relative;border-radius:8px}
-    .timeline-content h3{font-size:1.25rem;margin-bottom:.25rem;color:var(--light-text)}
-    .timeline-content .company{color:var(--primary-orange);font-weight:500}
-    .timeline-content .date{font-size:.9rem;color:var(--secondary-text);margin-bottom:.75rem}
-    .timeline-content p,.timeline-content li{font-size:.95rem;color:var(--secondary-text)}
+    /* Projects */
+    .proj .top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+    .proj .links a{font-size:.9rem}
 
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-    .skill-category{background:var(--card-bg);border:1px solid var(--border-color);padding:2rem;border-radius:8px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
-    .skill-category:hover,.education-card:hover,.post-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.3),0 0 25px rgba(255,140,0,.2);border-color:rgba(255,140,0,.5)}
-    .skill-category h3{color:var(--primary-orange);margin-bottom:1rem;font-size:1.25rem}
-    .skill-category h3 .fas{margin-right:.75rem;color:var(--primary-orange);opacity:.7}
-    .skill-category ul{list-style:none;padding-left:0}
-    .skill-category ul li{margin-bottom:.5rem;color:var(--secondary-text)}
+    /* Skills */
+    .skills .col h3{margin-bottom:8px}
+    .skills .col ul{list-style:none}
+    .skills .col li{margin:4px 0;color:var(--text)}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 
-    #posts{background:var(--card-bg);border-top:1px solid var(--border-color)}
-    .posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:2rem}
-    .post-card{background:#111;border:1px solid var(--border-color);border-radius:8px;padding:2rem;text-decoration:none;color:var(--light-text);display:flex;flex-direction:column}
-    .post-card h3{color:var(--primary-orange);margin-bottom:.5rem}
-    .post-card p{color:var(--secondary-text);flex-grow:1}
-    .post-card .post-link{margin-top:1.5rem;font-weight:500;color:var(--light-text)}
-    .post-card .post-link i{margin-left:.5rem;transition:transform .3s ease}
-    .post-card:hover .post-link i{transform:translateX(5px)}
+    /* Education & contact */
+    .edu .item + .item{margin-top:10px}
+    .contact .links{display:flex;flex-wrap:wrap;gap:10px}
 
-    .education-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:700px;margin:0 auto}
-    .education-card{background:#111;border:1px solid var(--border-color);padding:2rem;border-radius:8px}
-    .education-card h3{font-size:1.5rem}
-    .education-card p{color:var(--secondary-text)}
-    .education-card .gpa{color:var(--primary-orange);font-weight:700}
+    /* Footer */
+    footer{border-top:1px solid var(--stroke);padding:24px 0;color:var(--muted);font-size:.95rem;margin-top:12px}
 
-    #contact{text-align:center}
-    #contact .container{max-width:720px}
-    #contact p{font-size:1.1rem;color:var(--secondary-text);margin-bottom:2rem}
-    .contact-links a{color:var(--light-text);text-decoration:none;font-size:1.05rem;padding:.75rem 1rem;border:1px solid var(--border-color);border-radius:8px;margin:.5rem;display:inline-block;transition:background-color .3s ease,color .3s ease,border-color .3s ease}
-    .contact-links a:hover{background:var(--primary-orange);border-color:var(--primary-orange);color:var(--dark-bg)}
-    footer{text-align:center;padding:2rem 0;color:var(--secondary-text);font-size:.9rem;border-top:1px solid var(--border-color)}
-
-    @media (max-width:992px){
-      .connections-grid{grid-template-columns:1fr}
-      #details-pane{position:relative;top:0;margin-top:2rem}
+    /* Responsive */
+    @media (max-width:860px){
+      .grid.cols-2{grid-template-columns:1fr}
+      .xp{grid-template-columns:1fr}
     }
-    @media (max-width:768px){
-      h2{font-size:2rem} #hero h1{font-size:3rem} #hero p{font-size:1.2rem} .main-nav ul{display:none}
-      .timeline::after{left:31px}
-      .timeline-item{width:100%;padding-left:70px;padding-right:25px}
-      .timeline-item.left::before,.timeline-item.right::before{left:60px;border:medium solid var(--border-color);border-width:10px 10px 10px 0;border-color:transparent var(--border-color) transparent transparent}
-      .timeline-item.left::after,.timeline-item.right::after{left:19px}
-      .timeline-item.right{left:0%}
+
+    /* Print-friendly tweaks */
+    @media print{
+      header.nav, .cta{display:none}
+      section{padding:18px 0}
+      body{background:#fff;color:#000}
+      .card{border:1px solid #ddd}
+      a{color:#000}
     }
   </style>
 </head>
 <body>
-  <nav class="main-nav">
-    <div class="container">
-      <a href="#hero" class="logo">SAMEE<span>.</span>RAUF</a>
-      <ul>
-        <li><a href="#skills">Tools</a></li>
-        <!-- Removed Engineering Principles link -->
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#connections">Portfolio</a></li>
-        <li><a href="#posts">Posts</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">SAMEE<span>.RAUF</span></div>
+      <nav class="nav-links">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <section id="hero">
-    <div id="hero-canvas"></div>
-    <div class="hero-content">
-      <h1 class="fade-in">SAMEE RAUF</h1>
-      <p class="title fade-in">AI & Software Engineer</p>
-      <p class="tagline fade-in">Building reliable, observable AI systems and automation that scale from prototype to production.</p>
-      <div class="hero-links fade-in">
-        <a href="https://tinyurl.com/rauf-samee-resume" target="_blank" title="View Resume"><i class="fas fa-file-alt"></i></a>
-        <a href="https://github.com/srauf24" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container">
+      <h1>Samee Rauf — AI & Software Engineer</h1>
+      <p class="sub">I build reliable, observable AI systems and full-stack apps that move business metrics.</p>
+
+      <div class="quick">
+        <span class="pill">Go</span>
+        <span class="pill">React</span>
+        <span class="pill">PostgreSQL</span>
+        <span class="pill">AWS</span>
+        <span class="pill">Docker</span>
+        <span class="pill">Datadog / New Relic</span>
+        <span class="pill">OpenTelemetry</span>
+        <span class="pill">Clerk</span>
+        <span class="pill">OpenAPI</span>
+        <span class="pill">LangChain</span>
+        <span class="pill">Python</span>
+      </div>
+
+      <div class="cta">
+<a class="primary"
+   href="/assets/Samee_Rauf_Resume.pdf"
+   download="Samee_Rauf_Resume.pdf"
+   rel="noopener">
+  Download Resume
+</a>        <a href="mailto:sameerauf1@gmail.com">sameerauf1@gmail.com</a>
+        <a href="tel:+17146036427">714-603-6427</a>
+        <a href="https://github.com/srauf24" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="badge-row" style="margin-top:12px">
+        <span class="pill" title="Certification">AWS Certified Cloud Practitioner</span>
       </div>
     </div>
   </section>
 
-  <main>
-    <!-- Skills & Technologies with Certifications card -->
+  <main id="main">
+    <!-- SKILLS -->
     <section id="skills">
       <div class="container">
-        <h2 class="fade-in">Tools & Technologies</h2>
-        <p class="section-intro fade-in">Up-to-date stack spanning AI and ML, full-stack development, and production DevOps.</p>
-        <div class="skills-grid">
-          <div class="skill-category fade-in">
-            <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
+        <h2>Skills & Tools</h2>
+        <p class="kicker">Modern stack across AI/ML, full-stack, and production DevOps.</p>
+        <div class="grid cols-2 skills">
+          <div class="card col">
+            <h3>AI & ML</h3>
             <ul>
-              <li>Generative AI: LangChain, GPT-4, Gemini, RAG systems</li>
-              <li>Machine Learning: Python, scikit-learn, predictive analytics</li>
-              <li>Data & Vectors: Qdrant, embeddings, prompt tooling</li>
+              <li>Generative AI: LangChain, GPT-4, Gemini, RAG</li>
+              <li>ML: Python, scikit-learn, predictive analytics</li>
+              <li>Vectors & Data: Qdrant, embeddings, prompt tooling</li>
             </ul>
           </div>
-
-          <div class="skill-category fade-in">
-            <h3><i class="fas fa-code"></i> Full-Stack Development</h3>
+          <div class="card col">
+            <h3>Full-Stack</h3>
             <ul>
-              <li>Languages: Python, Go, Java, C++, JavaScript</li>
-              <li>Frontend: React, Vite, Tailwind CSS</li>
-              <li>Backend: Node.js, Express.js, Go</li>
+              <li>Languages: Go, Python, JavaScript, Java, C++</li>
+              <li>Frontend: React, Vite, Tailwind</li>
+              <li>Backend: Go services, Node.js, Express</li>
               <li>Databases: PostgreSQL, SQLite, Firebase, MySQL</li>
               <li>Auth & APIs: Clerk, OpenAPI</li>
             </ul>
           </div>
-
-          <div class="skill-category fade-in">
-            <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+          <div class="card col">
+            <h3>Cloud & DevOps</h3>
             <ul>
-              <li>Cloud: AWS (S3, Lambda), Svella</li>
-              <li>Containers and CI/CD: Docker, Git, GitHub, CodeArtifact</li>
+              <li>AWS (S3, Lambda), Svella (deploy + object storage)</li>
+              <li>Docker, Git/GitHub, CodeArtifact</li>
               <li>Observability: Datadog, New Relic, OpenTelemetry</li>
-              <li>Delivery: zero downtime deploys, feature flags, runbooks</li>
+              <li>Zero-downtime deploys, feature flags, runbooks</li>
             </ul>
           </div>
-
-          <!-- New Certifications card -->
-          <div class="skill-category fade-in">
-            <h3><i class="fas fa-certificate"></i> Certifications</h3>
+          <div class="card col">
+            <h3>Certifications</h3>
             <ul>
-              <li>AWS Certified Cloud Practitioner</li>
+              <li><b>AWS Certified Cloud Practitioner</b></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Removed the Engineering Principles section -->
-
-    <!-- Experience -->
+    <!-- EXPERIENCE -->
     <section id="experience">
       <div class="container">
-        <h2 class="fade-in">My Professional Journey</h2>
-        <div class="timeline">
-          <div class="timeline-item left fade-in">
-            <div class="timeline-content">
-              <h3>AI & Software Engineer</h3>
-              <p class="company">PMG, Dallas, TX</p>
-              <p class="date">June 2024 – Present</p>
-              <ul>
-                <li>Optimized multi-million dollar media budgets for major QSR clients by building a predictive forecasting tool with weather data, statistical regression, and LangChain automation, delivering ~5% lift in return on ad spend across 5 programmatic teams.</li>
-                <li>Engineered an ad-creation automation system that integrates with ad APIs to generate bulk-upload sheets, saving 3 to 5 hours per campaign build per team member and enabling rapid scaling of launches across 25 teams.</li>
-                <li>Designed and deployed a domain-negation platform that programmatically screens unsafe or low-value sites and publishes exclusions via API across 10+ search accounts, increasing return on ad spend by ~10%.</li>
-                <li>Decommissioned a high-cost legacy platform by engineering a scalable, API-driven data ingestion system, eliminating thousands of dollars in monthly cloud costs and reducing technical debt.</li>
-                <li>Built reusable download utilities for Google Docs (Drive API) and Amazon S3, enabling media teams to programmatically ingest documents used in 100+ automated workflows.</li>
-                <li>Refactored internal data APIs to reduce errors, improve performance, and support new automation workflows, accelerating delivery of client-facing applications.</li>
-                <li>Implemented Datadog and OpenTelemetry monitoring for 10+ key metrics with zero-downtime deploys.</li>
-              </ul>
+        <h2>Experience</h2>
+
+        <div class="card xp">
+          <div class="where"><b>PMG Worldwide</b><br/>Dallas, TX<br/>June 2024 — Present</div>
+          <div>
+            <h3>AI Software Engineer</h3>
+            <ul class="bullets">
+              <li><b>~5% ROAS lift</b> for major QSR clients by building a predictive forecasting tool using weather data, statistical regression, and LangChain across <b>5 programmatic teams</b>.</li>
+              <li>Engineered ad-creation automation integrating Ad APIs to generate bulk-upload sheets, saving <b>3–5 hrs</b> per campaign per team member and scaling launches across <b>25 teams</b>.</li>
+              <li>Designed a domain-negation platform that screens unsafe/low-value sites and publishes exclusions via API across <b>10+ search accounts</b>, improving ROAS by <b>~10%</b>.</li>
+              <li>Decommissioned a legacy platform via a scalable, API-driven ingestion system, eliminating <b>$1,000+/mo</b> in cloud cost and reducing tech debt.</li>
+              <li>Built reusable download utilities for <b>Google Drive API</b> and <b>Amazon S3</b>, powering <b>100+ automated workflows</b>.</li>
+              <li>Refactored internal data APIs to reduce errors, improve performance, and unlock new automation workflows.</li>
+              <li>Implemented <b>Datadog</b> & <b>OpenTelemetry</b> for <b>10+ key metrics</b> with zero-downtime deploys.</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">Python</span><span class="pill">LangChain</span><span class="pill">Drive API</span>
+              <span class="pill">S3</span><span class="pill">Datadog</span><span class="pill">OpenTelemetry</span>
             </div>
           </div>
+        </div>
 
-          <div class="timeline-item right fade-in">
-            <div class="timeline-content">
-              <h3>Security Researcher</h3>
-              <p class="company">CSUF (The Walt Disney Project)</p>
-              <p class="date">August 2023 – May 2024</p>
-              <ul>
-                <li>Developed an automated system using the Snoozy LLM within the GPT-4ALL ecosystem to generate and deploy reliable, audited system configurations, improving efficiency and security.</li>
-                <li>Reduced system configuration management time by ~35% and presented findings to Disney stakeholders.</li>
-              </ul>
+        <div class="card xp">
+          <div class="where"><b>CSUF × The Walt Disney Company</b><br/>Anaheim, CA<br/>Aug 2023 — May 2024</div>
+          <div>
+            <h3>Security Researcher</h3>
+            <ul class="bullets">
+              <li>Built an automated system using the <b>Snoozy</b> LLM (GPT-4ALL ecosystem) to generate and deploy reliable, audited system configurations.</li>
+              <li>Reduced configuration management time by <b>~35%</b> and presented results to Disney stakeholders.</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">LLM</span><span class="pill">Python</span><span class="pill">Automation</span>
             </div>
           </div>
+        </div>
 
-          <div class="timeline-item left fade-in">
-            <div class="timeline-content">
-              <h3>Software Developer</h3>
-              <p class="company">Los Angeles County Project (CSUF)</p>
-              <p class="date">July 2022 – February 2023</p>
-              <ul>
-                <li>Built a full-stack parking management system using React and Express, serving 1,000+ users with custom UIs and server-side CRUD operations.</li>
-                <li>Implemented a relational schema in SQLite and a full suite of REST endpoints with Express.js for validation and CRUD.</li>
-              </ul>
+        <div class="card xp">
+          <div class="where"><b>Los Angeles County (CSUF)</b><br/>Fullerton, CA<br/>Jul 2022 — Feb 2023</div>
+          <div>
+            <h3>Software Developer</h3>
+            <ul class="bullets">
+              <li>Delivered a full-stack parking permit system in <b>React</b> & <b>Express</b>, serving <b>1,000+ users</b> with custom UIs and robust CRUD.</li>
+              <li>Designed a relational schema in <b>SQLite</b> and implemented a full suite of validated REST endpoints.</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">React</span><span class="pill">Express</span><span class="pill">SQLite</span>
+              <span class="pill">REST</span>
             </div>
           </div>
+        </div>
 
-          <div class="timeline-item right fade-in">
-            <div class="timeline-content">
-              <h3>Research Assistant</h3>
-              <p class="company">CSUF</p>
-              <p class="date">May 2023 – July 2023</p>
-              <ul>
-                <li>Trained a Random Forest model for student retention using socioeconomic and academic features, achieving ~90% accuracy; presented at NCUR.</li>
-              </ul>
+        <div class="card xp">
+          <div class="where"><b>CSUF</b><br/>Fullerton, CA<br/>May 2023 — Jul 2023</div>
+          <div>
+            <h3>Research Assistant</h3>
+            <ul class="bullets">
+              <li>Trained a Random Forest model for student retention using socioeconomic & academic factors, achieving <b>~90% accuracy</b> (presented at NCUR).</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">Python</span><span class="pill">scikit-learn</span><span class="pill">Random Forest</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Connected Portfolio -->
-    <section id="connections">
+    <!-- PROJECTS -->
+    <section id="projects">
       <div class="container">
-        <h2 class="fade-in">Connected Portfolio</h2>
-        <p class="section-intro fade-in">Click a project to view details and see its tech graph.</p>
-        <div class="connections-grid">
-          <div class="connections-column fade-in">
-            <h3><i class="fas fa-lightbulb"></i> Projects</h3>
-            <div id="proj-garden" class="node project-node">
-                <h4>Garden Journal</h4>
-              </div>
-            <div id="proj-bookclub" class="node project-node">
-              <h4>Book Club</h4>
+        <h2>Projects</h2>
+        <p class="kicker">Clear scope, measurable outcomes, and the stack used.</p>
+
+        <div class="grid">
+          <div class="card proj">
+            <div class="top">
+              <h3>Garden Journal</h3>
+              <div class="links"><a href="https://github.com/srauf24/garden_journal" target="_blank" rel="noopener">GitHub →</a></div>
             </div>
-            <div id="proj-nba" class="node project-node">
-              <h4>NBA Statistics Platform</h4>
-            </div>
-            <div id="proj-config-mgmt" class="node project-node">
-              <h4>System Configuration Management</h4>
+            <p class="meta">Oct 2025 — Current</p>
+            <ul class="bullets">
+              <li>Web-first app to log plants; enrich growth data with live weather (Open-Meteo).</li>
+              <li>Production API with <b>10+</b> documented <b>OpenAPI</b> endpoints, SQL migrations & triggers for data integrity.</li>
+              <li>Deployed on <b>Svella</b> with object storage and <b>New Relic</b> monitoring; <b>99.9% uptime</b> and <b><150ms</b> API responses.</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">Go</span><span class="pill">React</span><span class="pill">PostgreSQL</span>
+              <span class="pill">Clerk</span><span class="pill">Open-Meteo API</span>
+              <span class="pill">OpenAPI</span><span class="pill">Svella</span><span class="pill">New Relic</span>
             </div>
           </div>
 
-          <div class="connections-column fade-in">
-            <h3><i class="fas fa-code"></i> Core Technologies</h3>
-            <div id="skill-react" class="node"><h4>React.js</h4></div>
-            <div id="skill-vite" class="node"><h4>Vite</h4></div>
-            <div id="skill-tailwind" class="node"><h4>Tailwind CSS</h4></div>
-            <div id="skill-express" class="node"><h4>Express.js</h4></div>
-            <div id="skill-sql" class="node"><h4>MySQL</h4></div>
-            <div id="skill-postgres" class="node"><h4>PostgreSQL</h4></div>
-            <div id="skill-sqlite" class="node"><h4>SQLite</h4></div>
-            <div id="skill-firebase" class="node"><h4>Firebase</h4></div>
-            <div id="skill-llm" class="node"><h4>Large Language Models</h4></div>
-            <div id="skill-python" class="node"><h4>Python</h4></div>
-            <div id="skill-go" class="node"><h4>Golang</h4></div>
-            <div id="skill-chef" class="node"><h4>Progress Chef</h4></div>
-            <div id="skill-docker" class="node"><h4>Docker</h4></div>
-            <div id="skill-aws" class="node"><h4>AWS (S3, Lambda)</h4></div>
-            <div id="skill-svella" class="node"><h4>Svella</h4></div>
-            <div id="skill-newrelic" class="node"><h4>New Relic</h4></div>
-            <div id="skill-datadog" class="node"><h4>Datadog</h4></div>
-            <div id="skill-opentelemetry" class="node"><h4>OpenTelemetry</h4></div>
-            <div id="skill-clerk" class="node"><h4>Clerk Authentication</h4></div>
-            <div id="skill-openapi" class="node"><h4>OpenAPI</h4></div>
+          <div class="card proj">
+            <div class="top">
+              <h3>Book Club</h3>
+              <div class="links"><a href="https://github.com/srauf24/forum" target="_blank" rel="noopener">GitHub →</a></div>
+            </div>
+            <p class="meta">Jan 2025 — Feb 2025</p>
+            <ul class="bullets">
+              <li>Real-time SPA: posts/comments, likes, reading lists, AI book recommendations.</li>
+              <li>Shipped with auth, Firestore data, and storage for media.</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">React</span><span class="pill">Vite</span><span class="pill">Tailwind</span>
+              <span class="pill">Firebase</span><span class="pill">Gemini</span>
+            </div>
           </div>
 
-          <div class="connections-column fade-in">
-            <h3><i class="fas fa-info-circle"></i> Project Details</h3>
-            <div id="details-pane">
-              <div class="placeholder"><p>Click a project to see the details here.</p></div>
+          <div class="card proj">
+            <div class="top">
+              <h3>NBA Statistics Platform</h3>
+              <div class="links"><a href="https://github.com/jpope6/nba-database" target="_blank" rel="noopener">GitHub →</a></div>
+            </div>
+            <ul class="bullets">
+              <li>React + Express + MySQL app for exploring team & game stats with efficient endpoints.</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">React</span><span class="pill">Express</span><span class="pill">MySQL</span>
+            </div>
+          </div>
+
+          <div class="card proj">
+            <div class="top">
+              <h3>System Configuration Management</h3>
+            </div>
+            <ul class="bullets">
+              <li>AI-driven VM provisioning research using an LLM to produce audited configs; ~35% time reduction.</li>
+            </ul>
+            <div class="stack">
+              <span class="pill">Python</span><span class="pill">LLM</span><span class="pill">Automation</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Posts -->
-    <section id="posts">
-      <div class="container">
-        <h2 class="fade-in">Featured Posts</h2>
-        <div class="posts-grid">
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7185653098718101504/" target="_blank" class="post-card fade-in">
-            <div>
-              <h3><i class="fab fa-linkedin"></i> Student Success Classification Research</h3>
-              <p>Presented data science research on Student Success Classification in Higher Education at NCUR, showcasing a ~90% accurate ML model.</p>
-            </div>
-            <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
-          </a>
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7193378428006404096/" target="_blank" class="post-card fade-in">
-            <div>
-              <h3><i class="fab fa-linkedin"></i> AI-Driven System Configuration Management</h3>
-              <p>Engineered an automation system with an LLM that reduced configuration time by ~35% and presented findings to Disney stakeholders.</p>
-            </div>
-            <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
+    <!-- EDUCATION -->
     <section id="education">
       <div class="container">
-        <h2 class="fade-in">Education</h2>
-        <div class="education-grid">
-          <div class="education-card fade-in">
-            <h3>California State University Fullerton</h3>
-            <p>Bachelor of Science, Computer Science (GPA: 4.0)</p>
-          </div>
-          <div class="education-card fade-in">
-            <h3>Cypress College</h3>
-            <p>Associate of Science, Biology (GPA: 3.7/4.0)</p>
-          </div>
+        <h2>Education</h2>
+        <div class="card edu">
+          <div class="item"><b>California State University Fullerton</b> — B.S. Computer Science, GPA 4.0</div>
+          <div class="item">Cypress College — A.S. Biology, GPA 3.7/4.0</div>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
-      <div class="container fade-in">
-        <h2>Let's Connect</h2>
-        <p>If you have a project or idea, reach out and I’ll get back quickly.</p>
-        <div class="contact-links">
-          <a href="mailto:sameerauf1@gmail.com">Email: sameerauf1@gmail.com</a>
-          <a href="tel:+17146036427">Phone: 714-603-6427</a>
-          <a href="https://sameerauf.dev" target="_blank">sameerauf.dev</a>
-          <a href="https://github.com/srauf24" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank">LinkedIn</a>
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="kicker">Open to roles where measurable impact matters.</p>
+        <div class="card contact">
+          <div class="links">
+            <a href="mailto:sameerauf1@gmail.com">sameerauf1@gmail.com</a>
+            <a href="tel:+17146036427">714-603-6427</a>
+            <a href="https://github.com/srauf24" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><div class="container"><p>&copy; 2025 Samee Rauf.</p></div></footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leader-line-new@1.1.9/leader-line.min.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})},{threshold:.1});
-      document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-      const heroCanvas=document.getElementById('hero-canvas');
-      if(heroCanvas){
-        let scene,camera,renderer,nodes,lines;let mouseX=0,mouseY=0;let windowHalfX=innerWidth/2,windowHalfY=innerHeight/2;
-        const NODE_COUNT=300, PLEXUS_RADIUS=300;
-        init3D(); animate3D();
-        function init3D(){
-          scene=new THREE.Scene();
-          camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,1,10000); camera.position.z=600;
-          const nodeGeometry=new THREE.SphereGeometry(4,8,8);
-          const nodeMaterial=new THREE.MeshBasicMaterial({color:0xff8c00,transparent:true,opacity:.8});
-          nodes=new THREE.Group();
-          for(let i=0;i<NODE_COUNT;i++){
-            const node=new THREE.Mesh(nodeGeometry,nodeMaterial);
-            const [x,y,z]=[Math.random()*2-1,Math.random()*2-1,Math.random()*2-1];
-            const d=1/Math.sqrt(x*x+y*y+z*z);
-            node.position.set(x*d*PLEXUS_RADIUS,y*d*PLEXUS_RADIUS,z*d*PLEXUS_RADIUS); nodes.add(node);
-          }
-          scene.add(nodes);
-          const lineMaterial=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.05});
-          const lineGeometry=new THREE.BufferGeometry(); const positions=[];
-          for(let i=0;i<NODE_COUNT;i++){for(let j=i+1;j<NODE_COUNT;j++){
-            const a=nodes.children[i].position,b=nodes.children[j].position;
-            if(a.distanceTo(b)<PLEXUS_RADIUS/2.5){positions.push(a.x,a.y,a.z,b.x,b.y,b.z)}
-          }}
-          lineGeometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));
-          lines=new THREE.LineSegments(lineGeometry,lineMaterial); scene.add(lines);
-          renderer=new THREE.WebGLRenderer({antialias:true,alpha:true}); renderer.setPixelRatio(devicePixelRatio); renderer.setSize(innerWidth,innerHeight);
-          heroCanvas.appendChild(renderer.domElement);
-          document.addEventListener('mousemove',e=>{mouseX=(e.clientX-windowHalfX)*.2;mouseY=(e.clientY-windowHalfY)*.2});
-          addEventListener('resize',()=>{windowHalfX=innerWidth/2;windowHalfY=innerHeight/2;camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
-        }
-        function animate3D(){requestAnimationFrame(animate3D);render3D()}
-        function render3D(){camera.position.x+=(mouseX-camera.position.x)*.05;camera.position.y+=(-mouseY-camera.position.y)*.05;camera.lookAt(scene.position);const t=Date.now()*0.0001;nodes.rotation.y=t;lines.rotation.y=t;renderer.render(scene,camera)}
-      }
-
-      const portfolioData={
-        'proj-bookclub':{
-          title:'Book Club',
-          image:'https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80&w=800&auto=format&fit=crop',
-          description:'<ul><li>Real-time full-stack SPA with posts, comments, likes, reading lists, and AI book recommendations.</li><li>Built with React, Vite, Tailwind, Firebase (Auth/Firestore/Storage), and Gemini.</li></ul>',
-          links:{github:'https://github.com/srauf24/forum',demo:null},
-          skills:['skill-react','skill-vite','skill-tailwind','skill-firebase','skill-llm']
-        },
-        'proj-nba':{
-          title:'NBA Statistics Platform',
-          image:'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop',
-          description:'<ul><li>React + Express + MySQL app for exploring team and game stats with efficient backend endpoints.</li></ul>',
-          links:{github:'https://github.com/jpope6/nba-database',demo:null},
-          skills:['skill-react','skill-express','skill-sql']
-        },
-        'proj-config-mgmt':{
-          title:'System Configuration Management',
-          image:'https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?q=80&w=800&auto=format&fit=crop',
-          description:'<ul><li>AI-Driven VM provisioning research for The Walt Disney Company using an LLM to produce audited configurations, reducing management time by ~35%.</li></ul>',
-          links:{github:'#',demo:null},
-          skills:['skill-python','skill-llm','skill-chef','skill-opentelemetry']
-        },
-        'proj-garden':{
-          title:'Garden Journal',
-          image:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop',
-          description:'<ul><li>Web-first app using Go, React, PostgreSQL, and Clerk authentication to log plants and enrich growth data with live weather from Open-Meteo.</li><li>Production-ready API layer with 10+ OpenAPI endpoints, SQL migrations, and database triggers for integrity.</li><li>Deployed on Svella with object storage for media and New Relic monitoring, 99.9% uptime and &lt;150ms API responses.</li></ul>',
-          links:{github:'https://github.com/srauf24/garden_journal',demo:null},
-          skills:['skill-go','skill-react','skill-postgres','skill-clerk','skill-openapi','skill-svella','skill-newrelic','skill-aws','skill-docker']
-        }
-      };
-
-      let activeLines=[];
-      const allNodes=document.querySelectorAll('.node');
-      const projectNodes=document.querySelectorAll('.project-node');
-      const detailsPane=document.getElementById('details-pane');
-
-      function updatePortfolioView(projectId){
-        activeLines.forEach(l=>l.remove()); activeLines=[];
-        allNodes.forEach(n=>n.classList.remove('highlighted','dimmed'));
-        const data=portfolioData[projectId]; if(!data) return;
-        const startNode=document.getElementById(projectId);
-        allNodes.forEach(n=>n.classList.add('dimmed'));
-        startNode.classList.remove('dimmed'); startNode.classList.add('highlighted');
-
-        data.skills.forEach(endId=>{
-          const endNode=document.getElementById(endId);
-          if(endNode){
-            endNode.classList.remove('dimmed'); endNode.classList.add('highlighted');
-            const line=new LeaderLine(startNode,endNode,{color:'rgba(255,140,0,0.8)',size:3,path:'fluid',endPlug:'behind',startSocket:'right',endSocket:'left',dash:{animation:true}});
-            activeLines.push(line);
-          }
-        });
-
-        let linksHTML='';
-        if(data.links.github && data.links.github!=='#'){linksHTML+=`<a href="${data.links.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`}
-        if(data.links.demo){linksHTML+=`<a href="${data.links.demo}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>`}
-
-        detailsPane.innerHTML=`
-          <img src="${data.image}" alt="${data.title}" class="project-image" />
-          <h3>${data.title}</h3>
-          <div class="project-description">${data.description}</div>
-          <div class="project-links">${linksHTML || '<span style="color:#b3b3b3;">Links coming soon</span>'}</div>
-        `;
-      }
-
-      projectNodes.forEach(n=>n.addEventListener('click',()=>updatePortfolioView(n.id)));
-      if(projectNodes.length>0){ updatePortfolioView(projectNodes[0].id); }
-    });
-  </script>
+  <footer>
+    <div class="container">© 2025 Samee Rauf</div>
+  </footer>
 </body>
 </html>
