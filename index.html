@@ -1,916 +1,489 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samee Rauf | AI & Software Engineer</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Samee Rauf | AI & Software Engineer</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        /* CSS Variables and Global Styles */
-        :root {
-            --dark-bg: #111111;
-            --primary-orange: #FF8C00;
-            --light-text: #EAEAEA;
-            --secondary-text: #b3b3b3; /* Lighter for better contrast */
-            --card-bg: #1A1A1A;
-            --border-color: #2A2A2A;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    :root {
+      --dark-bg:#111111; --primary-orange:#FF8C00; --light-text:#EAEAEA;
+      --secondary-text:#b3b3b3; --card-bg:#1A1A1A; --border-color:#2A2A2A;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--dark-bg);color:var(--light-text);line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .container{max-width:1100px;margin:0 auto;padding:0 2rem}
+    section{padding:6rem 0;overflow:hidden;position:relative}
+    h1,h2,h3,h4{font-weight:700;line-height:1.3;color:var(--light-text);text-wrap:balance}
+    h2{font-size:2.5rem;text-align:center;margin-bottom:1.5rem}
+    .section-intro{text-align:center;max-width:65ch;margin:0 auto 3rem;color:var(--secondary-text);font-size:1.1rem;line-height:1.7}
+    .fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease-out,transform .6s ease-out}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
 
-        html {
-            scroll-behavior: smooth;
-        }
+    .main-nav{position:fixed;top:0;left:0;width:100%;padding:1rem 0;z-index:1000;background:rgba(17,17,17,.8);backdrop-filter:blur(10px)}
+    .main-nav .container{display:flex;justify-content:space-between;align-items:center}
+    .main-nav .logo{font-weight:800;font-size:1.5rem;color:var(--light-text);text-decoration:none}
+    .main-nav .logo span{color:var(--primary-orange)}
+    .main-nav ul{display:flex;list-style:none}
+    .main-nav ul li a{color:var(--secondary-text);text-decoration:none;padding:.5rem 1rem;transition:color .3s ease}
+    .main-nav ul li a:hover{color:var(--primary-orange)}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            line-height: 1.65; /* Increased for readability */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    #hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 2rem;background:#000}
+    #hero-canvas{position:absolute;inset:0;z-index:1}
+    .hero-content{position:relative;z-index:2;max-width:800px}
+    #hero h1{font-size:4rem;font-weight:800;margin-bottom:.5rem}
+    #hero .title{font-size:1.5rem;color:var(--secondary-text);margin-bottom:1rem}
+    #hero .tagline{font-size:1.2rem;color:var(--light-text);max-width:600px;margin:0 auto}
+    .hero-links{margin-top:2.5rem;display:flex;justify-content:center;gap:1.5rem}
+    .hero-links a{color:var(--secondary-text);text-decoration:none;font-size:1.8rem;transition:color .3s ease,transform .3s ease}
+    .hero-links a:hover{color:var(--primary-orange);transform:scale(1.1)}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        section {
-            padding: 6rem 0;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.3; /* Consistent heading line-height */
-            color: var(--light-text);
-            text-wrap: balance;
-        }
+    #connections{padding-bottom:8rem}
+    .connections-grid{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:2.5rem;align-items:start}
+    .connections-column h3{margin-bottom:1.5rem;color:var(--secondary-text);text-align:center;font-size:1.2rem}
+    .node{background:var(--card-bg);border:1px solid var(--border-color);padding:1rem 1.5rem;border-radius:8px;margin-bottom:1.5rem;transition:all .4s ease}
+    .node.project-node{cursor:pointer}
+    .node h4{font-size:1.1rem;color:var(--light-text);margin-bottom:.25rem}
+    .node p{font-size:.9rem;color:var(--secondary-text)}
+    .node.dimmed{opacity:.4;transform:scale(.98)}
+    .node.highlighted{border-color:var(--primary-orange);box-shadow:0 0 15px rgba(255,140,0,.3)}
 
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .section-intro {
-            text-align: center;
-            max-width: 65ch; /* Optimal line length */
-            margin: 0 auto 3rem auto;
-            color: var(--secondary-text);
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
+    #details-pane{position:sticky;top:120px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:8px;padding:2rem}
+    #details-pane .placeholder{text-align:center;color:var(--secondary-text)}
+    #details-pane .project-image{width:100%;height:200px;object-fit:cover;border-radius:6px;margin-bottom:1.5rem;background:#000}
+    #details-pane h3{font-size:1.75rem;color:var(--primary-orange);margin-bottom:1rem}
+    #details-pane .project-description{color:var(--secondary-text);margin-bottom:1.5rem}
+    #details-pane .project-description ul{padding-left:1.2rem}
+    #details-pane .project-links a{color:var(--light-text);text-decoration:none;margin-right:1.5rem;font-weight:500;transition:color .3s ease}
+    #details-pane .project-links a:hover{color:var(--primary-orange)}
+    #details-pane .project-links i{margin-right:.5rem}
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .timeline{position:relative;max-width:800px;margin:0 auto}
+    .timeline::after{content:'';position:absolute;width:3px;background:linear-gradient(to bottom,var(--primary-orange),var(--dark-bg));box-shadow:0 0 10px rgba(255,140,0,.5);top:0;bottom:0;left:50%;margin-left:-1.5px}
+    .timeline-item{padding:10px 40px;position:relative;width:50%}
+    .timeline-item::after{content:'\f10c';font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;width:25px;height:25px;right:-12px;color:var(--primary-orange);font-size:1.2rem;text-align:center;top:22px;z-index:1;background:var(--dark-bg);border-radius:50%}
+    .timeline-item.left{left:0}.timeline-item.right{left:50%}
+    .timeline-item.left::before{content:" ";height:0;position:absolute;top:28px;width:0;z-index:1;right:30px;border:medium solid var(--border-color);border-width:10px 0 10px 10px;border-color:transparent transparent transparent var(--border-color)}
+    .timeline-item.right::before{content:" ";height:0;position:absolute;top:28px;width:0;z-index:1;left:30px;border:medium solid var(--border-color);border-width:10px 10px 10px 0;border-color:transparent var(--border-color) transparent transparent}
+    .timeline-item.right::after{left:-12px}
+    .timeline-content{padding:20px 30px;background:var(--card-bg);border:1px solid var(--border-color);position:relative;border-radius:8px}
+    .timeline-content h3{font-size:1.25rem;margin-bottom:.25rem;color:var(--light-text)}
+    .timeline-content .company{color:var(--primary-orange);font-weight:500}
+    .timeline-content .date{font-size:.9rem;color:var(--secondary-text);margin-bottom:.75rem}
+    .timeline-content p,.timeline-content li{font-size:.95rem;color:var(--secondary-text)}
 
-        /* Navigation */
-        .main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 0;
-            z-index: 1000;
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(10px);
-        }
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+    .skill-category{background:var(--card-bg);border:1px solid var(--border-color);padding:2rem;border-radius:8px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+    .skill-category:hover,.education-card:hover,.post-card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,0,0,.3),0 0 25px rgba(255,140,0,.2);border-color:rgba(255,140,0,.5)}
+    .skill-category h3{color:var(--primary-orange);margin-bottom:1rem;font-size:1.25rem}
+    .skill-category h3 .fas{margin-right:.75rem;color:var(--primary-orange);opacity:.7}
+    .skill-category ul{list-style:none;padding-left:0}
+    .skill-category ul li{margin-bottom:.5rem;color:var(--secondary-text)}
 
-        .main-nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    #posts{background:var(--card-bg);border-top:1px solid var(--border-color)}
+    .posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:2rem}
+    .post-card{background:#111;border:1px solid var(--border-color);border-radius:8px;padding:2rem;text-decoration:none;color:var(--light-text);display:flex;flex-direction:column}
+    .post-card h3{color:var(--primary-orange);margin-bottom:.5rem}
+    .post-card p{color:var(--secondary-text);flex-grow:1}
+    .post-card .post-link{margin-top:1.5rem;font-weight:500;color:var(--light-text)}
+    .post-card .post-link i{margin-left:.5rem;transition:transform .3s ease}
+    .post-card:hover .post-link i{transform:translateX(5px)}
 
-        .main-nav .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--light-text);
-            text-decoration: none;
-        }
-        
-        .main-nav .logo span {
-            color: var(--primary-orange);
-        }
+    .education-grid{display:grid;grid-template-columns:1fr;gap:2rem;max-width:700px;margin:0 auto}
+    .education-card{background:#111;border:1px solid var(--border-color);padding:2rem;border-radius:8px}
+    .education-card h3{font-size:1.5rem}
+    .education-card p{color:var(--secondary-text)}
+    .education-card .gpa{color:var(--primary-orange);font-weight:700}
 
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-        }
+    #contact{text-align:center}
+    #contact .container{max-width:720px}
+    #contact p{font-size:1.1rem;color:var(--secondary-text);margin-bottom:2rem}
+    .contact-links a{color:var(--light-text);text-decoration:none;font-size:1.05rem;padding:.75rem 1rem;border:1px solid var(--border-color);border-radius:8px;margin:.5rem;display:inline-block;transition:background-color .3s ease,color .3s ease,border-color .3s ease}
+    .contact-links a:hover{background:var(--primary-orange);border-color:var(--primary-orange);color:var(--dark-bg)}
+    footer{text-align:center;padding:2rem 0;color:var(--secondary-text);font-size:.9rem;border-top:1px solid var(--border-color)}
 
-        .main-nav ul li a {
-            color: var(--secondary-text);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .main-nav ul li a:hover {
-            color: var(--primary-orange);
-        }
-
-        /* Hero Section with 3D Canvas */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 2rem;
-            background-color: #000;
-        }
-        
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-
-        #hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        #hero .title {
-            font-size: 1.5rem;
-            color: var(--secondary-text);
-            margin-bottom: 1rem;
-        }
-        
-        #hero .tagline {
-            font-size: 1.2rem;
-            color: var(--light-text);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Hero Links */
-        .hero-links {
-            margin-top: 2.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .hero-links a {
-            color: var(--secondary-text);
-            text-decoration: none;
-            font-size: 1.8rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .hero-links a:hover {
-            color: var(--primary-orange);
-            transform: scale(1.1);
-        }
-        
-        /* Connected Portfolio Section Styles */
-        #connections {
-            padding-bottom: 8rem; 
-        }
-        .connections-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1.5fr;
-            gap: 2.5rem;
-            align-items: start;
-        }
-        .connections-column h3 {
-            margin-bottom: 1.5rem;
-            color: var(--secondary-text);
-            text-align: center;
-            font-size: 1.2rem;
-        }
-        .node {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            transition: all 0.4s ease;
-        }
-        .node.project-node {
-            cursor: pointer;
-        }
-        .node h4 {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            margin-bottom: 0.25rem;
-        }
-        .node p {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-        }
-        .node.dimmed {
-            opacity: 0.4;
-            transform: scale(0.98);
-        }
-        .node.highlighted {
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
-        }
-
-        /* Details Pane Styles */
-        #details-pane {
-            position: sticky;
-            top: 120px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-        }
-        #details-pane .placeholder {
-            text-align: center;
-            color: var(--secondary-text);
-        }
-        #details-pane .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 1.5rem;
-            background-color: #000;
-        }
-        #details-pane h3 {
-            font-size: 1.75rem;
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-        }
-        #details-pane .project-description {
-            color: var(--secondary-text);
-            margin-bottom: 1.5rem;
-        }
-        #details-pane .project-description ul {
-            padding-left: 1.2rem;
-        }
-        #details-pane .project-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            margin-right: 1.5rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-         #details-pane .project-links a:hover {
-             color: var(--primary-orange);
-         }
-        #details-pane .project-links i {
-            margin-right: 0.5rem;
-        }
-
-        /* Experience Timeline Styles */
-        .timeline { 
-            position: relative; 
-            max-width: 800px; 
-            margin: 0 auto; 
-        }
-        .timeline::after { 
-            content: ''; 
-            position: absolute; 
-            width: 3px; 
-            background: linear-gradient(to bottom, var(--primary-orange), var(--dark-bg)); 
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5); 
-            top: 0; 
-            bottom: 0; 
-            left: 50%; 
-            margin-left: -1.5px; 
-        }
-        .timeline-item { 
-            padding: 10px 40px; 
-            position: relative; 
-            width: 50%; 
-        }
-        .timeline-item::after { 
-            content: '\f10c'; 
-            font-family: "Font Awesome 6 Free"; 
-            font-weight: 900; 
-            position: absolute; 
-            width: 25px; 
-            height: 25px; 
-            right: -12px; 
-            color: var(--primary-orange); 
-            font-size: 1.2rem; 
-            text-align: center; 
-            top: 22px; 
-            z-index: 1; 
-            background: var(--dark-bg); 
-            border-radius: 50%; 
-        }
-        .timeline-item.left { 
-            left: 0; 
-        }
-        .timeline-item.right { 
-            left: 50%; 
-        }
-        .timeline-item.left::before { 
-            content: " "; 
-            height: 0; 
-            position: absolute; 
-            top: 28px; 
-            width: 0; 
-            z-index: 1; 
-            right: 30px; 
-            border: medium solid var(--border-color); 
-            border-width: 10px 0 10px 10px; 
-            border-color: transparent transparent transparent var(--border-color); 
-        }
-        .timeline-item.right::before { 
-            content: " "; 
-            height: 0; 
-            position: absolute; 
-            top: 28px; 
-            width: 0; 
-            z-index: 1; 
-            left: 30px; 
-            border: medium solid var(--border-color); 
-            border-width: 10px 10px 10px 0; 
-            border-color: transparent var(--border-color) transparent transparent; 
-        }
-        .timeline-item.right::after { 
-            left: -12px; 
-        }
-        .timeline-content { 
-            padding: 20px 30px; 
-            background-color: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            position: relative; 
-            border-radius: 8px; 
-        }
-        .timeline-content h3 { 
-            font-size: 1.25rem; 
-            margin-bottom: 0.25rem; 
-            color: var(--light-text); 
-        }
-        .timeline-content .company { 
-            color: var(--primary-orange); 
-            font-weight: 500; 
-        }
-        .timeline-content .date { 
-            font-size: 0.9rem; 
-            color: var(--secondary-text); 
-            margin-bottom: 0.75rem; 
-        }
-        .timeline-content p { 
-            font-size: 0.95rem; 
-            color: var(--secondary-text); 
-        }
-        
-        /* Skills Section */
-        .skills-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 2rem; 
-        }
-        .skill-category { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            padding: 2rem; 
-            border-radius: 8px; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
-        }
-        .skill-category:hover, .education-card:hover, .post-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 25px rgba(255, 140, 0, 0.2); 
-            border-color: rgba(255, 140, 0, 0.5); 
-        }
-        .skill-category h3 { 
-            color: var(--primary-orange); 
-            margin-bottom: 1rem; 
-            font-size: 1.25rem; 
-        }
-        .skill-category h3 .fas { 
-            margin-right: 0.75rem; 
-            color: var(--primary-orange); 
-            opacity: 0.7; 
-        }
-        .skill-category ul { 
-            list-style: none;
-            padding-left: 0;
-        }
-        .skill-category ul li { 
-            margin-bottom: 0.5rem; 
-            color: var(--secondary-text); 
-        }
-
-        /* NEW: Featured Posts Section */
-        #posts {
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-        }
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-        .post-card {
-            background: #111;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            text-decoration: none;
-            color: var(--light-text);
-            display: flex;
-            flex-direction: column;
-        }
-        .post-card h3 {
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-        .post-card p {
-            color: var(--secondary-text);
-            flex-grow: 1;
-        }
-        .post-card .post-link {
-            margin-top: 1.5rem;
-            font-weight: 500;
-            color: var(--light-text);
-        }
-        .post-card .post-link i {
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-        .post-card:hover .post-link i {
-            transform: translateX(5px);
-        }
-
-        /* Education Section */
-        .education-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 700px; margin: 0 auto; }
-        .education-card { background: #111; border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; }
-        .education-card h3 { font-size: 1.5rem; }
-        .education-card p { color: var(--secondary-text); }
-        .education-card .gpa { color: var(--primary-orange); font-weight: 700; }
-
-        /* Contact Section */
-        #contact { text-align: center; }
-        #contact .container { max-width: 600px; }
-        #contact p { font-size: 1.1rem; color: var(--secondary-text); margin-bottom: 2rem; }
-        .contact-links a { color: var(--light-text); text-decoration: none; font-size: 1.2rem; padding: 0.75rem 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; margin: 0.5rem; display: inline-block; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
-        .contact-links a:hover { background-color: var(--primary-orange); border-color: var(--primary-orange); color: var(--dark-bg); }
-        
-        /* Footer */
-        footer { text-align: center; padding: 2rem 0; color: var(--secondary-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .connections-grid {
-                grid-template-columns: 1fr;
-            }
-            #details-pane {
-                position: relative;
-                top: 0;
-                margin-top: 2rem;
-            }
-        }
-        @media (max-width: 768px) {
-            h2 { font-size: 2rem; } #hero h1 { font-size: 3rem; } #hero p { font-size: 1.2rem; } .main-nav ul { display: none; }
-            .timeline::after { left: 31px; } 
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; } 
-            .timeline-item.left::before, .timeline-item.right::before { left: 60px; border: medium solid var(--border-color); border-width: 10px 10px 10px 0; border-color: transparent var(--border-color) transparent transparent; } 
-            .timeline-item.left::after, .timeline-item.right::after { left: 19px; } 
-            .timeline-item.right { left: 0%; }
-        }
-    </style>
+    @media (max-width:992px){
+      .connections-grid{grid-template-columns:1fr}
+      #details-pane{position:relative;top:0;margin-top:2rem}
+    }
+    @media (max-width:768px){
+      h2{font-size:2rem} #hero h1{font-size:3rem} #hero p{font-size:1.2rem} .main-nav ul{display:none}
+      .timeline::after{left:31px}
+      .timeline-item{width:100%;padding-left:70px;padding-right:25px}
+      .timeline-item.left::before,.timeline-item.right::before{left:60px;border:medium solid var(--border-color);border-width:10px 10px 10px 0;border-color:transparent var(--border-color) transparent transparent}
+      .timeline-item.left::after,.timeline-item.right::after{left:19px}
+      .timeline-item.right{left:0%}
+    }
+  </style>
 </head>
 <body>
+  <nav class="main-nav">
+    <div class="container">
+      <a href="#hero" class="logo">SAMEE<span>.</span>RAUF</a>
+      <ul>
+        <li><a href="#skills">Tools</a></li>
+        <!-- Removed Engineering Principles link -->
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#connections">Portfolio</a></li>
+        <li><a href="#posts">Posts</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <nav class="main-nav">
-        <div class="container">
-            <a href="#hero" class="logo">SAMEE<span>.</span>RAUF</a>
+  <section id="hero">
+    <div id="hero-canvas"></div>
+    <div class="hero-content">
+      <h1 class="fade-in">SAMEE RAUF</h1>
+      <p class="title fade-in">AI & Software Engineer</p>
+      <p class="tagline fade-in">Building reliable, observable AI systems and automation that scale from prototype to production.</p>
+      <div class="hero-links fade-in">
+        <a href="https://tinyurl.com/rauf-samee-resume" target="_blank" title="View Resume"><i class="fas fa-file-alt"></i></a>
+        <a href="https://github.com/srauf24" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Skills & Technologies with Certifications card -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="fade-in">Tools & Technologies</h2>
+        <p class="section-intro fade-in">Up-to-date stack spanning AI and ML, full-stack development, and production DevOps.</p>
+        <div class="skills-grid">
+          <div class="skill-category fade-in">
+            <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
             <ul>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#principles">Engineering Principles</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#connections">Portfolio</a></li>
-                <li><a href="#posts">Posts</a></li>
-                <li><a href="#contact">Contact</a></li>
+              <li>Generative AI: LangChain, GPT-4, Gemini, RAG systems</li>
+              <li>Machine Learning: Python, scikit-learn, predictive analytics</li>
+              <li>Data & Vectors: Qdrant, embeddings, prompt tooling</li>
             </ul>
-        </div>
-    </nav>
+          </div>
 
-    <section id="hero">
-        <div id="hero-canvas"></div>
-        <div class="hero-content">
-            <h1 class="fade-in">SAMEE RAUF</h1>
-            <p class="title fade-in">AI & Software Engineer</p>
-            <p class="tagline fade-in">Building reliable, observable AI systems and automation that scale from prototype to production.</p>
+          <div class="skill-category fade-in">
+            <h3><i class="fas fa-code"></i> Full-Stack Development</h3>
+            <ul>
+              <li>Languages: Python, Go, Java, C++, JavaScript</li>
+              <li>Frontend: React, Vite, Tailwind CSS</li>
+              <li>Backend: Node.js, Express.js, Go</li>
+              <li>Databases: PostgreSQL, SQLite, Firebase, MySQL</li>
+              <li>Auth & APIs: Clerk, OpenAPI</li>
+            </ul>
+          </div>
 
-            <div class="hero-links fade-in">
-                <a href="https://tinyurl.com/rauf-samee-resume" target="_blank" title="View Resume"><i class="fas fa-file-alt"></i></a>
-                <a href="https://github.com/srauf24" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
+          <div class="skill-category fade-in">
+            <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+            <ul>
+              <li>Cloud: AWS (S3, Lambda), Svella</li>
+              <li>Containers and CI/CD: Docker, Git, GitHub, CodeArtifact</li>
+              <li>Observability: Datadog, New Relic, OpenTelemetry</li>
+              <li>Delivery: zero downtime deploys, feature flags, runbooks</li>
+            </ul>
+          </div>
+
+          <!-- New Certifications card -->
+          <div class="skill-category fade-in">
+            <h3><i class="fas fa-certificate"></i> Certifications</h3>
+            <ul>
+              <li>AWS Certified Cloud Practitioner</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
 
-    <main>
-        <section id="skills">
-            <div class="container">
-                <h2 class="fade-in">Tools & Technologies</h2>
-                <p class="section-intro fade-in">My comprehensive skillset enables me to design, develop, and deploy end-to-end solutions across AI, full-stack development, and cloud infrastructure.</p>
-                <div class="skills-grid">
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
-                        <ul>
-                            <li>Generative AI: LangChain, GPT-4, Gemini API, RAG Systems</li>
-                            <li>Machine Learning: Python, Scikit-Learn, Predictive Analytics</li>
-                            <li>Data Processing: Qdrant, Vector Embeddings</li>
-                            <li>Forecasting & Causality: regression modeling, feature engineering, experiment design</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-code"></i> Full-Stack Development</h3>
-                        <ul>
-                            <li>Languages: Python, Java, JavaScript, C++</li>
-                            <li>Backend: Node.js, Express.js</li>
-                            <li>Frontend: React.js, HTML5, CSS3</li>
-                            <li>Databases: MySQL, Firebase, SQLite</li>
-                            <li>Product Practices: UX iteration, stakeholder feedback loops, onboarding & docs</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category fade-in">
-                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                        <ul>
-                            <li>Cloud: AWS (S3, Lambda), AWS Certified Cloud Practitioner</li>
-                            <li>Infrastructure & CI/CD: Progress Chef, Git, GitHub</li>
-                            <li>Observability: Datadog dashboards, SLIs/SLOs, structured logging, alerting</li>
-                            <li>Delivery: alpha/beta programs, canary rollouts, feature flags</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Removed the Engineering Principles section -->
 
-        <section id="principles">
-          <div class="container">
-            <h2 class="fade-in">Engineering Principles</h2>
-            <p class="section-intro fade-in">Beyond shipping code, I drive outcomes through sound architecture, observability, and tight feedback loops with users.</p>
-            <div class="skills-grid">
-              <div class="skill-category fade-in">
-                <h3><i class="fas fa-diagram-project"></i> Architecture & Quality</h3>
-                <ul>
-                  <li>Design reviews focused on scalability, maintainability, and clear ownership boundaries.</li>
-                  <li>Fail-fast validation, deterministic transforms, and robust retry/backoff on external APIs.</li>
-                  <li>Test coverage with pytest and CI checks.</li>
-                </ul>
-              </div>
-              <div class="skill-category fade-in">
-                <h3><i class="fas fa-chart-line"></i> Observability & Reliability</h3>
-                <ul>
-                  <li>Datadog dashboards tracking SLIs (runtime, memory, API success rates, event counts).</li>
-                  <li>Structured logs with error taxonomies; proactive alerts to prevent silent failures.</li>
-                  <li>Cost-aware designs replacing legacy pipelines and reducing operational toil.</li>
-                </ul>
-              </div>
-              <div class="skill-category fade-in">
-                <h3><i class="fas fa-users-gear"></i> Product & Delivery</h3>
-                <ul>
-                  <li>Alpha/beta releases to validate usability and de-risk launches.</li>
-                  <li>Scrum practices (planning, demos, retros) with measurable iteration goals.</li>
-                  <li>Onboarding guides, runbooks, and short Looms to accelerate adoption.</li>
-                </ul>
-              </div>
+    <!-- Experience -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="fade-in">My Professional Journey</h2>
+        <div class="timeline">
+          <div class="timeline-item left fade-in">
+            <div class="timeline-content">
+              <h3>AI & Software Engineer</h3>
+              <p class="company">PMG, Dallas, TX</p>
+              <p class="date">June 2024 – Present</p>
+              <ul>
+                <li>Optimized multi-million dollar media budgets for major QSR clients by building a predictive forecasting tool with weather data, statistical regression, and LangChain automation, delivering ~5% lift in return on ad spend across 5 programmatic teams.</li>
+                <li>Engineered an ad-creation automation system that integrates with ad APIs to generate bulk-upload sheets, saving 3 to 5 hours per campaign build per team member and enabling rapid scaling of launches across 25 teams.</li>
+                <li>Designed and deployed a domain-negation platform that programmatically screens unsafe or low-value sites and publishes exclusions via API across 10+ search accounts, increasing return on ad spend by ~10%.</li>
+                <li>Decommissioned a high-cost legacy platform by engineering a scalable, API-driven data ingestion system, eliminating thousands of dollars in monthly cloud costs and reducing technical debt.</li>
+                <li>Built reusable download utilities for Google Docs (Drive API) and Amazon S3, enabling media teams to programmatically ingest documents used in 100+ automated workflows.</li>
+                <li>Refactored internal data APIs to reduce errors, improve performance, and support new automation workflows, accelerating delivery of client-facing applications.</li>
+                <li>Implemented Datadog and OpenTelemetry monitoring for 10+ key metrics with zero-downtime deploys.</li>
+              </ul>
             </div>
           </div>
-        </section>
 
-        <section id="experience">
-            <div class="container">
-                <h2 class="fade-in">My Professional Journey</h2>
-                <div class="timeline">
-                    <div class="timeline-item left fade-in">
-                        <div class="timeline-content">
-                            <h3>AI & Software Engineer</h3>
-                            <p class="company">PMG, Dallas, TX</p>
-                            <p class="date">June 2024 – Present</p>
-                            <ul>
-                                <li>Co-created a budget optimization platform combining weather APIs, historical sales data, and regression modeling with LangChain automation—protecting ROI during adverse conditions and improving campaign performance by ~5%.</li>
-                                <li>Engineered an ad-creation automation system integrating with advertising APIs to generate bulk-upload sheets, saving 3–5 hours per campaign build per team member and enabling rapid scaling of launches.</li>
-                                <li>Designed and deployed a domain-negation service that programmatically screens unsafe/low-value sites and publishes exclusions via API across 10+ accounts, reducing waste and brand risk.</li>
-                                <li>Replaced a high-cost legacy pipeline with a scalable, API-driven offline-conversions architecture, cutting monthly costs, reducing technical debt, and achieving full observability with Datadog dashboards.</li>
-                                <li>Drove engineering efficiency by refactoring internal applications into intuitive, single-click workflows; simplified onboarding and eliminated a silent failure, raising install success by ~80 percentage points.</li>
-                            </ul>
-                        </div>
-                    </div>
-                     <div class="timeline-item right fade-in">
-                        <div class="timeline-content">
-                            <h3>Security Researcher</h3>
-                            <p class="company">CSUF (The Walt Disney Project)</p>
-                            <p class="date">August 2023 – May 2024</p>
-                            <ul>
-                                <li>Engineered an AI-driven automation system using an LLM within the GPT-4ALL ecosystem to generate and deploy reliable, audited system configurations, achieving a 35% reduction in management time.</li>
-                                <li>Presented findings to Disney stakeholders.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item left fade-in">
-                        <div class="timeline-content">
-                            <h3>Research Assistant</h3>
-                            <p class="company">CSUF</p>
-                            <p class="date">May 2023 – July 2023</p>
-                            <ul>
-                                <li>Trained a Random Forest model using Python and scikit-learn to classify student retention based on socioeconomic, macroeconomic, and academic factors, achieving 90% classification accuracy.</li>
-                                <li>Presented research at the National Conference on Undergraduate Research.</li>
-                            </ul>
-                        </div>
-                    </div>
-                     <div class="timeline-item right fade-in">
-                        <div class="timeline-content">
-                            <h3>Software Developer</h3>
-                            <p class="company">CSUF (LA County Project)</p>
-                            <p class="date">July 2022 – February 2023</p>
-                            <ul>
-                                <li>Architected and deployed a full-stack parking permit management system for LA County using React.js, Express.js, and SQLite.</li>
-                                <li>Served over 1,000 users and streamlined the parking permit process.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+          <div class="timeline-item right fade-in">
+            <div class="timeline-content">
+              <h3>Security Researcher</h3>
+              <p class="company">CSUF (The Walt Disney Project)</p>
+              <p class="date">August 2023 – May 2024</p>
+              <ul>
+                <li>Developed an automated system using the Snoozy LLM within the GPT-4ALL ecosystem to generate and deploy reliable, audited system configurations, improving efficiency and security.</li>
+                <li>Reduced system configuration management time by ~35% and presented findings to Disney stakeholders.</li>
+              </ul>
             </div>
-        </section>
+          </div>
 
-        <section id="connections">
-            <div class="container">
-                <h2 class="fade-in">Connected Portfolio</h2>
-                <p class="section-intro fade-in">Explore a selection of projects demonstrating expertise in AI, full-stack development, and scalable solutions. Click on any project to view detailed insights and associated technologies.</p>
-                <div class="connections-grid">
-                    <div class="connections-column fade-in">
-                        <h3><i class="fas fa-lightbulb"></i> Projects</h3>
-                        <div id="proj-forum" class="node project-node">
-                            <h4>Book Forum</h4>
-                        </div>
-                        <div id="proj-nba" class="node project-node">
-                            <h4>NBA Statistics Platform</h4>
-                        </div>
-                        <div id="proj-config-mgmt" class="node project-node">
-                            <h4>System Configuration Management</h4>
-                        </div>
-
-                    </div>
-
-                    <div class="connections-column fade-in">
-                        <h3><i class="fas fa-code"></i> Core Technologies</h3>
-                        <div id="skill-react" class="node">
-                            <h4>React.js</h4>
-                        </div>
-                        <div id="skill-express" class="node">
-                            <h4>Express.js</h4>
-                        </div>
-                        <div id="skill-sql" class="node">
-                            <h4>MySQL</h4>
-                        </div>
-                        <div id="skill-firebase" class="node">
-                            <h4>Firebase</h4>
-                        </div>
-                        <div id="skill-llm" class="node">
-                            <h4>Large Language Models</h4>
-                        </div>
-                        <div id="skill-python" class="node">
-                            <h4>Python</h4>
-                        </div>
-                        <div id="skill-chef" class="node">
-                            <h4>Progress Chef</h4>
-                        </div>
-                    </div>
-
-                    <div class="connections-column fade-in">
-                        <h3><i class="fas fa-info-circle"></i> Project Details</h3>
-                        <div id="details-pane">
-                            <div class="placeholder">
-                                <p>Click a project to see the details here.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="timeline-item left fade-in">
+            <div class="timeline-content">
+              <h3>Software Developer</h3>
+              <p class="company">Los Angeles County Project (CSUF)</p>
+              <p class="date">July 2022 – February 2023</p>
+              <ul>
+                <li>Built a full-stack parking management system using React and Express, serving 1,000+ users with custom UIs and server-side CRUD operations.</li>
+                <li>Implemented a relational schema in SQLite and a full suite of REST endpoints with Express.js for validation and CRUD.</li>
+              </ul>
             </div>
-        </section>
+          </div>
 
-        <section id="posts">
-            <div class="container">
-                <h2 class="fade-in">Featured Posts</h2>
-                <div class="posts-grid">
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7185653098718101504/" target="_blank" class="post-card fade-in">
-                        <div>
-                            <h3><i class="fab fa-linkedin"></i> Student Success Classification Research</h3>
-                            <p>Presented data science research on Student Success Classification in Higher Education at the National Conference on Undergraduate Research, engaging with over 4,000 undergraduates and showcasing a 90% accurate ML model.</p>
-                        </div>
-                        <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
-                    </a>
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7193378428006404096/" target="_blank" class="post-card fade-in">
-                        <div>
-                            <h3><i class="fab fa-linkedin"></i> AI-Driven System Configuration Management</h3>
-                            <p>Engineered an AI-driven automation system using an LLM that reduced system configuration management time by 35% and presented findings to Disney stakeholders.</p>
-                        </div>
-                        <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
-                    </a>
-                </div>
+          <div class="timeline-item right fade-in">
+            <div class="timeline-content">
+              <h3>Research Assistant</h3>
+              <p class="company">CSUF</p>
+              <p class="date">May 2023 – July 2023</p>
+              <ul>
+                <li>Trained a Random Forest model for student retention using socioeconomic and academic features, achieving ~90% accuracy; presented at NCUR.</li>
+              </ul>
             </div>
-        </section>
-
-        <section id="education">
-            <div class="container">
-                <h2 class="fade-in">Education</h2>
-                <div class="education-grid">
-                    <div class="education-card fade-in">
-                        <h3>California State University Fullerton</h3>
-                        <p>Bachelor of Science, Computer Science (GPA: 4.0)</p>
-                    </div>
-                    <div class="education-card fade-in">
-                        <h3>Cypress College</h3>
-                        <p>Associate of Science, Biology (GPA: 3.7/4.0)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="container fade-in">
-                <h2>Let's Connect</h2>
-                <p>I'm excited about opportunities to collaborate on impactful projects. If you have a question or an idea, please don't hesitate to reach out.</p>
-                <div class="contact-links">
-                    <a href="mailto:sameerauf1@gmail.com">Email Me</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Samee Rauf.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Connected Portfolio -->
+    <section id="connections">
+      <div class="container">
+        <h2 class="fade-in">Connected Portfolio</h2>
+        <p class="section-intro fade-in">Click a project to view details and see its tech graph.</p>
+        <div class="connections-grid">
+          <div class="connections-column fade-in">
+            <h3><i class="fas fa-lightbulb"></i> Projects</h3>
+            <div id="proj-garden" class="node project-node">
+                <h4>Garden Journal</h4>
+              </div>
+            <div id="proj-bookclub" class="node project-node">
+              <h4>Book Club</h4>
+            </div>
+            <div id="proj-nba" class="node project-node">
+              <h4>NBA Statistics Platform</h4>
+            </div>
+            <div id="proj-config-mgmt" class="node project-node">
+              <h4>System Configuration Management</h4>
+            </div>
+          </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/leader-line-new@1.1.9/leader-line.min.js"></script>
+          <div class="connections-column fade-in">
+            <h3><i class="fas fa-code"></i> Core Technologies</h3>
+            <div id="skill-react" class="node"><h4>React.js</h4></div>
+            <div id="skill-vite" class="node"><h4>Vite</h4></div>
+            <div id="skill-tailwind" class="node"><h4>Tailwind CSS</h4></div>
+            <div id="skill-express" class="node"><h4>Express.js</h4></div>
+            <div id="skill-sql" class="node"><h4>MySQL</h4></div>
+            <div id="skill-postgres" class="node"><h4>PostgreSQL</h4></div>
+            <div id="skill-sqlite" class="node"><h4>SQLite</h4></div>
+            <div id="skill-firebase" class="node"><h4>Firebase</h4></div>
+            <div id="skill-llm" class="node"><h4>Large Language Models</h4></div>
+            <div id="skill-python" class="node"><h4>Python</h4></div>
+            <div id="skill-go" class="node"><h4>Golang</h4></div>
+            <div id="skill-chef" class="node"><h4>Progress Chef</h4></div>
+            <div id="skill-docker" class="node"><h4>Docker</h4></div>
+            <div id="skill-aws" class="node"><h4>AWS (S3, Lambda)</h4></div>
+            <div id="skill-svella" class="node"><h4>Svella</h4></div>
+            <div id="skill-newrelic" class="node"><h4>New Relic</h4></div>
+            <div id="skill-datadog" class="node"><h4>Datadog</h4></div>
+            <div id="skill-opentelemetry" class="node"><h4>OpenTelemetry</h4></div>
+            <div id="skill-clerk" class="node"><h4>Clerk Authentication</h4></div>
+            <div id="skill-openapi" class="node"><h4>OpenAPI</h4></div>
+          </div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // --- Scroll Fade-in ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(el => observer.observe(el));
+          <div class="connections-column fade-in">
+            <h3><i class="fas fa-info-circle"></i> Project Details</h3>
+            <div id="details-pane">
+              <div class="placeholder"><p>Click a project to see the details here.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // --- Three.js Neural Network Animation ---
-        const heroCanvas = document.getElementById('hero-canvas');
-        if (heroCanvas) {
-            let scene, camera, renderer, nodes, lines; let mouseX = 0, mouseY = 0; let windowHalfX = window.innerWidth/2, windowHalfY = window.innerHeight/2;
-            const NODE_COUNT = 300, PLEXUS_RADIUS = 300;
-            init3D(); animate3D();
-            function init3D() {
-                scene = new THREE.Scene(); camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000); camera.position.z = 600;
-                const nodeGeometry = new THREE.SphereGeometry(4, 8, 8); const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0xff8c00, transparent: true, opacity: 0.8 });
-                nodes = new THREE.Group();
-                for (let i=0; i < NODE_COUNT; i++) {
-                    const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
-                    const [x, y, z] = [Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1];
-                    const d = 1 / Math.sqrt(x*x + y*y + z*z);
-                    node.position.set(x*d*PLEXUS_RADIUS, y*d*PLEXUS_RADIUS, z*d*PLEXUS_RADIUS);
-                    nodes.add(node);
-                }
-                scene.add(nodes);
-                const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 }); const lineGeometry = new THREE.BufferGeometry(); const positions = [];
-                for (let i=0; i < NODE_COUNT; i++) { for (let j=i+1; j < NODE_COUNT; j++) {
-                    const start = nodes.children[i].position; const end = nodes.children[j].position;
-                    if (start.distanceTo(end) < PLEXUS_RADIUS / 2.5) { positions.push(start.x, start.y, start.z); positions.push(end.x, end.y, end.z); }
-                }}
-                lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3)); lines = new THREE.LineSegments(lineGeometry, lineMaterial); scene.add(lines);
-                renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); renderer.setPixelRatio(window.devicePixelRatio); renderer.setSize(window.innerWidth, window.innerHeight); heroCanvas.appendChild(renderer.domElement);
-                document.addEventListener('mousemove', e => { mouseX = (e.clientX - windowHalfX) * 0.2; mouseY = (e.clientY - windowHalfY) * 0.2; });
-                window.addEventListener('resize', () => { windowHalfX = window.innerWidth/2; windowHalfY = window.innerHeight/2; camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
-            }
-            function animate3D() { requestAnimationFrame(animate3D); render3D(); }
-            function render3D() { camera.position.x += (mouseX - camera.position.x) * 0.05; camera.position.y += (-mouseY - camera.position.y) * 0.05; camera.lookAt(scene.position); const time = Date.now() * 0.0001; nodes.rotation.y = time; lines.rotation.y = time; renderer.render(scene, camera); }
+    <!-- Posts -->
+    <section id="posts">
+      <div class="container">
+        <h2 class="fade-in">Featured Posts</h2>
+        <div class="posts-grid">
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7185653098718101504/" target="_blank" class="post-card fade-in">
+            <div>
+              <h3><i class="fab fa-linkedin"></i> Student Success Classification Research</h3>
+              <p>Presented data science research on Student Success Classification in Higher Education at NCUR, showcasing a ~90% accurate ML model.</p>
+            </div>
+            <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7193378428006404096/" target="_blank" class="post-card fade-in">
+            <div>
+              <h3><i class="fab fa-linkedin"></i> AI-Driven System Configuration Management</h3>
+              <p>Engineered an automation system with an LLM that reduced configuration time by ~35% and presented findings to Disney stakeholders.</p>
+            </div>
+            <span class="post-link">Read more on LinkedIn <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <h2 class="fade-in">Education</h2>
+        <div class="education-grid">
+          <div class="education-card fade-in">
+            <h3>California State University Fullerton</h3>
+            <p>Bachelor of Science, Computer Science (GPA: 4.0)</p>
+          </div>
+          <div class="education-card fade-in">
+            <h3>Cypress College</h3>
+            <p>Associate of Science, Biology (GPA: 3.7/4.0)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container fade-in">
+        <h2>Let's Connect</h2>
+        <p>If you have a project or idea, reach out and I’ll get back quickly.</p>
+        <div class="contact-links">
+          <a href="mailto:sameerauf1@gmail.com">Email: sameerauf1@gmail.com</a>
+          <a href="tel:+17146036427">Phone: 714-603-6427</a>
+          <a href="https://sameerauf.dev" target="_blank">sameerauf.dev</a>
+          <a href="https://github.com/srauf24" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container"><p>&copy; 2025 Samee Rauf.</p></div></footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leader-line-new@1.1.9/leader-line.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})},{threshold:.1});
+      document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+      const heroCanvas=document.getElementById('hero-canvas');
+      if(heroCanvas){
+        let scene,camera,renderer,nodes,lines;let mouseX=0,mouseY=0;let windowHalfX=innerWidth/2,windowHalfY=innerHeight/2;
+        const NODE_COUNT=300, PLEXUS_RADIUS=300;
+        init3D(); animate3D();
+        function init3D(){
+          scene=new THREE.Scene();
+          camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,1,10000); camera.position.z=600;
+          const nodeGeometry=new THREE.SphereGeometry(4,8,8);
+          const nodeMaterial=new THREE.MeshBasicMaterial({color:0xff8c00,transparent:true,opacity:.8});
+          nodes=new THREE.Group();
+          for(let i=0;i<NODE_COUNT;i++){
+            const node=new THREE.Mesh(nodeGeometry,nodeMaterial);
+            const [x,y,z]=[Math.random()*2-1,Math.random()*2-1,Math.random()*2-1];
+            const d=1/Math.sqrt(x*x+y*y+z*z);
+            node.position.set(x*d*PLEXUS_RADIUS,y*d*PLEXUS_RADIUS,z*d*PLEXUS_RADIUS); nodes.add(node);
+          }
+          scene.add(nodes);
+          const lineMaterial=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.05});
+          const lineGeometry=new THREE.BufferGeometry(); const positions=[];
+          for(let i=0;i<NODE_COUNT;i++){for(let j=i+1;j<NODE_COUNT;j++){
+            const a=nodes.children[i].position,b=nodes.children[j].position;
+            if(a.distanceTo(b)<PLEXUS_RADIUS/2.5){positions.push(a.x,a.y,a.z,b.x,b.y,b.z)}
+          }}
+          lineGeometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));
+          lines=new THREE.LineSegments(lineGeometry,lineMaterial); scene.add(lines);
+          renderer=new THREE.WebGLRenderer({antialias:true,alpha:true}); renderer.setPixelRatio(devicePixelRatio); renderer.setSize(innerWidth,innerHeight);
+          heroCanvas.appendChild(renderer.domElement);
+          document.addEventListener('mousemove',e=>{mouseX=(e.clientX-windowHalfX)*.2;mouseY=(e.clientY-windowHalfY)*.2});
+          addEventListener('resize',()=>{windowHalfX=innerWidth/2;windowHalfY=innerHeight/2;camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
         }
+        function animate3D(){requestAnimationFrame(animate3D);render3D()}
+        function render3D(){camera.position.x+=(mouseX-camera.position.x)*.05;camera.position.y+=(-mouseY-camera.position.y)*.05;camera.lookAt(scene.position);const t=Date.now()*0.0001;nodes.rotation.y=t;lines.rotation.y=t;renderer.render(scene,camera)}
+      }
 
-        // --- Connected Portfolio Logic with Details Pane ---
-        const portfolioData = {
-            'proj-forum': {
-                title: 'Book Forum',
-                image: 'https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80&w=800&auto=format&fit=crop',
-                description: '<ul><li>Engineered a full-stack book club platform using React and Firebase.</li><li>Features real-time CRUD operations and secure user authentication.</li><li>AI-powered book recommendations via the Gemini API.</li></ul>',
-                links: { github: 'https://github.com/srauf24/forum', demo: 'https://bookclub-khaki.vercel.app' },
-                skills: ['skill-react', 'skill-firebase', 'skill-llm']
-            },
-            'proj-nba': {
-                title: 'NBA Statistics Platform',
-                image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop',
-                description: '<ul><li>Developed an intuitive NBA statistics application using React.js, Express.js and MySQL.</li><li>Enhanced user experience in accessing detailed game information.</li><li>Implemented backend endpoints for efficient data retrieval.</li></ul>',
-                links: { github: 'https://github.com/jpope6/nba-database', demo: null },
-                skills: ['skill-react', 'skill-sql', 'skill-express']
-            },
-            'proj-config-mgmt': {
-                title: 'System Configuration Management',
-                image: 'https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?q=80&w=800&auto=format&fit=crop',
-                description: '<ul><li>Presented research on AI-Driven Virtual Machine Provisioning at The Walt Disney Company.</li><li>Engineered an automation system using an LLM that reduced system configuration management time by 35%.</li><li>Collaborated with Disney mentors on the imagineering process to enhance cloud security.</li></ul>',
-                links: { github: '#', demo: null },
-                skills: ['skill-python', 'skill-llm', 'skill-chef']
-            },
-            'proj-ads-automation': {
-                title: 'Ad Creation Automation',
-                image: 'https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=800&auto=format&fit=crop',
-                description: '<ul><li>Bulk ad creation via advertising APIs with schema validation and pre-flight checks.</li><li>Generates upload-ready sheets; saves 3–5 hours per campaign build per team member.</li><li>Designed for scale and reliability with clear error surfaces.</li></ul>',
-                links: { github: '#', demo: null },
-                skills: ['skill-python', 'skill-llm']
-            }
-        };
-
-        let activeLines = [];
-        const allNodes = document.querySelectorAll('.node');
-        const projectNodes = document.querySelectorAll('.project-node');
-        const detailsPane = document.getElementById('details-pane');
-
-        function updatePortfolioView(projectId) {
-            activeLines.forEach(line => line.remove());
-            activeLines = [];
-            allNodes.forEach(node => {
-                node.classList.remove('highlighted', 'dimmed');
-            });
-
-            const projectData = portfolioData[projectId];
-            if (!projectData) return;
-
-            const startNode = document.getElementById(projectId);
-
-            allNodes.forEach(node => node.classList.add('dimmed'));
-            startNode.classList.remove('dimmed');
-            startNode.classList.add('highlighted');
-
-            projectData.skills.forEach(endId => {
-                const endNode = document.getElementById(endId);
-                if (endNode) {
-                    endNode.classList.remove('dimmed');
-                    endNode.classList.add('highlighted');
-                    const line = new LeaderLine(startNode, endNode, {
-                        color: 'rgba(255, 140, 0, 0.8)', size: 3, path: 'fluid',
-                        endPlug: 'behind', startSocket: 'right', endSocket: 'left',
-                        dash: { animation: true }
-                    });
-                    activeLines.push(line);
-                }
-            });
-
-            let linksHTML = '';
-            if (projectData.links.github && projectData.links.github !== '#') {
-                linksHTML += `<a href="${projectData.links.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`;
-            }
-            if (projectData.links.demo) {
-                linksHTML += `<a href="${projectData.links.demo}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
-            }
-
-            detailsPane.innerHTML = `
-                <img src="${projectData.image}" alt="${projectData.title}" class="project-image">
-                <h3>${projectData.title}</h3>
-                <div class="project-description">${projectData.description}</div>
-                <div class="project-links">${linksHTML || '<span style="color:#b3b3b3;">Links coming soon</span>'}</div>
-            `;
+      const portfolioData={
+        'proj-bookclub':{
+          title:'Book Club',
+          image:'https://images.unsplash.com/photo-1550399105-c4db5fb85c18?q=80&w=800&auto=format&fit=crop',
+          description:'<ul><li>Real-time full-stack SPA with posts, comments, likes, reading lists, and AI book recommendations.</li><li>Built with React, Vite, Tailwind, Firebase (Auth/Firestore/Storage), and Gemini.</li></ul>',
+          links:{github:'https://github.com/srauf24/forum',demo:null},
+          skills:['skill-react','skill-vite','skill-tailwind','skill-firebase','skill-llm']
+        },
+        'proj-nba':{
+          title:'NBA Statistics Platform',
+          image:'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop',
+          description:'<ul><li>React + Express + MySQL app for exploring team and game stats with efficient backend endpoints.</li></ul>',
+          links:{github:'https://github.com/jpope6/nba-database',demo:null},
+          skills:['skill-react','skill-express','skill-sql']
+        },
+        'proj-config-mgmt':{
+          title:'System Configuration Management',
+          image:'https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?q=80&w=800&auto=format&fit=crop',
+          description:'<ul><li>AI-Driven VM provisioning research for The Walt Disney Company using an LLM to produce audited configurations, reducing management time by ~35%.</li></ul>',
+          links:{github:'#',demo:null},
+          skills:['skill-python','skill-llm','skill-chef','skill-opentelemetry']
+        },
+        'proj-garden':{
+          title:'Garden Journal',
+          image:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop',
+          description:'<ul><li>Web-first app using Go, React, PostgreSQL, and Clerk authentication to log plants and enrich growth data with live weather from Open-Meteo.</li><li>Production-ready API layer with 10+ OpenAPI endpoints, SQL migrations, and database triggers for integrity.</li><li>Deployed on Svella with object storage for media and New Relic monitoring, 99.9% uptime and &lt;150ms API responses.</li></ul>',
+          links:{github:'https://github.com/srauf24/garden_journal',demo:null},
+          skills:['skill-go','skill-react','skill-postgres','skill-clerk','skill-openapi','skill-svella','skill-newrelic','skill-aws','skill-docker']
         }
-        
-        projectNodes.forEach(projNode => {
-            projNode.addEventListener('click', () => {
-                updatePortfolioView(projNode.id);
-            });
+      };
+
+      let activeLines=[];
+      const allNodes=document.querySelectorAll('.node');
+      const projectNodes=document.querySelectorAll('.project-node');
+      const detailsPane=document.getElementById('details-pane');
+
+      function updatePortfolioView(projectId){
+        activeLines.forEach(l=>l.remove()); activeLines=[];
+        allNodes.forEach(n=>n.classList.remove('highlighted','dimmed'));
+        const data=portfolioData[projectId]; if(!data) return;
+        const startNode=document.getElementById(projectId);
+        allNodes.forEach(n=>n.classList.add('dimmed'));
+        startNode.classList.remove('dimmed'); startNode.classList.add('highlighted');
+
+        data.skills.forEach(endId=>{
+          const endNode=document.getElementById(endId);
+          if(endNode){
+            endNode.classList.remove('dimmed'); endNode.classList.add('highlighted');
+            const line=new LeaderLine(startNode,endNode,{color:'rgba(255,140,0,0.8)',size:3,path:'fluid',endPlug:'behind',startSocket:'right',endSocket:'left',dash:{animation:true}});
+            activeLines.push(line);
+          }
         });
 
-        if (projectNodes.length > 0) {
-            updatePortfolioView(projectNodes[0].id);
-        }
+        let linksHTML='';
+        if(data.links.github && data.links.github!=='#'){linksHTML+=`<a href="${data.links.github}" target="_blank"><i class="fab fa-github"></i> GitHub</a>`}
+        if(data.links.demo){linksHTML+=`<a href="${data.links.demo}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>`}
+
+        detailsPane.innerHTML=`
+          <img src="${data.image}" alt="${data.title}" class="project-image" />
+          <h3>${data.title}</h3>
+          <div class="project-description">${data.description}</div>
+          <div class="project-links">${linksHTML || '<span style="color:#b3b3b3;">Links coming soon</span>'}</div>
+        `;
+      }
+
+      projectNodes.forEach(n=>n.addEventListener('click',()=>updatePortfolioView(n.id)));
+      if(projectNodes.length>0){ updatePortfolioView(projectNodes[0].id); }
     });
-    </script>
+  </script>
 </body>
 </html>
