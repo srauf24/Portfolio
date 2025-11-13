@@ -1,364 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Samee Rauf | AI & Software Engineer</title>
-
+  <meta name="description" content="Samee Rauf - AI & Software Engineer. I build reliable, observable systems with curiosity and ihsan - doing things beautifully in both life and engineering.">
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet"/>
 
   <style>
     :root{
-      --bg:#0f1115; --card:#151822; --muted:#9aa4b2; --text:#f2f4f8; --accent:#ff8c00; --stroke:#232838;
-      --pill:#1e2533; --pill-text:#cbd5e1; --link:#e5e7eb;
+      --bg:#0f1115; --bg-alt:#151822; --card:#1b1e29; --muted:#9aa4b2; --text:#f2f4f8;
+      --accent:#ff8c00; --stroke:#232838; --pill:#1e2533; --pill-text:#cbd5e1;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
-    a{color:var(--link);text-decoration:none}
-    a:hover{color:var(--accent)}
-    .container{max-width:1000px;margin:0 auto;padding:0 20px}
-    header.nav{position:sticky;top:0;z-index:10;background:rgba(15,17,21,.7);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--stroke)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
-    .brand{font-weight:800;letter-spacing:.2px}
-    .brand span{color:var(--accent)}
-    .nav-links{display:flex;gap:16px}
-    .nav-links a{font-size:.95rem;color:var(--muted)}
-    .nav-links a:hover{color:var(--accent)}
+    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+    a{color:var(--accent);text-decoration:none;transition:color .2s ease;}
+    a:hover{text-decoration:underline;color:var(--accent)}
+    section{padding:72px 0;border-top:1px solid var(--stroke)}
+    h2{font-size:1.8rem;margin-bottom:14px;font-weight:700}
+    p.kicker{color:var(--muted);margin-bottom:22px;font-size:1.05rem}
+    .container{max-width:900px;margin:0 auto;padding:0 20px}
+
+    /* Animation */
+    section, header, footer {opacity:0;transform:translateY(30px);animation:fadeIn 1s forwards;}
+    @keyframes fadeIn {to{opacity:1;transform:translateY(0);}}
+
+    /* Navigation */
+    .top-nav {
+      position: sticky;top: 0;z-index: 50;
+      background: rgba(15,17,21,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav-inner {display:flex;align-items:center;justify-content:space-between;height:58px;}
+    .brand{font-weight:800;letter-spacing:.3px;color:var(--text);}
+    .links{display:flex;gap:18px;}
+    .links a{color:var(--muted);font-size:.95rem;}
+    .links a:hover{color:var(--accent);}
+    @media(max-width:720px){.links{display:none}}
 
     /* Hero */
-    .hero{padding:56px 0 24px;border-bottom:1px solid var(--stroke);background:
-      radial-gradient(1200px 500px at 50% -50%,rgba(255,140,0,.08),transparent 60%)}
-    .hero h1{font-size:2.4rem;letter-spacing:.2px}
-    .sub{color:var(--muted);margin-top:6px}
-    .quick{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
-    .pill{background:var(--pill);color:var(--pill-text);padding:6px 10px;border-radius:999px;font-size:.85rem;border:1px solid var(--stroke)}
-    .cta{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px}
-    .cta a{padding:8px 12px;border:1px solid var(--stroke);border-radius:8px;font-weight:500}
-    .cta a.primary{background:var(--accent);color:#111;font-weight:700;border:none}
+    header{
+      background:radial-gradient(900px 400px at 50% -50%,rgba(255,140,0,0.12),transparent 70%);
+      text-align:center;
+      padding:120px 20px 80px;
+    }
+    header h1{font-size:3rem;font-weight:800;letter-spacing:.3px;margin-bottom:10px;}
+    header h2{color:var(--muted);font-weight:500;margin-bottom:28px;}
+    .cta{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
+    .cta a{
+      padding:12px 24px;
+      border-radius:8px;
+      font-weight:600;
+      border:1px solid var(--accent);
+      transition:all .25s ease;
+    }
+    .cta a.primary{background:var(--accent);color:#111;border:none;}
+    .cta a:hover{opacity:.9;transform:translateY(-2px);}
 
-    /* Sections */
-    section{padding:44px 0}
-    h2{font-size:1.6rem;margin-bottom:18px}
-    .kicker{color:var(--muted);margin-bottom:18px}
+    /* Alternating backgrounds */
+    section:nth-of-type(even){background:var(--bg-alt);}
 
-    /* Cards / lists */
-    .grid{display:grid;gap:16px}
-    .grid.cols-2{grid-template-columns:1fr 1fr}
-    .card{background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:18px}
-    .card h3{font-size:1.15rem;margin-bottom:6px}
-    .meta{color:var(--muted);font-size:.95rem;margin-bottom:10px}
-    .bullets{margin:6px 0 0 0}
-    .bullets li{margin:6px 0 0 18px;color:var(--text)}
-    .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .stack .pill{font-size:.8rem;padding:5px 8px}
+    /* Pills */
+    .pill{background:var(--pill);color:var(--pill-text);padding:6px 12px;border-radius:999px;font-size:.9rem;}
+    .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 
-    /* Experience rows */
-    .xp{display:grid;grid-template-columns:220px 1fr;gap:18px}
-    .xp .where{color:var(--muted);font-size:.95rem}
-    .xp h3{margin:0}
-    .xp + .xp{margin-top:18px}
-    .xp .bullets li b{font-weight:700;color:var(--text)}
+    /* Experience */
+    .xp{background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:24px;margin-bottom:32px;}
+    .xp h3{margin-bottom:6px;font-size:1.15rem;}
+    .xp ul{margin-left:18px;margin-top:10px;}
+    .xp li{margin:6px 0;}
 
     /* Projects */
-    .proj .top{display:flex;justify-content:space-between;gap:8px;align-items:center}
-    .proj .links a{font-size:.9rem}
+    .project{background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:24px;margin-bottom:28px;}
+    .project-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+    .project-links a{font-size:.9rem;color:var(--accent);}
+    .tech-summary{color:var(--muted);font-size:.9rem;margin-top:10px;font-style:italic;}
 
-    /* Skills */
-    .skills .col h3{margin-bottom:8px}
-    .skills .col ul{list-style:none}
-    .skills .col li{margin:4px 0;color:var(--text)}
-    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    /* Outside */
+    .outside ul{list-style:none;padding:0;}
+    .outside li{margin:8px 0;}
 
-    /* Education & contact */
-    .edu .item + .item{margin-top:10px}
-    .contact .links{display:flex;flex-wrap:wrap;gap:10px}
+    footer{text-align:center;padding:40px 0;color:var(--muted);border-top:1px solid var(--stroke);font-size:.95rem;}
 
-    /* Footer */
-    footer{border-top:1px solid var(--stroke);padding:24px 0;color:var(--muted);font-size:.95rem;margin-top:12px}
-
-    /* Responsive */
-    @media (max-width:860px){
-      .grid.cols-2{grid-template-columns:1fr}
-      .xp{grid-template-columns:1fr}
-    }
-
-    /* Print-friendly tweaks */
-    @media print{
-      header.nav, .cta{display:none}
-      section{padding:18px 0}
-      body{background:#fff;color:#000}
-      .card{border:1px solid #ddd}
-      a{color:#000}
-    }
+    /* Scroll-top */
+    .scroll-top{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#111;
+      padding:8px 10px;border-radius:8px;font-weight:700;cursor:pointer;opacity:.9;}
+    .scroll-top:hover{opacity:1;}
   </style>
 </head>
+
 <body>
-  <header class="nav">
+
+  <nav class="top-nav">
     <div class="container nav-inner">
-      <div class="brand">SAMEE<span>.RAUF</span></div>
-      <nav class="nav-links">
+      <div class="brand">SAMEE<span style="color:var(--accent)">.RAUF</span></div>
+      <div class="links">
+        <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <h1>Samee Rauf</h1>
+      <h2>Building human-centered AI systems with curiosity and <span style="color:var(--accent)">ihsan</span>.</h2>
+      <div class="cta">
+        <a class="primary"
+           href="https://mail.google.com/mail/?view=cm&fs=1&to=sameerauf1@gmail.com&su=Hello%20Samee!&body=Hi%20Samee%2C%20I%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect."
+           target="_blank" rel="noopener">✉️ Email Me</a>
+        <a href="/assets/Samee_Rauf_Resume.pdf" download="Samee_Rauf_Resume.pdf">📄 Download Resume</a>
+        <a href="https://linkedin.com/in/samee-rauf" target="_blank">💼 LinkedIn</a>
+        <a href="https://github.com/srauf24" target="_blank">🐙 GitHub</a>
+      </div>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="container">
-      <h1>Samee Rauf — AI & Software Engineer</h1>
-      <p class="sub">I build reliable, observable AI systems and full-stack apps that move business metrics.</p>
-
-      <div class="quick">
-        <span class="pill">Go</span>
-        <span class="pill">React</span>
-        <span class="pill">PostgreSQL</span>
-        <span class="pill">AWS</span>
-        <span class="pill">Docker</span>
-        <span class="pill">Datadog / New Relic</span>
-        <span class="pill">OpenTelemetry</span>
-        <span class="pill">Clerk</span>
-        <span class="pill">OpenAPI</span>
-        <span class="pill">LangChain</span>
-        <span class="pill">Python</span>
-      </div>
-
-      <div class="cta">
-<a class="primary"
-   href="/assets/Samee_Rauf_Resume.pdf"
-   download="Samee_Rauf_Resume.pdf"
-   rel="noopener">
-  Download Resume
-</a>        <a href="mailto:sameerauf1@gmail.com">sameerauf1@gmail.com</a>
-        <a href="tel:+17146036427">714-603-6427</a>
-        <a href="https://github.com/srauf24" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-
-      <div class="badge-row" style="margin-top:12px">
-        <span class="pill" title="Certification">AWS Certified Cloud Practitioner</span>
-      </div>
-    </div>
-  </section>
-
-  <main id="main">
-    <!-- SKILLS -->
-    <section id="skills">
+  <main>
+    <section id="about" class="about">
       <div class="container">
-        <h2>Skills & Tools</h2>
-        <p class="kicker">Modern stack across AI/ML, full-stack, and production DevOps.</p>
-        <div class="grid cols-2 skills">
-          <div class="card col">
-            <h3>AI & ML</h3>
-            <ul>
-              <li>Generative AI: LangChain, GPT-4, Gemini, RAG</li>
-              <li>ML: Python, scikit-learn, predictive analytics</li>
-              <li>Vectors & Data: Qdrant, embeddings, prompt tooling</li>
-            </ul>
-          </div>
-          <div class="card col">
-            <h3>Full-Stack</h3>
-            <ul>
-              <li>Languages: Go, Python, JavaScript, Java, C++</li>
-              <li>Frontend: React, Vite, Tailwind</li>
-              <li>Backend: Go services, Node.js, Express</li>
-              <li>Databases: PostgreSQL, SQLite, Firebase, MySQL</li>
-              <li>Auth & APIs: Clerk, OpenAPI</li>
-            </ul>
-          </div>
-          <div class="card col">
-            <h3>Cloud & DevOps</h3>
-            <ul>
-              <li>AWS (S3, Lambda), Svella (deploy + object storage)</li>
-              <li>Docker, Git/GitHub, CodeArtifact</li>
-              <li>Observability: Datadog, New Relic, OpenTelemetry</li>
-              <li>Zero-downtime deploys, feature flags, runbooks</li>
-            </ul>
-          </div>
-          <div class="card col">
-            <h3>Certifications</h3>
-            <ul>
-              <li><b>AWS Certified Cloud Practitioner</b></li>
-            </ul>
-          </div>
+        <h2>About Me</h2>
+        <p>I’m a Software Engineer at <b>PMG</b> who loves building systems that connect data, automation, and creativity.
+        My background in biology taught me to see code like a living system - interdependent, adaptive, and purposeful.</p>
+        <p>I care deeply about observability, elegant architecture, and building with intention - guided by curiosity and faith in doing things beautifully.</p>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2>Core Skills</h2>
+        <div class="pills">
+          <span class="pill">Python</span><span class="pill">Go</span><span class="pill">React</span>
+          <span class="pill">Node.js</span><span class="pill">PostgreSQL</span><span class="pill">AWS</span>
+          <span class="pill">Docker</span><span class="pill">Datadog</span><span class="pill">OpenTelemetry</span>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
     <section id="experience">
       <div class="container">
-        <h2>Experience</h2>
-
-        <div class="card xp">
-          <div class="where"><b>PMG Worldwide</b><br/>Dallas, TX<br/>June 2024 — Present</div>
-          <div>
-            <h3>AI Software Engineer</h3>
-            <ul class="bullets">
-              <li><b>~5% ROAS lift</b> for major QSR clients by building a predictive forecasting tool using weather data, statistical regression, and LangChain across <b>5 programmatic teams</b>.</li>
-              <li>Engineered ad-creation automation integrating Ad APIs to generate bulk-upload sheets, saving <b>3–5 hrs</b> per campaign per team member and scaling launches across <b>25 teams</b>.</li>
-              <li>Designed a domain-negation platform that screens unsafe/low-value sites and publishes exclusions via API across <b>10+ search accounts</b>, improving ROAS by <b>~10%</b>.</li>
-              <li>Decommissioned a legacy platform via a scalable, API-driven ingestion system, eliminating <b>$1,000+/mo</b> in cloud cost and reducing tech debt.</li>
-              <li>Built reusable download utilities for <b>Google Drive API</b> and <b>Amazon S3</b>, powering <b>100+ automated workflows</b>.</li>
-              <li>Refactored internal data APIs to reduce errors, improve performance, and unlock new automation workflows.</li>
-              <li>Implemented <b>Datadog</b> & <b>OpenTelemetry</b> for <b>10+ key metrics</b> with zero-downtime deploys.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">Python</span><span class="pill">LangChain</span><span class="pill">Drive API</span>
-              <span class="pill">S3</span><span class="pill">Datadog</span><span class="pill">OpenTelemetry</span>
-            </div>
+        <h2>Experience Highlights</h2>
+        <div class="xp">
+          <h3>PMG · AI Software Engineer <span style="color:var(--muted)">2024 – Present</span></h3>
+          <ul>
+            <li>Developed a forecasting system that improved ROAS by <b>~5%</b> across multiple enterprise clients.</li>
+            <li>Automated campaign workflows across <b>25+ teams</b>, saving ~3–5 hours per launch.</li>
+            <li>Integrated <b>Datadog</b> & <b>OpenTelemetry</b> for live performance metrics and alerting.</li>
+          </ul>
+          <div class="stack">
+            <span class="pill">Python</span><span class="pill">LangChain</span><span class="pill">Datadog</span><span class="pill">S3</span>
           </div>
         </div>
 
-        <div class="card xp">
-          <div class="where"><b>CSUF × The Walt Disney Company</b><br/>Anaheim, CA<br/>Aug 2023 — May 2024</div>
-          <div>
-            <h3>Security Researcher</h3>
-            <ul class="bullets">
-              <li>Built an automated system using the <b>Snoozy</b> LLM (GPT-4ALL ecosystem) to generate and deploy reliable, audited system configurations.</li>
-              <li>Reduced configuration management time by <b>~35%</b> and presented results to Disney stakeholders.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">LLM</span><span class="pill">Python</span><span class="pill">Automation</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card xp">
-          <div class="where"><b>Los Angeles County (CSUF)</b><br/>Fullerton, CA<br/>Jul 2022 — Feb 2023</div>
-          <div>
-            <h3>Software Developer</h3>
-            <ul class="bullets">
-              <li>Delivered a full-stack parking permit system in <b>React</b> & <b>Express</b>, serving <b>1,000+ users</b> with custom UIs and robust CRUD.</li>
-              <li>Designed a relational schema in <b>SQLite</b> and implemented a full suite of validated REST endpoints.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">React</span><span class="pill">Express</span><span class="pill">SQLite</span>
-              <span class="pill">REST</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card xp">
-          <div class="where"><b>CSUF</b><br/>Fullerton, CA<br/>May 2023 — Jul 2023</div>
-          <div>
-            <h3>Research Assistant</h3>
-            <ul class="bullets">
-              <li>Trained a Random Forest model for student retention using socioeconomic & academic factors, achieving <b>~90% accuracy</b> (presented at NCUR).</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">Python</span><span class="pill">scikit-learn</span><span class="pill">Random Forest</span>
-            </div>
+        <div class="xp">
+          <h3>Disney × CSUF · Security Researcher <span style="color:var(--muted)">2023 – 2024</span></h3>
+          <ul>
+            <li>Built an <b>LLM-driven</b> system to automate secure VM provisioning for Disney’s cloud environment.</li>
+            <li>Reduced configuration time by <b>35%</b> while maintaining audit-ready reliability.</li>
+          </ul>
+          <div class="stack">
+            <span class="pill">Python</span><span class="pill">LLM</span><span class="pill">Automation</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
+    <section id="projects" class="projects">
       <div class="container">
-        <h2>Projects</h2>
-        <p class="kicker">Clear scope, measurable outcomes, and the stack used.</p>
+        <h2>Featured Projects</h2>
 
-        <div class="grid">
-          <div class="card proj">
-            <div class="top">
-              <h3>Garden Journal</h3>
-              <div class="links"><a href="https://github.com/srauf24/garden_journal" target="_blank" rel="noopener">GitHub →</a></div>
-            </div>
-            <p class="meta">Oct 2025 — Current</p>
-            <ul class="bullets">
-              <li>Web-first app to log plants; enrich growth data with live weather (Open-Meteo).</li>
-              <li>Production API with <b>10+</b> documented <b>OpenAPI</b> endpoints, SQL migrations & triggers for data integrity.</li>
-              <li>Deployed on <b>Svella</b> with object storage and <b>New Relic</b> monitoring; <b>99.9% uptime</b> and <b><150ms</b> API responses.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">Go</span><span class="pill">React</span><span class="pill">PostgreSQL</span>
-              <span class="pill">Clerk</span><span class="pill">Open-Meteo API</span>
-              <span class="pill">OpenAPI</span><span class="pill">Svella</span><span class="pill">New Relic</span>
+        <div class="project">
+          <div class="project-header">
+            <h3>🌱 Garden Journal</h3>
+            <div class="project-links"><a href="https://github.com/srauf24/garden_journal" target="_blank">GitHub →</a></div>
+          </div>
+          <ul>
+            <li>A full-stack app that tracks plant growth through weather data using <b>Open-Meteo API</b>.</li>
+            <li>Built with <b>Go</b>, <b>React</b>, and <b>PostgreSQL</b> following a clean service-repository architecture.</li>
+            <li>Integrated <b>New Relic</b> for performance monitoring and achieved <b>99.9% uptime</b>.</li>
+            <li>Includes automated logging, data validation, and secure user auth via <b>Clerk</b>.</li>
+          </ul>
+          <p class="tech-summary">Tech Stack: Go • React • PostgreSQL • Clerk • Open-Meteo API • Svella • New Relic</p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <h3>📚 Book Forum</h3>
+            <div class="project-links">
+              <a href="https://github.com/srauf24/forum" target="_blank">GitHub →</a>
+              <a href="https://book-forum-demo.vercel.app" target="_blank">Demo →</a>
             </div>
           </div>
+          <ul>
+            <li>Real-time social platform where users share book discussions, reviews, and reading lists.</li>
+            <li>Implemented <b>AI book recommendations</b> using <b>Gemini API</b> based on engagement data.</li>
+            <li>Built with <b>React</b>, <b>Vite</b>, and <b>Firebase</b> for authentication, storage, and real-time updates.</li>
+            <li>Responsive UI and modular architecture allow for easy scalability and future LLM integrations.</li>
+          </ul>
+          <p class="tech-summary">Tech Stack: React • Vite • Tailwind • Firebase (Auth, Firestore, Storage) • Gemini API</p>
+        </div>
 
-          <div class="card proj">
-            <div class="top">
-              <h3>Book Club</h3>
-              <div class="links"><a href="https://github.com/srauf24/forum" target="_blank" rel="noopener">GitHub →</a></div>
-            </div>
-            <p class="meta">Jan 2025 — Feb 2025</p>
-            <ul class="bullets">
-              <li>Real-time SPA: posts/comments, likes, reading lists, AI book recommendations.</li>
-              <li>Shipped with auth, Firestore data, and storage for media.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">React</span><span class="pill">Vite</span><span class="pill">Tailwind</span>
-              <span class="pill">Firebase</span><span class="pill">Gemini</span>
-            </div>
+        <div class="project">
+          <div class="project-header">
+            <h3>🏀 NBA Statistics Platform</h3>
+            <div class="project-links"><a href="https://github.com/jpope6/nba-database" target="_blank">GitHub →</a></div>
           </div>
-
-          <div class="card proj">
-            <div class="top">
-              <h3>NBA Statistics Platform</h3>
-              <div class="links"><a href="https://github.com/jpope6/nba-database" target="_blank" rel="noopener">GitHub →</a></div>
-            </div>
-            <ul class="bullets">
-              <li>React + Express + MySQL app for exploring team & game stats with efficient endpoints.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">React</span><span class="pill">Express</span><span class="pill">MySQL</span>
-            </div>
-          </div>
-
-          <div class="card proj">
-            <div class="top">
-              <h3>System Configuration Management</h3>
-            </div>
-            <ul class="bullets">
-              <li>AI-driven VM provisioning research using an LLM to produce audited configs; ~35% time reduction.</li>
-            </ul>
-            <div class="stack">
-              <span class="pill">Python</span><span class="pill">LLM</span><span class="pill">Automation</span>
-            </div>
-          </div>
+          <ul>
+            <li>Interactive analytics dashboard for exploring historical and real-time NBA data.</li>
+            <li>Designed performant REST APIs and visual components for live comparisons and leaderboards.</li>
+            <li>Emphasized modular architecture for scalability and clean separation of front- and back-end logic.</li>
+          </ul>
+          <p class="tech-summary">Tech Stack: React • Express • MySQL • REST APIs</p>
         </div>
       </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
+    <section id="outside" class="outside">
       <div class="container">
-        <h2>Education</h2>
-        <div class="card edu">
-          <div class="item"><b>California State University Fullerton</b> — B.S. Computer Science, GPA 4.0</div>
-          <div class="item">Cypress College — A.S. Biology, GPA 3.7/4.0</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="kicker">Open to roles where measurable impact matters.</p>
-        <div class="card contact">
-          <div class="links">
-            <a href="mailto:sameerauf1@gmail.com">sameerauf1@gmail.com</a>
-            <a href="tel:+17146036427">714-603-6427</a>
-            <a href="https://github.com/srauf24" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/samee-rauf/" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
+        <h2>Outside of Work</h2>
+        <ul>
+          <li>🏐 Organize weekly sand volleyball games with coworkers.</li>
+          <li>🧠 Explore neuroscience and psychology - how beliefs shape behavior.</li>
+          <li>🧘 Practice guided dhikr, gratitude (<i>shukr</i>), and journaling to stay grounded.</li>
+        </ul>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">© 2025 Samee Rauf</div>
+    <div class="container">© 2025 Samee Rauf - Built with Ihsan</div>
   </footer>
+
+  <div class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</div>
+
 </body>
 </html>
