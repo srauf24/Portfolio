@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samee Rauf · Software Engineer</title>
+  <title>Samee Rauf · Software Engineer · Go, React, AWS</title>
+  <meta name="description"
+    content="Software Engineer building production systems with Go, React, and PostgreSQL. Currently at PMG. AWS Certified.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #09090b;
@@ -20,10 +25,16 @@
       --accent-glow: rgba(34, 197, 94, 0.08);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html { scroll-behavior: smooth; }
-    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Outfit', system-ui, sans-serif;
       background: var(--bg);
@@ -32,9 +43,16 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
 
     /* Navigation */
     nav {
@@ -61,9 +79,14 @@
       letter-spacing: -0.02em;
     }
 
-    .logo span { color: var(--accent); }
+    .logo span {
+      color: var(--accent);
+    }
 
-    .nav-links { display: flex; gap: 32px; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
 
     .nav-links a {
       font-size: 0.9rem;
@@ -72,9 +95,15 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
-    @media (max-width: 600px) { .nav-links { display: none; } }
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+    }
 
     /* Hero */
     header {
@@ -97,7 +126,10 @@
       pointer-events: none;
     }
 
-    .hero-content { position: relative; z-index: 1; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
 
     .hero-label {
       display: inline-flex;
@@ -220,7 +252,9 @@
       transition: border-color 0.2s;
     }
 
-    .impact-card:hover { border-color: var(--border-bright); }
+    .impact-card:hover {
+      border-color: var(--border-bright);
+    }
 
     .impact-number {
       font-size: 2.5rem;
@@ -250,7 +284,10 @@
       margin-bottom: 24px;
     }
 
-    .about-content strong { color: var(--text); font-weight: 600; }
+    .about-content strong {
+      color: var(--text);
+      font-weight: 600;
+    }
 
     /* Experience Cards */
     .experience-card {
@@ -262,7 +299,9 @@
       transition: border-color 0.2s;
     }
 
-    .experience-card:hover { border-color: var(--border-bright); }
+    .experience-card:hover {
+      border-color: var(--border-bright);
+    }
 
     .exp-header {
       display: flex;
@@ -279,7 +318,10 @@
       letter-spacing: -0.02em;
     }
 
-    .exp-company { color: var(--muted); font-weight: 500; }
+    .exp-company {
+      color: var(--muted);
+      font-weight: 500;
+    }
 
     .exp-date {
       font-family: 'JetBrains Mono', monospace;
@@ -315,7 +357,9 @@
       border-radius: 50%;
     }
 
-    .exp-highlights li strong { color: var(--text); }
+    .exp-highlights li strong {
+      color: var(--text);
+    }
 
     .tech-tags {
       display: flex;
@@ -378,7 +422,10 @@
       letter-spacing: 0.05em;
     }
 
-    .project-links { display: flex; gap: 12px; }
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
 
     .project-links a {
       font-size: 0.85rem;
@@ -435,7 +482,9 @@
       flex-shrink: 0;
     }
 
-    .project-features strong { color: var(--text); }
+    .project-features strong {
+      color: var(--text);
+    }
 
     /* Skills */
     .skills-grid {
@@ -515,7 +564,9 @@
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--accent); }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
 
     .copyright {
       margin-top: 64px;
@@ -525,8 +576,15 @@
 
     /* Animation */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .animate {
@@ -534,12 +592,24 @@
       animation: fadeUp 0.8s ease forwards;
     }
 
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-4 {
+      animation-delay: 0.4s;
+    }
   </style>
 </head>
+
 <body>
 
   <nav>
@@ -565,7 +635,8 @@
           <span class="highlight">end to end.</span>
         </h1>
         <p class="hero-subtitle animate delay-2">
-          I write Go, Python, and React. I care about clean architecture, good observability, and actually shipping. Currently building AI-powered tools that automate media workflows at PMG.
+          I write Go, Python, and React. I care about clean architecture, good observability, and actually shipping.
+          Currently building AI-powered tools at PMG and shipping side projects to production.
         </p>
         <div class="hero-cta animate delay-3">
           <a href="mailto:sameerauf1@gmail.com" class="btn btn-primary">Say Hello</a>
@@ -594,8 +665,8 @@
             <div class="impact-label">monthly savings</div>
           </div>
           <div class="impact-card">
-            <div class="impact-number">4.0</div>
-            <div class="impact-label">GPA · CSUF</div>
+            <div class="impact-number">$15</div>
+            <div class="impact-label">/mo production infra</div>
           </div>
         </div>
 
@@ -603,19 +674,26 @@
           <p class="section-label">About</p>
           <h2>A bit about me</h2>
         </div>
-        
+
         <div class="about-content">
           <p>
-            I'm a <strong>Software Engineer at PMG</strong> in Dallas, where I build AI tools that automate media workflows for multi-million dollar ad campaigns. My work has directly improved ROAS and saved hundreds of hours across teams—stuff that actually moves the needle.
+            I'm a <strong>Software Engineer at PMG</strong> in Dallas, where I build AI tools that automate media
+            workflows for multi-million dollar ad campaigns. My work has directly improved ROAS and saved hundreds of
+            hours across teams—stuff that actually moves the needle.
           </p>
           <p>
-            What I enjoy most is taking an idea all the way to production. Not just writing code, but thinking through the architecture, setting up proper monitoring, and making sure it runs reliably. I like understanding <em>why</em> a system is structured a certain way, not just how it works.
+            What I enjoy most is taking an idea all the way to production. Not just writing code, but thinking through
+            the architecture, setting up proper monitoring, and making sure it runs reliably. I like understanding
+            <em>why</em> a system is structured a certain way, not just how it works.
           </p>
           <p>
-            My go-to stack is <strong>Go and Python</strong> on the backend, <strong>React</strong> on the frontend, and <strong>PostgreSQL</strong> for data. I'm <strong>AWS Cloud Practitioner certified</strong> and genuinely enjoy the infrastructure side—Datadog, New Relic, Docker, the whole observability stack.
+            My go-to stack is <strong>Go and Python</strong> on the backend, <strong>React</strong> on the frontend, and
+            <strong>PostgreSQL</strong> for data. I'm <strong>AWS Cloud Practitioner certified</strong> and genuinely
+            enjoy the infrastructure side—Datadog, New Relic, Docker, the whole observability stack.
           </p>
           <p>
-            Outside of work, I'm usually playing volleyball, exploring Dallas on foot with my walking group, or working on side projects. I'm always building something.
+            Outside of work, I'm usually playing volleyball, exploring Dallas on foot with my walking group, or working
+            on side projects. I'm always building something.
           </p>
         </div>
       </div>
@@ -637,11 +715,16 @@
             <span class="exp-date">Jun 2024 – Present</span>
           </div>
           <ul class="exp-highlights">
-            <li>Built a <strong>predictive forecasting tool</strong> using weather data, statistical regression, and LangChain—delivered <strong>~5% lift in ROAS</strong> for major QSR clients</li>
-            <li>Engineered an <strong>ad creation automation system</strong> that integrates with Ad APIs to generate bulk uploads, saving <strong>3–5 hours per campaign</strong> and scaling across 25 teams</li>
-            <li>Deployed a <strong>domain-negation platform</strong> that screens unsafe sites and publishes exclusions via API—<strong>10% ROAS increase</strong> across 10+ search accounts</li>
-            <li>Eliminated <strong>$1,000+/month</strong> in cloud costs by architecting a scalable API-driven system to replace a legacy platform</li>
-            <li>Set up <strong>DataDog & OpenTelemetry</strong> monitoring for 10+ key metrics with zero-downtime deploys</li>
+            <li>Built a <strong>predictive forecasting tool</strong> using weather data, statistical regression, and
+              LangChain—delivered <strong>~5% lift in ROAS</strong> for major QSR clients</li>
+            <li>Engineered an <strong>ad creation automation system</strong> that integrates with Ad APIs to generate
+              bulk uploads, saving <strong>3–5 hours per campaign</strong> and scaling across 25 teams</li>
+            <li>Deployed a <strong>domain-negation platform</strong> that screens unsafe sites and publishes exclusions
+              via API—<strong>10% ROAS increase</strong> across 10+ search accounts</li>
+            <li>Eliminated <strong>$1,000+/month</strong> in cloud costs by architecting a scalable API-driven system to
+              replace a legacy platform</li>
+            <li>Set up <strong>DataDog & OpenTelemetry</strong> monitoring for 10+ key metrics with zero-downtime
+              deploys</li>
           </ul>
           <div class="tech-tags">
             <span class="tech-tag">Python</span>
@@ -661,8 +744,10 @@
             <span class="exp-date">Aug 2023 – May 2024</span>
           </div>
           <ul class="exp-highlights">
-            <li>Built an <strong>LLM-driven automation system</strong> using GPT-4ALL to generate and deploy audited system configurations for Disney's cloud infrastructure</li>
-            <li>Achieved <strong>35% reduction</strong> in system configuration management time; presented findings directly to Disney stakeholders</li>
+            <li>Built an <strong>LLM-driven automation system</strong> using GPT-4ALL to generate and deploy audited
+              system configurations for Disney's cloud infrastructure</li>
+            <li>Achieved <strong>35% reduction</strong> in system configuration management time; presented findings
+              directly to Disney stakeholders</li>
           </ul>
           <div class="tech-tags">
             <span class="tech-tag">Python</span>
@@ -680,8 +765,10 @@
             <span class="exp-date">Jul 2022 – Feb 2023</span>
           </div>
           <ul class="exp-highlights">
-            <li>Developed a <strong>full-stack parking management system</strong> using React & Express, serving 1,000+ users</li>
-            <li>Designed the relational database schema and built a complete suite of RESTful API endpoints with validation</li>
+            <li>Developed a <strong>full-stack parking management system</strong> using React & Express, serving 1,000+
+              users</li>
+            <li>Designed the relational database schema and built a complete suite of RESTful API endpoints with
+              validation</li>
           </ul>
           <div class="tech-tags">
             <span class="tech-tag">React</span>
@@ -707,27 +794,36 @@
               <span class="project-badge">Featured</span>
             </div>
             <div class="project-links">
+              <a href="https://arkcore.dev" target="_blank"
+                style="background: var(--accent-dim); color: var(--accent); border-color: var(--accent);">Live App →</a>
               <a href="https://github.com/srauf24/ark" target="_blank">GitHub →</a>
             </div>
           </div>
           <p class="project-desc">
-            A homelab asset management system I built end-to-end—architecture, API, database, frontend, observability, deployment. This was my excuse to go deep on Go and build something production-grade from scratch.
+            A homelab asset management system I built end-to-end—architecture, API, database, frontend, observability,
+            deployment. This was my excuse to go deep on Go and build something production-grade from scratch.
           </p>
-          
+
           <div class="project-section">
             <div class="project-section-title">Architecture & Backend</div>
             <ul class="project-features">
-              <li><strong>Go (Echo)</strong> backend with clean handler/service/repository pattern—the kind of structure that actually scales</li>
-              <li><strong>PostgreSQL 16</strong> with full-text search using tsvector + GIN indexes for log queries, plus trigram matching for fuzzy asset search (&lt;100ms queries)</li>
-              <li><strong>Redis + Asynq</strong> for background job processing with retry logic, exponential backoff, and job prioritization</li>
-              <li>RESTful APIs with proper error handling, request validation via Zod schemas, and OpenAPI code generation</li>
+              <li><strong>Go (Echo)</strong> backend with clean handler/service/repository pattern—the kind of structure
+                that actually scales</li>
+              <li><strong>PostgreSQL 16</strong> with full-text search using tsvector + GIN indexes for log queries,
+                plus trigram matching for fuzzy asset search (&lt;100ms queries)</li>
+              <li>Contract-first API development: Zod schemas generate OpenAPI spec, backend validation, and type-safe
+                frontend client—mismatches caught at compile time, not runtime</li>
+              <li><strong>JSONB columns</strong> for flexible asset specifications (CPU, RAM, storage vary by asset
+                type) within a structured relational schema</li>
+              <li>Database migrations with <strong>Tern</strong> for version-controlled schema evolution</li>
             </ul>
           </div>
 
           <div class="project-section">
             <div class="project-section-title">Auth & Multi-Tenancy</div>
             <ul class="project-features">
-              <li><strong>Clerk JWT</strong> with two-phase middleware—global token verification then user-scoped authorization</li>
+              <li><strong>Clerk JWT</strong> with two-phase middleware—global token verification then user-scoped
+                authorization</li>
               <li>Complete data isolation by scoping all database queries to user_id</li>
             </ul>
           </div>
@@ -735,8 +831,13 @@
           <div class="project-section">
             <div class="project-section-title">Frontend & Type Safety</div>
             <ul class="project-features">
-              <li><strong>React 19</strong> with TanStack Query for server state, optimistic updates, and proper loading/error states</li>
+              <li><strong>React 19</strong> with TanStack Query for server state, optimistic updates, and proper
+                loading/error states</li>
+              <li><strong>Turborepo monorepo</strong> with shared packages (<code>packages/zod</code>,
+                <code>packages/openapi</code>) consumed by both Go backend and React frontend—single source of truth for
+                contracts</li>
               <li>End-to-end type safety with shared Zod schemas, ts-rest contracts, and OpenAPI codegen</li>
+              <li>Optimistic UI updates with automatic rollback on mutation failure</li>
               <li>shadcn/ui components for a consistent design system</li>
             </ul>
           </div>
@@ -744,9 +845,32 @@
           <div class="project-section">
             <div class="project-section-title">Observability & Testing</div>
             <ul class="project-features">
-              <li><strong>New Relic APM</strong> for distributed tracing, Zerolog for structured JSON logging with request-scoped context</li>
-              <li>Health endpoints validating database and Redis connectivity</li>
+              <li><strong>New Relic APM</strong> for distributed tracing with request-scoped logging—trace IDs correlate
+                logs across the full request lifecycle for production debugging</li>
+              <li>Health endpoints validating database and Redis connectivity with structured status responses</li>
               <li>Comprehensive testing: unit tests (Vitest), integration tests (httptest), E2E (Playwright)</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <div class="project-section-title">Deployment & Infrastructure</div>
+            <ul class="project-features">
+              <li><strong>AWS EC2</strong> deployment with Docker Compose orchestrating PostgreSQL, Redis, Go backend,
+                and React frontend</li>
+              <li><strong>GitHub Actions CI/CD</strong> pipeline—build, test, push to GHCR, deploy via SSH on every
+                merge</li>
+              <li><strong>Caddy</strong> reverse proxy with automatic SSL certificate management</li>
+              <li>Production environment running on <strong>$15/month</strong> infrastructure budget</li>
+            </ul>
+          </div>
+
+          <div class="project-section">
+            <div class="project-section-title">Development Approach</div>
+            <ul class="project-features">
+              <li>Contract-first development with OpenAPI specs driving both backend implementation and frontend types
+              </li>
+              <li>Detailed technical specs for each feature before implementation—architecture decisions documented, not
+                improvised</li>
             </ul>
           </div>
 
@@ -755,32 +879,11 @@
             <span class="tech-tag">React 19</span>
             <span class="tech-tag">PostgreSQL 16</span>
             <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">AWS EC2</span>
+            <span class="tech-tag">GitHub Actions</span>
             <span class="tech-tag">New Relic</span>
             <span class="tech-tag">Turborepo</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-header">
-            <h3 class="project-title">Garden Journal</h3>
-            <div class="project-links">
-              <a href="https://github.com/srauf24/garden_journal" target="_blank">GitHub →</a>
-            </div>
-          </div>
-          <p class="project-desc">
-            A plant tracking app with weather integration. Wanted to build something useful while practicing the same patterns I use at work.
-          </p>
-          <ul class="project-features">
-            <li><strong>10+ documented API endpoints</strong> with OpenAPI specs</li>
-            <li><strong>Open-Meteo API</strong> integration to correlate plant growth with weather data</li>
-            <li>SQL migrations and database triggers for data integrity</li>
-            <li><strong>99.9% uptime</strong> with SLI monitoring in New Relic</li>
-          </ul>
-          <div class="tech-tags">
-            <span class="tech-tag">Go</span>
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">PostgreSQL</span>
-            <span class="tech-tag">Clerk</span>
           </div>
         </div>
 
@@ -793,7 +896,8 @@
             </div>
           </div>
           <p class="project-desc">
-            Real-time book discussion platform with AI-powered reading recommendations. Quick build to try out Firebase and Gemini.
+            Weekend build to explore Firebase's real-time sync and Gemini's recommendation capabilities—different
+            constraints than my usual Go/PostgreSQL stack.
           </p>
           <ul class="project-features">
             <li><strong>Gemini API</strong> for personalized reading suggestions based on discussions</li>
@@ -852,8 +956,6 @@
             <h3>Infrastructure</h3>
             <div class="skill-list">
               <span class="skill-item certified">AWS (Certified)</span>
-              <span class="skill-item">Docker</span>
-              <span class="skill-item">Terraform</span>
               <span class="skill-item">Datadog</span>
               <span class="skill-item">New Relic</span>
             </div>
@@ -879,4 +981,5 @@
   </footer>
 
 </body>
+
 </html>
