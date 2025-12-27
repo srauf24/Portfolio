@@ -14,15 +14,16 @@
     rel="stylesheet">
   <style>
     :root {
-      --bg: #09090b;
-      --bg-elevated: #18181b;
-      --border: #27272a;
-      --border-bright: #3f3f46;
-      --muted: #a1a1aa;
-      --text: #fafafa;
-      --accent: #22c55e;
-      --accent-dim: rgba(34, 197, 94, 0.15);
-      --accent-glow: rgba(34, 197, 94, 0.08);
+      --bg: #ffffff;
+      --bg-elevated: #f5f5f7;
+      --border: #d2d2d7;
+      --border-bright: #86868b;
+      --muted: #6e6e73;
+      --text: #1d1d1f;
+      --accent: #0071e3;
+      --accent-dim: rgba(0, 113, 227, 0.1);
+      --accent-glow: rgba(0, 113, 227, 0.05);
+      --accent-bright: #2997ff;
     }
 
     * {
@@ -61,7 +62,7 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(9, 9, 11, 0.85);
+      background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -146,7 +147,7 @@
     }
 
     .hero-label .cert {
-      color: #f59e0b;
+      color: var(--accent);
       font-weight: 600;
     }
 
@@ -159,10 +160,29 @@
     }
 
     h1 .highlight {
-      background: linear-gradient(135deg, var(--accent) 0%, #4ade80 100%);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    /* Rotating tagline animation */
+    .tagline-rotate {
+      display: inline-block;
+      position: relative;
+    }
+
+    .tagline-rotate .tagline-item {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .tagline-rotate .tagline-item.active {
+      opacity: 1;
+      position: relative;
     }
 
     .hero-subtitle {
@@ -191,11 +211,11 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #000;
+      color: #fff;
     }
 
     .btn-primary:hover {
-      background: #16a34a;
+      background: var(--accent-bright);
       transform: translateY(-2px);
     }
 
@@ -235,12 +255,75 @@
       letter-spacing: -0.03em;
     }
 
-    /* Impact Stats */
+    /* Bento Grid for Impact Stats */
     .impact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
       margin-bottom: 72px;
+    }
+
+    .impact-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .impact-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+
+    .impact-card.featured {
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--accent-glow) 100%);
+      border-color: rgba(0, 113, 227, 0.3);
+    }
+
+    .impact-card.now-card {
+      grid-column: span 2;
+      text-align: left;
+      padding: 24px 28px;
+    }
+
+    .impact-card .aside {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .impact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .impact-card.featured {
+        grid-row: span 1;
+        grid-column: span 2;
+      }
+
+      .impact-card.now-card {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-card.featured,
+      .impact-card.now-card {
+        grid-column: span 1;
+      }
     }
 
     .impact-card {
@@ -632,7 +715,12 @@
         </div>
         <h1 class="animate delay-1">
           I build things<br>
-          <span class="highlight">end to end.</span>
+          <span class="tagline-rotate">
+            <span class="tagline-item highlight active">end to end.</span>
+            <span class="tagline-item highlight">production-grade.</span>
+            <span class="tagline-item highlight">with clean architecture.</span>
+            <span class="tagline-item highlight">from prototype to prod.</span>
+          </span>
         </h1>
         <p class="hero-subtitle animate delay-2">
           I write Go, Python, and React. I care about clean architecture, good observability, and actually shipping.
@@ -652,9 +740,10 @@
     <section id="about">
       <div class="container">
         <div class="impact-grid animate">
-          <div class="impact-card">
+          <div class="impact-card featured">
             <div class="impact-number">~5%</div>
             <div class="impact-label">ROAS lift</div>
+            <div class="aside">(yes, that's real)</div>
           </div>
           <div class="impact-card">
             <div class="impact-number">25+</div>
@@ -667,6 +756,15 @@
           <div class="impact-card">
             <div class="impact-number">$15</div>
             <div class="impact-label">/mo production infra</div>
+            <div class="aside">(I counted)</div>
+          </div>
+          <div class="impact-card now-card">
+            <div class="impact-label" style="margin-bottom: 4px; color: var(--accent);">Now</div>
+            <div style="color: var(--text); font-size: 1rem;">Shipping ARK V2 → RAG-powered search, same $15/mo budget
+            </div>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401337831488684032/" target="_blank"
+              style="color: var(--muted); font-size: 0.85rem; margin-top: 8px; display: inline-block;">Read the build
+              story →</a>
           </div>
         </div>
 
@@ -835,7 +933,8 @@
                 loading/error states</li>
               <li><strong>Turborepo monorepo</strong> with shared packages (<code>packages/zod</code>,
                 <code>packages/openapi</code>) consumed by both Go backend and React frontend—single source of truth for
-                contracts</li>
+                contracts
+              </li>
               <li>End-to-end type safety with shared Zod schemas, ts-rest contracts, and OpenAPI codegen</li>
               <li>Optimistic UI updates with automatic rollback on mutation failure</li>
               <li>shadcn/ui components for a consistent design system</li>
@@ -979,6 +1078,22 @@
       <p class="copyright">© 2025 Samee Rauf</p>
     </div>
   </footer>
+
+  <script>
+    // Rotating tagline animation
+    document.addEventListener('DOMContentLoaded', function () {
+      const taglines = document.querySelectorAll('.tagline-item');
+      if (taglines.length === 0) return;
+
+      let current = 0;
+
+      setInterval(function () {
+        taglines[current].classList.remove('active');
+        current = (current + 1) % taglines.length;
+        taglines[current].classList.add('active');
+      }, 3500);
+    });
+  </script>
 
 </body>
 
