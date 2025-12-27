@@ -898,78 +898,62 @@
             </div>
           </div>
           <p class="project-desc">
-            A homelab asset management system I built end-to-end—architecture, API, database, frontend, observability,
-            deployment. This was my excuse to go deep on Go and build something production-grade from scratch.
+            Homelab asset tracking platform I built solo, end-to-end. Go backend, React frontend, PostgreSQL, deployed
+            on AWS.
           </p>
 
           <div class="project-section">
-            <div class="project-section-title">Architecture & Backend</div>
+            <div class="project-section-title">Backend & API</div>
             <ul class="project-features">
-              <li><strong>Go (Echo)</strong> backend with clean handler/service/repository pattern—the kind of structure
-                that actually scales</li>
-              <li><strong>PostgreSQL 16</strong> with full-text search using tsvector + GIN indexes for log queries,
-                plus trigram matching for fuzzy asset search (&lt;100ms queries)</li>
-              <li>Contract-first API development: Zod schemas generate OpenAPI spec, backend validation, and type-safe
-                frontend client—mismatches caught at compile time, not runtime</li>
-              <li><strong>JSONB columns</strong> for flexible asset specifications (CPU, RAM, storage vary by asset
-                type) within a structured relational schema</li>
-              <li>Database migrations with <strong>Tern</strong> for version-controlled schema evolution</li>
+              <li><strong>RESTful API</strong> with clean architecture — handlers → services → repositories</li>
+              <li><strong>PostgreSQL 16</strong> with GIN indexes and tsvector for full-text search (&lt;100ms queries)
+              </li>
+              <li>Rate limiting middleware for API protection</li>
             </ul>
           </div>
 
           <div class="project-section">
-            <div class="project-section-title">Auth & Multi-Tenancy</div>
+            <div class="project-section-title">Auth & Security</div>
             <ul class="project-features">
-              <li><strong>Clerk JWT</strong> with two-phase middleware—global token verification then user-scoped
+              <li><strong>JWT middleware</strong> with two-phase auth — Clerk SDK token verification + user-scoped
                 authorization</li>
-              <li>Complete data isolation by scoping all database queries to user_id</li>
+              <li>Multi-tenant data isolation — all queries scoped by user_id</li>
             </ul>
           </div>
 
           <div class="project-section">
-            <div class="project-section-title">Frontend & Type Safety</div>
+            <div class="project-section-title">Type Safety</div>
             <ul class="project-features">
-              <li><strong>React 19</strong> with TanStack Query for server state, optimistic updates, and proper
-                loading/error states</li>
-              <li><strong>Turborepo monorepo</strong> with shared packages (<code>packages/zod</code>,
-                <code>packages/openapi</code>) consumed by both Go backend and React frontend—single source of truth for
-                contracts
-              </li>
-              <li>End-to-end type safety with shared Zod schemas, ts-rest contracts, and OpenAPI codegen</li>
-              <li>Optimistic UI updates with automatic rollback on mutation failure</li>
-              <li>shadcn/ui components for a consistent design system</li>
+              <li><strong>Zod schemas → OpenAPI spec → generated TypeScript client</strong></li>
+              <li>Compile-time contract enforcement between React frontend and Go backend</li>
+              <li>Monorepo with shared <code>packages/zod</code> and <code>packages/openapi</code></li>
             </ul>
           </div>
 
           <div class="project-section">
-            <div class="project-section-title">Observability & Testing</div>
+            <div class="project-section-title">Observability</div>
             <ul class="project-features">
-              <li><strong>New Relic APM</strong> for distributed tracing with request-scoped logging—trace IDs correlate
-                logs across the full request lifecycle for production debugging</li>
-              <li>Health endpoints validating database and Redis connectivity with structured status responses</li>
-              <li>Comprehensive testing: unit tests (Vitest), integration tests (httptest), E2E (Playwright)</li>
+              <li><strong>New Relic APM</strong> with distributed tracing</li>
+              <li>Request-scoped structured logging with trace ID correlation</li>
+              <li>Health endpoints validating database and Redis connectivity</li>
             </ul>
           </div>
 
           <div class="project-section">
-            <div class="project-section-title">Deployment & Infrastructure</div>
+            <div class="project-section-title">Infrastructure</div>
             <ul class="project-features">
-              <li><strong>AWS EC2</strong> deployment with Docker Compose orchestrating PostgreSQL, Redis, Go backend,
-                and React frontend</li>
-              <li><strong>GitHub Actions CI/CD</strong> pipeline—build, test, push to GHCR, deploy via SSH on every
-                merge</li>
-              <li><strong>Caddy</strong> reverse proxy with automatic SSL certificate management</li>
-              <li>Production environment running on <strong>$15/month</strong> infrastructure budget</li>
+              <li><strong>AWS EC2</strong> (t3.micro) with Elastic IP and automated EBS volume lifecycle</li>
+              <li>Docker Compose orchestration with <strong>Caddy</strong> reverse proxy (auto-HTTPS)</li>
+              <li><strong>GitHub Actions CI/CD</strong> — build, test, push to GHCR, deploy on merge</li>
+              <li>Production environment on <strong>$15/month</strong> budget</li>
             </ul>
           </div>
 
           <div class="project-section">
-            <div class="project-section-title">Development Approach</div>
+            <div class="project-section-title">V2 Roadmap</div>
             <ul class="project-features">
-              <li>Contract-first development with OpenAPI specs driving both backend implementation and frontend types
-              </li>
-              <li>Detailed technical specs for each feature before implementation—architecture decisions documented, not
-                improvised</li>
+              <li>RAG pipeline with <strong>pgvector</strong> embeddings and OpenAI</li>
+              <li>Semantic search via AWS Lambda (cost optimization)</li>
             </ul>
           </div>
 
@@ -982,7 +966,8 @@
             <span class="tech-tag">AWS EC2</span>
             <span class="tech-tag">GitHub Actions</span>
             <span class="tech-tag">New Relic</span>
-            <span class="tech-tag">Turborepo</span>
+            <span class="tech-tag">Zod</span>
+            <span class="tech-tag">OpenAPI</span>
           </div>
         </div>
 
