@@ -1,0 +1,78 @@
+
+.uiverse-button {
+  --color: #ff8c00;
+  --size: 45px;
+  --spin-duration: 1s;
+  --spin-function: cubic-bezier(0.76, 0, 0.24, 1);
+  --shadow-blur: 5px;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.uiverse-button:hover {
+  transform: scale(1.1);
+}
+
+.uiverse-button:active {
+  transform: scale(0.9);
+}
+
+.uiverse-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 140, 0, 0.8) 0%, rgba(255, 140, 0, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.uiverse-button:hover::before {
+  opacity: 1;
+}
+
+.uiverse-button .icon {
+  font-size: calc(var(--size) * 0.5);
+  color: white;
+  transition: transform var(--spin-duration) var(--spin-function);
+}
+
+.uiverse-button:hover .icon {
+  transform: rotate(360deg);
+}
+
+.uiverse-button .text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: calc(var(--size) * 0.3);
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.uiverse-button:hover .text {
+  opacity: 1;
+}
+
+.uiverse-button:hover .icon {
+  opacity: 0;
+}
