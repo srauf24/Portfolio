@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samee Rauf · Software Engineer · Go, React, AWS</title>
+  <title>Samee Rauf · AI Engineer · Production GenAI, Python, AWS</title>
   <meta name="description"
-    content="Software Engineer building production systems with Go, React, and PostgreSQL. Currently at PMG. AWS Certified.">
+    content="AI engineer who works with clients to take generative AI into production: RAG chatbots and agentic systems in Python on AWS. AWS Certified, B.S. Computer Science from Cal State Fullerton.">
   <link rel="canonical" href="https://sameerauf.dev/">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
@@ -16,9 +16,9 @@
   <!-- Social previews -->
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://sameerauf.dev/">
-  <meta property="og:title" content="Samee Rauf · Software Engineer">
+  <meta property="og:title" content="Samee Rauf · AI Engineer">
   <meta property="og:description"
-    content="I build production systems end to end with Go, Python, React, and PostgreSQL. AI tools at PMG, side projects in prod.">
+    content="I work with clients to turn their problems into production GenAI systems: RAG chatbots and agentic workflows that save teams hundreds of hours a week.">
   <meta property="og:image" content="https://sameerauf.dev/assets/img/profile.jpg">
   <meta name="twitter:card" content="summary">
 
@@ -33,10 +33,9 @@
       "name": "Samee Rauf",
       "url": "https://sameerauf.dev/",
       "image": "https://sameerauf.dev/assets/img/profile.jpg",
-      "jobTitle": "AI Software Engineer",
-      "worksFor": { "@type": "Organization", "name": "PMG" },
-      "address": { "@type": "PostalAddress", "addressLocality": "Dallas", "addressRegion": "TX", "addressCountry": "US" },
-      "knowsAbout": ["Go", "Python", "React", "PostgreSQL", "AWS", "LangChain", "RAG", "Observability"],
+      "jobTitle": "AI Engineer",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "California State University, Fullerton" },
+      "knowsAbout": ["Generative AI", "Retrieval-augmented generation", "AI agents", "AI guardrails", "Software architecture", "LangChain", "Python", "AWS", "Go", "System design", "Requirements engineering"],
       "hasCredential": { "@type": "EducationalOccupationalCredential", "name": "AWS Certified Cloud Practitioner" },
       "sameAs": ["https://github.com/srauf24", "https://linkedin.com/in/samee-rauf"]
     }
@@ -353,6 +352,11 @@
       pointer-events: none;
     }
 
+    /* header is a flex container, so its .container would otherwise shrink to its content and centre */
+    header>.container {
+      width: 100%;
+    }
+
     .hero-content {
       position: relative;
       z-index: 1;
@@ -539,30 +543,6 @@
       border-color: var(--border-bright);
     }
 
-    .now-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-      color: var(--accent);
-    }
-
-    .now-text {
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    .now-link {
-      display: inline-block;
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .now-link:hover {
-      color: var(--accent);
-    }
 
     .impact-card.featured {
       grid-row: span 2;
@@ -573,10 +553,6 @@
       border-color: rgba(0, 113, 227, 0.3);
     }
 
-    .impact-card.now-card {
-      text-align: left;
-      padding: 24px 28px;
-    }
 
     .impact-card .aside {
       font-size: 0.75rem;
@@ -781,23 +757,6 @@
       border-radius: 6px;
     }
 
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: live 2.2s ease-out infinite;
-    }
-
-    @keyframes live {
-      0% {
-        box-shadow: 0 0 0 0 var(--accent-dim), 0 0 0 0 var(--accent-glow);
-      }
-
-      100% {
-        box-shadow: 0 0 0 6px transparent, 0 0 0 12px transparent;
-      }
-    }
 
     /* Request trace: a waterfall of one search request through Ark */
     .trace {
@@ -966,11 +925,6 @@
       gap: 16px;
     }
 
-    .project-links a.primary-link {
-      background: var(--accent-dim);
-      color: var(--accent);
-      border-color: var(--accent);
-    }
 
     .project-card.featured {
       border-color: var(--accent);
@@ -1225,9 +1179,6 @@
         transform: none;
       }
 
-      .live-dot {
-        animation: none;
-      }
     }
 
     /* Printing never scrolls, so a scroll-triggered reveal would print blank */
@@ -1287,22 +1238,22 @@
         <div class="hero-label has-avatar animate">
           <img src="assets/img/profile.jpg" alt="" class="hero-avatar" width="32" height="32"
             fetchpriority="high">
-          <span>Samee Rauf, Software Engineer at PMG · <span class="cert">AWS Certified</span></span>
+          <span>Samee Rauf, AI Engineer · <span class="cert">AWS Certified</span></span>
         </div>
         <h1 class="animate delay-1">
-          I build things<br>
-          <span class="visually-hidden">end to end, production-grade, with clean architecture, from prototype to
-            prod.</span>
+          I build AI systems<br>
+          <span class="visually-hidden">for production: systems that scale, are built to change, and that clients
+            rely on.</span>
           <span class="tagline-rotate" aria-hidden="true">
-            <span class="tagline-item highlight active">end to end.</span>
-            <span class="tagline-item highlight">production-grade.</span>
-            <span class="tagline-item highlight">with clean architecture.</span>
-            <span class="tagline-item highlight">from prototype to prod.</span>
+            <span class="tagline-item highlight active">for production.</span>
+            <span class="tagline-item highlight">that scale.</span>
+            <span class="tagline-item highlight">built to change.</span>
+            <span class="tagline-item highlight">clients rely on.</span>
           </span>
         </h1>
         <p class="hero-subtitle animate delay-2">
-          I write Go, Python, and React. I care about clean architecture, good observability, and actually shipping.
-          Currently building AI-powered tools at PMG and shipping side projects to production.
+          I work with clients to understand the problem, then build the generative AI system that solves it. At PMG,
+          my RAG chatbots and agent workflows saved teams hundreds of hours a week.
         </p>
         <div class="hero-cta animate delay-3">
           <a href="mailto:sameerauf1@gmail.com" class="btn btn-primary">Email me</a>
@@ -1322,7 +1273,15 @@
           <div class="impact-card featured">
             <div class="impact-number">~5%</div>
             <div class="impact-label">ROAS lift</div>
-            <div class="aside">(yes, that's real)</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number">150+</div>
+            <div class="impact-label">hours saved every week</div>
+            <div class="aside">(one RAG chatbot)</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-number">1,200</div>
+            <div class="impact-label">users on an agentic platform</div>
           </div>
           <div class="impact-card">
             <div class="impact-number">25+</div>
@@ -1332,42 +1291,29 @@
             <div class="impact-number">$1K+</div>
             <div class="impact-label">monthly savings</div>
           </div>
-          <div class="impact-card">
-            <div class="impact-number">$15</div>
-            <div class="impact-label">/mo production infra</div>
-            <div class="aside">(I counted)</div>
-          </div>
-          <div class="impact-card now-card">
-            <div class="impact-label now-label"><span class="live-dot" aria-hidden="true"></span>Now</div>
-            <div class="now-text">Shipping Ark V2: RAG-powered search on the same $15/mo budget</div>
-            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7401337831488684032/" target="_blank" rel="noopener"
-              rel="noopener" class="now-link">Read the build story on LinkedIn</a>
-          </div>
         </div>
 
         <div class="section-header">
-          <h2>A bit about me</h2>
+          <h2>About</h2>
         </div>
 
         <div class="about-content">
           <p>
-            I'm a <strong>Software Engineer at PMG</strong> in Dallas, where I build AI tools that automate media
-            workflows for multi-million dollar ad campaigns. My work has directly improved ROAS and saved hundreds of
-            hours across teams—stuff that actually moves the needle.
+            I'm an AI engineer. At PMG I built RAG chatbots and agentic systems that people used every day. One
+            chatbot saved media coordinators more than 150 hours a week.
           </p>
           <p>
-            What I enjoy most is taking an idea all the way to production. Not just writing code, but thinking through
-            the architecture, setting up proper monitoring, and making sure it runs reliably. I like understanding
-            <em>why</em> a system is structured a certain way, not just how it works.
+            I work like a forward-deployed engineer. I sit with clients, learn how they work, and turn that into
+            requirements, including latency, cost and accuracy targets. Then I build in short iterations so they see
+            progress early.
           </p>
           <p>
-            My go-to stack is <strong>Go and Python</strong> on the backend, <strong>React</strong> on the frontend, and
-            <strong>PostgreSQL</strong> for data. I'm <strong>AWS Cloud Practitioner certified</strong> and genuinely
-            enjoy the infrastructure side—Datadog, New Relic, Docker, the whole observability stack.
+            I care most about design. I want systems that scale, are easy to change, and fail safely. For agents,
+            that means guardrails in the code: narrow tool permissions, validated outputs, step limits, human approval
+            for anything irreversible, and a trace of every decision.
           </p>
           <p>
-            Outside of work, I'm usually playing volleyball, exploring Dallas on foot with my walking group, or working
-            on side projects. I'm always building something.
+            I mostly write Python, and I'm AWS certified. Outside work it's volleyball, long walks and side projects.
           </p>
         </div>
       </div>
@@ -1376,7 +1322,7 @@
     <section id="experience">
       <div class="container">
         <div class="section-header">
-          <h2>Where I've worked</h2>
+          <h2>Experience</h2>
         </div>
 
         <div class="experience-card">
@@ -1385,7 +1331,7 @@
               <div class="exp-title">AI Software Engineer</div>
               <div class="exp-company">PMG World Wide · Dallas, TX</div>
             </div>
-            <span class="exp-date">Jun 2024 – Present</span>
+            <span class="exp-date">Jun 2024 – Apr 2026</span>
           </div>
           <ul class="exp-highlights">
             <li>Engineered a multi-agent workflow automation platform in Go with ADK that converts
@@ -1435,8 +1381,8 @@
         <div class="experience-card">
           <div class="exp-header">
             <div>
-              <div class="exp-title">Security Researcher</div>
-              <div class="exp-company">Disney × Cal State Fullerton</div>
+              <div class="exp-title">AI Software Engineer</div>
+              <div class="exp-company">The Walt Disney Project · Cal State Fullerton</div>
             </div>
             <span class="exp-date">Aug 2023 – May 2024</span>
           </div>
@@ -1474,13 +1420,23 @@
           </div>
         </div>
 
+        <div class="experience-card">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">B.S. Computer Science</div>
+              <div class="exp-company">California State University, Fullerton · 4.0 GPA</div>
+            </div>
+            <span class="exp-date">May 2024</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <section id="projects">
       <div class="container">
         <div class="section-header">
-          <h2>Things I've built</h2>
+          <h2>Projects</h2>
         </div>
 
         <div class="project-card featured">
@@ -1490,13 +1446,11 @@
               <span class="project-badge">Featured</span>
             </div>
             <div class="project-links">
-              <a href="https://arkcore.dev" target="_blank" rel="noopener" class="primary-link">Live App →</a>
               <a href="https://github.com/srauf24/ark" target="_blank" rel="noopener">GitHub →</a>
             </div>
           </div>
           <p class="project-desc">
-            Homelab asset tracking platform I built solo, end-to-end. Go backend, React frontend, PostgreSQL, deployed
-            on AWS.
+            A homelab asset tracker I built solo and ran on AWS until I retired it. Go, React and PostgreSQL.
           </p>
 
           <figure class="trace" aria-labelledby="trace-caption">
@@ -1582,17 +1536,10 @@
               <li><strong>AWS EC2</strong> (t3.micro) with Elastic IP and automated EBS volume lifecycle</li>
               <li>Docker Compose orchestration with <strong>Caddy</strong> reverse proxy (auto-HTTPS)</li>
               <li><strong>GitHub Actions CI/CD</strong> — build, test, push to GHCR, deploy on merge</li>
-              <li>Saving media coordinators <strong>10+ hours/week</strong> on asset tracking</li>
+              <li>Saved media coordinators <strong>10+ hours/week</strong> on asset tracking while it was live</li>
             </ul>
           </div>
 
-          <div class="project-section">
-            <div class="project-section-title">V2 Roadmap</div>
-            <ul class="project-features">
-              <li>RAG pipeline with <strong>pgvector</strong> embeddings and OpenAI</li>
-              <li>Semantic search via AWS Lambda (cost optimization)</li>
-            </ul>
-          </div>
             </div>
           </details>
 
@@ -1619,8 +1566,7 @@
             </div>
           </div>
           <p class="project-desc">
-            Weekend build to explore Firebase's real-time sync and Gemini's recommendation capabilities—different
-            constraints than my usual Go/PostgreSQL stack.
+            A weekend build to try Firebase real-time sync and Gemini recommendations.
           </p>
           <ul class="project-features">
             <li><strong>Gemini API</strong> for personalized reading suggestions based on discussions</li>
@@ -1641,23 +1587,38 @@
     <section id="skills">
       <div class="container">
         <div class="section-header">
-          <h2>What I work with</h2>
+          <h2>Stack</h2>
         </div>
 
         <div class="skills-grid">
           <div class="skill-category">
+            <h3>AI &amp; LLMs</h3>
+            <div class="skill-list">
+              <span class="skill-item">RAG</span>
+              <span class="skill-item">Agentic workflows</span>
+              <span class="skill-item">Agent guardrails</span>
+              <span class="skill-item">LLM evaluation</span>
+              <span class="skill-item">LangChain</span>
+              <span class="skill-item">ADK</span>
+              <span class="skill-item">Vector search</span>
+              <span class="skill-item">Gemini</span>
+            </div>
+          </div>
+          <div class="skill-category">
             <h3>Languages</h3>
             <div class="skill-list">
-              <span class="skill-item">Go</span>
               <span class="skill-item">Python</span>
+              <span class="skill-item">Go</span>
               <span class="skill-item">TypeScript</span>
               <span class="skill-item">Java</span>
               <span class="skill-item">C++</span>
+              <span class="skill-item">SQL</span>
             </div>
           </div>
           <div class="skill-category">
             <h3>Backend & Data</h3>
             <div class="skill-list">
+              <span class="skill-item">System design</span>
               <span class="skill-item">PostgreSQL</span>
               <span class="skill-item">Redis</span>
               <span class="skill-item">FastAPI</span>
@@ -1678,6 +1639,9 @@
             <h3>Infrastructure</h3>
             <div class="skill-list">
               <span class="skill-item certified">AWS (Certified)</span>
+              <span class="skill-item">Terraform</span>
+              <span class="skill-item">Docker</span>
+              <span class="skill-item">GitHub Actions</span>
               <span class="skill-item">Datadog</span>
               <span class="skill-item">New Relic</span>
             </div>
@@ -1691,8 +1655,8 @@
 
   <footer id="contact">
     <div class="container">
-      <h2 class="footer-heading">Let's connect.</h2>
-      <p class="footer-subtitle">Always happy to chat about engineering, projects, or new ideas.</p>
+      <h2 class="footer-heading">Get in touch</h2>
+      <p class="footer-subtitle">Email is the fastest way to reach me.</p>
       <div class="hero-cta footer-cta">
         <a href="mailto:sameerauf1@gmail.com" class="btn btn-primary">Email me</a>
         <a href="assets/Samee_Rauf_Resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary">Resume
@@ -1839,9 +1803,10 @@
       function countUp(el) {
         if (el.children.length) return;
         var finalText = el.textContent.trim();
-        var parts = finalText.match(/^([$]?)(\d+)(\+?)$/);
+        var parts = finalText.match(/^([$]?)(\d{1,3}(?:,\d{3})+|\d+)(\+?)$/);
         if (!parts) return;
-        var target = parseInt(parts[2], 10);
+        var grouped = parts[2].indexOf(',') !== -1;
+        var target = parseInt(parts[2].replace(/,/g, ''), 10);
         if (target < 10) return;
         var priorMinWidth = el.style.minWidth;
         el.style.minWidth = el.getBoundingClientRect().width + 'px';
@@ -1856,7 +1821,9 @@
         function frame(now) {
           if (done) return;
           var t = Math.min((now - started) / 1200, 1);
-          el.textContent = parts[1] + Math.round(target * (1 - Math.pow(1 - t, 3))) + parts[3];
+          var v = String(Math.round(target * (1 - Math.pow(1 - t, 3))));
+          if (grouped) v = v.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          el.textContent = parts[1] + v + parts[3];
           if (t < 1) requestAnimationFrame(frame);
           else settle();
         }
