@@ -639,50 +639,6 @@
       }
     }
 
-    /* Progressive disclosure: long lists show the strongest items, the rest one click away */
-    .more {
-      margin-top: 14px;
-    }
-
-    .more>summary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 44px;
-      list-style: none;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .more>summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .more>summary::after {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      transform: translateY(-2px) rotate(45deg);
-      transition: transform 0.25s var(--ease-out);
-    }
-
-    .more[open]>summary::after {
-      transform: translateY(2px) rotate(-135deg);
-    }
-
-    .more[open]>summary .when-closed,
-    .more:not([open])>summary .when-open {
-      display: none;
-    }
-
-    .more-body {
-      padding-top: 10px;
-    }
-
     .exp-header {
       display: flex;
       justify-content: space-between;
@@ -1169,8 +1125,7 @@
 
       body,
       .skip-link,
-      .nav-links a::after,
-      .more>summary::after {
+      .nav-links a::after {
         transition: none;
       }
 
@@ -1483,10 +1438,6 @@
             </ul>
           </div>
 
-          <details class="more">
-            <summary><span class="when-closed">Full technical breakdown</span><span class="when-open">Hide
-                breakdown</span></summary>
-            <div class="more-body">
           <div class="project-section">
             <div class="project-section-title">Auth & Security</div>
             <ul class="project-features">
@@ -1524,8 +1475,6 @@
             </ul>
           </div>
 
-            </div>
-          </details>
 
           <div class="tech-tags">
             <span class="tech-tag">Go</span>
